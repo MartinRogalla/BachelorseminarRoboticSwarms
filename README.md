@@ -1,7 +1,7 @@
 ####Bachelorseminar - Robotic Swarms: Distributed Coordination Without Location
 
 Main Tex File:
-    ````Paper.tex````
+    ````Survey.tex````
     
 Bibliography File:
     ````Bibliography.bib````
