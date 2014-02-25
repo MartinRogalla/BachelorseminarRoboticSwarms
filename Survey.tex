@@ -30,10 +30,18 @@ This is the abstract of my paper.
 
 
 \section{Introduction}
-  In order to emphasize the importance of the connection between the technology and its applications, a top-down approach is used for this survey. For each of the applications, an analysis is made of all the required services.
-  
-  	Robotic swarms can be used for many real-world applications as for example in tasks that cover a region, tasks that are to dangerous for human beings, tasks that scale-up or scale-down in time or tasks that require redundancy \cite{csahin2005swarm}.
-	
+   As robots become smaller and easier to produce, more and more interest is generated for robotic swarms. Many applications for robotic swarms exist and it is certain many more will follow, indicated by a growing amount of paper written about robotics at for instance the AAMAS (International Conference on Autonomous Agents and Multiagent Systems). \cite{Amigoni2014} Because there exist many different applications and techniques in the field of robotic swarms. this paper aims to deliver a concise review of these applications and techniques. \\
+To avoid confusion, some terminology has to be defined. Robotic swarm applications can roughly be characterised by two attributes; they are either \emph{location-based} or \emph{location-free}, or they are either \emph{range-based} or \{range-free}. The definitions of these attributes may be interpreted ambiguously, which is why we will define it here. The definitions are:
+
+  \begin{enumerate}
+    \item A robotic swarm is \emph{location-free} if the swarm has no knowledge  of the boundaries of te location it is in, whether it is provided at the beginning or is actively searched for during the execution of the algorithm. 
+    \item A robotic swarm is \emph{location-based} if the swarm has the knowledge of predefined boundaries of the location it operates in, whether provided at the beginning of the execution of the algorithm or if it is actively searched for. 
+    \item A robotic swarm is \emph{range-free} if each robot can detect, but does not store or measure the distance, other nearby robots in the swarm or nearby obstacles
+    \item  A robotic swarm is \emph{range-free} if each robot in the swarm keeps track of the exact distance between itself and the other robots in the swarm or  obstacles. 
+  \end{enumerate}
+
+In order to emphasize the importance of the connection between the technology and its applications, a top-down approach is used for this survey. Thus,  in this paper we will first review a few different application fields, after which a few examples of applications in these fields will be given. In the second part of the paper we will discuss the most used techniques in these applicatio ns and the algorithms behind these techniques. \\
+
   \subsection{Cleaning}
   Citaat: \cite{wagner2008cooperative} \cite{altshuler2005swarm}
   
