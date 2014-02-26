@@ -1,15 +1,14 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 Robotic swarms can be used for many real-world applications as for example in tasks that cover a region, tasks that are to dangerous for human beings, tasks that scale-up or scale-down in time or tasks that require redundancy \cite{csahin2005swarm}.
 
-  \subsection{Area Cleaning}
-  \textbf{Description: }\emph{Cleaning a certain area is a common problem which can be solved effectively by using a swarm of autonomous robots. These robots are used to fully explore and clean the area while only being able to see their neighbourhood. In this case the swarm cleans without disconnecting the dirty area.}  \cite{wagner2008cooperative} 
+  \subsection{Spot Exploration}
+  \textbf{Description: }\emph{Cleaning/exploring a component in an unkown area is a common problem which can be solved effectively by using a tobotic swarm. For example in \cite{wagner2008cooperative} a swarm of robots is placed in a certain component which has to be cleaned totally. The robots have limited visibility and can only see other robots within a certain distance. Main goal is to not disconnect the component that has to be cleaned to be sure that the component will be get fully cleaned in the end.} \\
+  The main techniques that are described in \cite{wagner2008cooperative} are algorithms that preserve the connectivity of the spot to be cleaned and prevent the clustering of robots.
   
-  \todo[inline]{Techniques: collective, exploration?}
+  \subsection{Area Exploration}
+  \textbf{Description: }\emph{Exploration of an unkown environment can be done conveniently using robotic swarms. This can be very useful in cases of hazardous environments. In \cite{sheng2006distributed} a model is described in which the robots have limited communication range and full knowledge of their location. By continuously looking for the closest undiscovered area in combination with a nearness measure it tends to explore the complete area by staying together and continiously updating each others maps.} 
   
-  \subsection{Space Exploration}
-  \textbf{Description: }\emph{Exploration of an unkown environment can be done conveniently using autonomous robotic swarms, even in human impassable areas such as space.} \cite{sheng2006distributed}
-  
-  Some of the techniques used in toxic source discovery are: exploration, dispersion.
+  Some of the techniques used are communication, exploration, dispersion, mapping. \cite{sheng2006distributed}
   
   \subsection{Swarm-Assisted Fire Fighting}
   \textbf{Description: }\emph{Swarm-Assisted Fire Fighting makes interactive use of autonomous robots in fire emergency settings. These swarms of robots are capable of supporting and enhancing fire fighting operations co-operatively with each other and are coordinated by a single human supervisor.}\cite{Naghsh2008,Penders2011}\\
