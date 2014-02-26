@@ -1,18 +1,15 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
-\section{Definitions from Literature}
 
-  \subsection{Orientation}
-  Location-based vs Range-based \ldots
-  \subsection{Applications}
-  List of applications.... idea for table: Orientation Table: LB RB LF RF\\
-  
-  \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|}
-    \hline
-     & Location-based & Location-free\\\hline
-    Range-based & \ldots & \\\hline
-    Range-free & \ldots & \\
-    \hline
-  \end{tabular}
-  
-  \subsubsection{Service Required}
-  
+This section will provide some definitions so that there will exist no ambiguity for some terms. Firstly, we wish to define what robotic swarms are. A robotic swarm is a collection of robots. In this review, we will only consider something a swarm when the amount of robots is higher than two and the amount can be scalable; so a swarm of only two robots that doesn't interact with a third robot will not count as a swarm.  \\
+Furthermore, in this review we will only consider robotic swarms in which each robot is not controlled individually; they should have some form of distributed intelligence. An exception is of course when a swarm of multiple robots is controlled by one control station; this swarm will still have some form of distributed intelligence to function and thus is considered a swarm.  \\
+
+Robotic swarm applications can roughly be characterised by two attributes; they are either \emph{location-based} or \emph{location-free}, or they are either \emph{range-based} and  \emph{range-free}. A location-free approach does not exclude a range-free approach and vice-versa; they are two different ways of approaching an application. The definitions of these attributes may be interpreted ambiguously, which is why we will define it here. The definitions are:
+
+  \begin{itemize}
+    \item A robotic swarm is \emph{location-free} if the swarm has no knowledge of the boundaries of te location it is in, whether it is provided at the beginning or is actively searched for during the execution of the algorithm. 
+    \item A robotic swarm is \emph{location-based} if the swarm has the knowledge of predefined boundaries of the location it operates in, whether provided at the beginning of the execution of the algorithm or if it is actively searched for. 
+    \item A robotic swarm is \emph{range-free} if each robot can detect, but does not store or measure the distance, other nearby robots in the swarm or nearby obstacles
+    \item  A robotic swarm is \emph{range-based} if each robot in the swarm keeps track of the exact distance between itself and the other robots in the swarm or obstacles. 
+  \end{itemize}
+
+  \missingfigure[figwidth=\textwidth,caption={Venn Diagram of types of navigation.}]{Venn Diagram of types of navigation.}
