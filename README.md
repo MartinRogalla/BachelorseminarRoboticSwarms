@@ -1,6 +1,8 @@
 ####Bachelorseminar - Robotic Swarms: Distributed Coordination Without Location
 
-Final Deadline: March 26, 23:59
+| Draft Deadline        | Submission Deadline  |
+|:---------------------:|:--------------------:|
+| ???                   | March 26, 23:59      |
 
 The majority of algorithms for distributedly controlling large networks of robots, commonly referred to as swarms, are either location- or range-based. This means that each robot decides on its actions based on its own position and on the position of and/or distance to "near-by" robots. For example, in the multi-robot path planning problem robots cooperatively plan their movement so as to visit a set of known locations in minimal time (location-based algorithm). Similarly, in the dispersion problem, robots try to maximize the distance with their neighbors while maintaining them inside the communication range (range-based algorithm). 
 
@@ -25,8 +27,10 @@ This research project is looking for distributed algorithms which function well 
 ##Technical Details
 
 Main Tex File:
-    ````Survey.tex````
+
+    Bachelorseminar-RoboticSwarms.tex
     
-Bibliography File:
-    ````Bibliography.bib````
+Bibliography Files:
+
+    Can be found in the ``bib'' directory
 
