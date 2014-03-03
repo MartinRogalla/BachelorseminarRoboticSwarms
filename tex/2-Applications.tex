@@ -2,39 +2,29 @@
 Robotic swarms can be used for many real-world applications as for example in tasks that cover a region, tasks that are to dangerous for human beings, tasks that scale-up or scale-down in time or tasks that require redundancy \cite{csahin2005swarm}. In this chapter, we will name a few of the most-used techniques used by actual applications of robotic swarms, and give examples of applications that use these techniques.
 
   \subsection{Exploration}
-  \textbf{Description: }\emph{Cleaning/exploring a component in an unkown area is a common problem which can be solved effectively by using a tobotic swarm. For example in \cite{wagner2008cooperative} a swarm of robots is placed in a certain component which has to be cleaned totally. The robots have limited visibility and can only see other robots within a certain distance. Main goal is to not disconnect the component that has to be cleaned to be sure that the component will be get fully cleaned in the end.} \\
-  The main techniques that are described in \cite{wagner2008cooperative} are algorithms that preserve the connectivity of the spot to be cleaned and prevent the clustering of robots.
+  \input{./tex/Applications/Exploration}
   
   \subsection{Mapping}
-  \textbf{Description: }\emph{Exploration of an unkown environment can be done conveniently using robotic swarms. This can be very useful in cases of hazardous environments. In \cite{sheng2006distributed} a model is described in which the robots have limited communication range and full knowledge of their location. By continuously looking for the closest undiscovered area in combination with a nearness measure it tends to explore the complete area by staying together and continiously updating each others maps.} 
-  
-  Some of the techniques used are communication, exploration, dispersion, mapping. \cite{sheng2006distributed}
+  \input{./tex/Applications/Mapping}
   
   \subsection{Dispersion}
-  \emph{Swarm-Assisted Exploration makes interactive use of autonomous robots in exploration settings. The swarms of robots are capable of supporting and enhancing operations co-operatively with each other and are coordinated by a single human supervisor.}\cite{Naghsh2008,Penders2011}
-
-  The techniques required for Swarm-Assisted Exploration include, but are not limited to: \emph{foraging}, \emph{formation}, \emph{mapping} and \emph{exploration}.\cite{Naghsh2008,Penders2011} The foraging techniques are needed in order to give the swarm the ability to search and locate subjects. Formation is required in order for the swarm to navigate optimally and prevent conflicts in exploration. The mapping and exploration service are required to create a well constructed map of the explored area, such that the human and other robots are aware of their surroundings, even if it is impossible to get a visual due to reduced visibility.
+ \input{./tex/Applications/Dispersion}
 
   \subsection{Localization}
-  \emph{Due to the ambiguity of this name, there have been many applications which have aimed to achieve this, from nuclear spills and oil spills to fire-origins. Much of this however is theoretical work, due to the fact that the price of these individual robots is still rather high.}
-
-  Some of the techniques used in toxic source discovery are: control, communication and distribution.\cite{Li2012}
+ \input{./tex/Applications/Localization}
 
  \subsection{Path-finding}
- \textbf{Description: } \emph{Transporting objects by robotic swarms has many potential applications in many settings, from agriculture to construction to disaster relief. Especially in dangerous settings like warzones or radio-active areas, robotic swarms can be a powerful tool to safely retrieve many objects. Especially because the robots used for this application are cheap to produce. }
-For this application to work, each agent only has to know the target direction but does not have to know the object shape, weight, its own position or the position and number of other agents. This makes this application location-free and range-free. An extra invariant is that there must be enough robots to overcome the static friction of the object to be transported. Some of the techniques used in collective transport are: collective intelligence, decentralized strategy, path-finding. \cite{Rubenstein}
+ \input{./tex/Applications/Path-finding}
 
 \subsection{Collective transport}
-\textbf{Description: } \emph{Surveillance with a single robot is already a powerful tool, but with a swarm of robots it becomes even more effective. A larger area can be covered, local communication can be handled efficiently and depleted robots can interchanged with other robots. The applications of swarm surveillance are diverse, and are already used in a vast range of applications like agricultural practices, police surveillance, inspecting unreachable locations, patrol missions and reconnaisance tasks.} 
-The application can be implemented in many different ways, but is able to work location-free and range-free, but in some applications the location is already known and in others it can be helpful for a robot to know the exact location of the other robots of the swarm. In some applications the process isn't even completely autonomous; a human user could be in a ground control station. Some of the techniques used in swarm surveillance are: dispersion, localization, distributed communication and exploration. \cite{Burkle2010}
+\input{./tex/Applications/CollectiveTransport}
 
 \subsection{Surveillance}
-\textbf{Description: } \emph{Surveillance with a single robot is already a powerful tool, but with a swarm of robots it becomes even more effective. A larger area can be covered, local communication can be handled efficiently and depleted robots can interchanged with other robots. The applications of swarm surveillance are diverse, and are already used in a vast range of applications like agricultural practices, police surveillance, inspecting unreachable locations, patrol missions and reconnaisance tasks.} 
-The application can be implemented in many different ways, but is able to work location-free and range-free, but in some applications the location is already known and in others it can be helpful for a robot to know the exact location of the other robots of the swarm. In some applications the process isn't even completely autonomous; a human user could be in a ground control station. Some of the techniques used in swarm surveillance are: dispersion, localization, distributed communication and exploration. \cite{Burkle2010}
+\input{./tex/Applications/Surveillance}
 
 \subsection{Formation}
-\textbf{Description: } \emph{Surveillance with a single robot is already a powerful tool, but with a swarm of robots it becomes even more effective. A larger area can be covered, local communication can be handled efficiently and depleted robots can interchanged with other robots. The applications of swarm surveillance are diverse, and are already used in a vast range of applications like agricultural practices, police surveillance, inspecting unreachable locations, patrol missions and reconnaisance tasks.} 
-The application can be implemented in many different ways, but is able to work location-free and range-free, but in some applications the location is already known and in others it can be helpful for a robot to know the exact location of the other robots of the swarm. In some applications the process isn't even completely autonomous; a human user could be in a ground control station. Some of the techniques used in swarm surveillance are: dispersion, localization, distributed communication and exploration. \cite{Burkle2010}
+\input{./tex/Applications/Formation}
+
 
 
   
