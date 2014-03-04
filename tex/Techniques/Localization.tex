@@ -1,1 +1,25 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
+
+Robotic swarm search is an area which has been recieiving a lot of research attention in the past few years. The main goal is to design an algorithm that effectively allows a swarm of robots to explore an unknown area and find the target(s). Lots of these algorithms are based on Particle Swarm Optimization (PSO), which was originally inspired by a bird flock searching for food. \cite{kennedy1995particle}\\
+\\
+% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.165.1027&rep=rep1&type=pdf
+In PSO a number of particles are randomly placed in an unkown space of a problem or function. Each particle evalues its current location according to a certain function and then calculates the best position to go to according to its own history and the history of the particle(s) that it can communicate with at that moment. To prevent the particles from agglomeration a certain randomness is often implemented. When continuously looking for a better position by helping each other, the swarm of particles could eventually position itself at an optimal position. \cite{poli2007particle} \\
+\\
+% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1331059
+More general about PSO for Robotic Search Applications in \cite{doctor2004optimal}.\\
+\\
+% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4168420
+% http://download.springer.com/static/pdf/222/art%253A10.1007%252Fs10514-006-7567-0.pdf?auth66=1394147139_af00584bf597ed53b5eabaf7dcd176d2&ext=.pdf
+In \cite{jatmiko2007pso} and \cite{marques2006particle} we see algorithms in which PSO is used for Odor Source Localization. And so on... \\
+\\
+% http://www.metapress.com/content/5derfrq1m1w0jncd/fulltext.pdf
+In \cite{krishnanand2006glowworm} we see an algorithm based on Glowworm Swarm Optimization (GSO) which is focused on finite sensor range, so hard limit on local-decision domain and is memoryless.
+\\
+% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=810278
+In \cite{zarzhitsky2005agent} a framework called \emph{artificial physics} is provided for distributed control of agents.\\
+\\
+% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.76.4691&rep=rep1&type=pdf
+In \cite{zarzhitsky2005distributed} a toxic plume is being searched by a roboti swarm using only local information. \\
+\\
+% http://www.u.arizona.edu/~wkerr/pubs/faabs.pdf
+Multi-agent sweeping with limited sensors and communication, gas model in \cite{kerr2005two}.
