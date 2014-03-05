@@ -1,24 +1,31 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
 
-See \cite{morlok2007dispersing,mclurkin2007distributed}.
-
-\subsubsection{Directed Dispersion}
+One of the key techniques used in robotic swarms is dispersion. The goal of dispersion in the context of robotic swarms is to scatter the individual robots in an environment such that every section of the environment can be covered. In this section we will focus on non-location oriented algorithms. If prior knowledge about the exact location is provided, a formation technique should be used.
 
 \subsubsection{Algorithms}
-
-	\textbf{Range-Based Dispersion Algorithms}: \url{http://arxiv.org/pdf/cs/0212022v1.pdf}
+	The following dispersion algorithms are the most widely used algorithms and thus will be taken into our analysis. A very brief description is given of each algorithm. For more information on the operation of these algorithms, please consult the references.\\
+	\textbf{Location-Free Dispersion Algorithms}
 	\begin{itemize}
-		\item Depth-First Leader-Follower strategy (DFLF)
-		\item Breadth-First Leader-Follower (BFLF)
+		\item \textbf{Depth-First Leader-Follower Strategy (\emph{DFLF})}\cite{hsiang2004algorithms}:\\
+			A \emph{Depth First Search}(DFS) inspired algorithm in which the swarm has one leader at any given point in time. The robotic swarm has the overview of a map in which specific regions, called \emph{pixels}, are defined. \emph{Frontier pixels}, are pixels which haven't been traversed yet. The leader robot keeps looking for frontier pixels until there are none left and stops and tells its \emph{successor robot} to be the leader. If there are no successors left, the algorithm halts and the total dispersion of the area. The other robots always try to follow the leader and traverse the tiles around it.
+		\item \textbf{Breadth-First Leader-Follower (\emph{BFLF})}\cite{hsiang2004algorithms}:\\
+			A \emph{Breadth First Search}(\emph{BFS}) inspired algorithm, which does not exactly perform \emph{BFS}, but approximates it. It is a more complex algorithm than the \emph{DFLF} algorithm, but has to make fewer moves to fully cover the map. In an extension of the \emph{DFLF} algorithm, the \emph{BFLF} algorithm also contains a waiting state, in which a robot pauses to make the next move. Furthermore, instead of having only one leader, this algorithm allows for multiple leaders. The leaders again strive to find all the frontier pixels, but now also make sure that the follower robots don't stray to far away. Once no frontier pixels can be found by the leader, the leader waits for the followers to arrive and passes on its leadership to one of the followers, the successor. The \emph{BFLF} strategy tries to create as many paths as possible. Visited pixels form a tree, the tree can be branched, which then represent the alternate pixels reachable from that pixel. This branching balances the flow by giving the possiblity to go through pixels multiple times, to be able to go into differerent directions.
 	\end{itemize}
-	\textbf{Range-Free Dispersion Algorithms:}
+	\textbf{Range-Based Dispersion Algorithms}
 	\begin{itemize}
-		\item Go-For-Free Space
-		\item Artificial Physics Strategies (Repulsion Forces)
+		\item \textbf{Directed Dispersion/Disperse Uniformly}\cite{mclurkin2007distributed}:\\
+			The directed dispersion algorithm has the goal to disperse the robots quickly and uniformly, while keeping the robots connected. The algorithm consists of two sub-algorithms: \emph{disperseUniformly} and \emph{frontierGuidedDispersion}. The \emph{disperseUniformly} algorithm spreads the robots evenly with given constraints. It works by calculating an opposite direction vector of the positions of the nearest robots. This means that communication between robots is of vital importance. The \emph{frontierGuidedDispersion} directs robots towards unexplored areas, while keeping the robots connected. It uses robots which are on the frontiers of explored space to guide the Swarm in unexplored space. An optimal path is created for the other robots to move optimally towards the frontier. For an exact description of the implementation of these algorithms please see \cite{mclurkin2007distributed}.
+		\item \textbf{Random Walk}\cite{morlok2007dispersing}:\\
+			This algorithm has 2 states: \emph{walking} and \emph{avoid obstacle}. In the \emph{walking} state each robot keeps going straight with an orientation which randomizes over a certain time interval until there is an object and switches to the \emph{avoid obstacle} state. In the case that it detects a possible collision, the robot changes orientation dramatically until the obstacle has been avoided and continues in the \emph{walking} state.
+		\item \textbf{Follow Wall}\cite{morlok2007dispersing}:\\
+			The follow wall algorithm has 4 states: \emph{find wall}, \emph{align to wall}, \emph{follow wall} and \emph{navigate corner}. The details of this algorithm will not be discussed, as there are quite a few major flaws in this algorithm. This algorithm does not take the existance of other robots into account and thus it is possible for robots to see each other as walls. The usage of this algorithm for dispersion is thus very limited and should be avoided.
+		\item \textbf{Seek Open}\cite{morlok2007dispersing}:\\
+			By calculating an average obstacle vector with support of distance censors, a vector in the exact opposite direction is calculated and the robot, will follow this vector. Depending on the magnitede of the vector, a new assesment will be done once the robot reaches the approximated location. This means that the robot does not need to take further care of collisions with walls, but it is possible for robots to run into each other, or other dynamically moving objects, unless collision avoindance is separetely implemented.
+		\item \textbf{Fiducial} \cite{morlok2007dispersing}:\\
+			By using a beacon system, every robot is able to get the relative location of other robots within a certain range. This information is the used to steer away from the other robots. If no robots are in range, the robot uses the \emph{Random Walk} algorithm.
 	\end{itemize}
-	\textbf{Random Walk}\cite{morlok2007dispersing}\\
-	\textbf{Follow Wall}\cite{morlok2007dispersing}\\
-	\textbf{Seek Open}\cite{morlok2007dispersing}\\
-	\textbf{Fiducial}\cite{morlok2007dispersing}\\
-	\textbf{Clique-Intensity}\cite{ludwig2006robotic}\\
-
+	\textbf{Range-Free Dispersion Algorithms}
+	\begin{itemize}
+		\item \textbf{Clique-Intensity}\cite{ludwig2006robotic}:\\
+			This algorithm uses the connectivity in a cyclic graph for swarm robots to disperse the robots, without the robots knowing their relative location. By using multiple behaviours as many robots as possible try to stay connected to only one other robot, thus making a very spread out system, which still remains connected.
+	\end{itemize}
