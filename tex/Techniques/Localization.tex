@@ -1,25 +1,35 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
 
 Robotic swarm search is an area which has been recieiving a lot of research attention in the past few years. The main goal is to design an algorithm that effectively allows a swarm of robots to explore an unknown area and find the target(s). Lots of these algorithms are based on Particle Swarm Optimization (PSO), which was originally inspired by a bird flock searching for food. \cite{kennedy1995particle}\\
-\\
+
 % http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.165.1027&rep=rep1&type=pdf
-In PSO a number of particles are randomly placed in an unkown space of a problem or function. Each particle evalues its current location according to a certain function and then calculates the best position to go to according to its own history and the history of the particle(s) that it can communicate with at that moment. To prevent the particles from agglomeration a certain randomness is often implemented. When continuously looking for a better position by helping each other, the swarm of particles could eventually position itself at an optimal position. \cite{poli2007particle} \\
-\\
-% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1331059
-More general about PSO for Robotic Search Applications in \cite{doctor2004optimal}.\\
-\\
-% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4168420
-% http://download.springer.com/static/pdf/222/art%253A10.1007%252Fs10514-006-7567-0.pdf?auth66=1394147139_af00584bf597ed53b5eabaf7dcd176d2&ext=.pdf
-In \cite{jatmiko2007pso} and \cite{marques2006particle} we see algorithms in which PSO is used for Odor Source Localization. And so on... \\
-\\
-% http://www.metapress.com/content/5derfrq1m1w0jncd/fulltext.pdf
-In \cite{krishnanand2006glowworm} we see an algorithm based on Glowworm Swarm Optimization (GSO) which is focused on finite sensor range, so hard limit on local-decision domain and is memoryless.
-\\
-% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=810278
-In \cite{zarzhitsky2005agent} a framework called \emph{artificial physics} is provided for distributed control of agents.\\
-\\
-% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.76.4691&rep=rep1&type=pdf
-In \cite{zarzhitsky2005distributed} a toxic plume is being searched by a roboti swarm using only local information. \\
-\\
-% http://www.u.arizona.edu/~wkerr/pubs/faabs.pdf
-Multi-agent sweeping with limited sensors and communication, gas model in \cite{kerr2005two}.
+\subsubsection{Particle Swarm Optimization}
+	In PSO a number of particles are randomly placed in an unkown space of a problem or function. Each particle evalues its current location according to a certain fitness function and then calculates the best position to go to according to its own history and the history of the particle(s) that it can communicate with at that moment. To prevent the particles from agglomeration a certain randomness is often implemented. When continuously looking for a better position by helping each other, the swarm of particles could eventually position itself at an optimal position. \cite{poli2007particle} \\
+	\\
+	% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1331059
+	% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.165.1027&rep=rep1&type=pdf
+	% http://www.inl.gov/technicalpublications/Documents/4235636.pdf
+	In \cite{derr2009multi} a decentralized application of the PSO algorithm is developed to find multiple targets at unkown locations. The developed algorithm is \emph{location-free} and \emph{range-based}. The targets are equipped with a cell phone that radiates a Radio Frequency signal that can be detected by the robot, which can wirelessly communicate with limited range. The paper shows that a distributed algorithm based on PSO can easily overshoot targets, but with a dynamically weighted wireless coefficient applied to the standard PSO formula this can be prevented. Furthermore it concludes by experiments that the variation in received signal strenghts (RSS) in an indoor environment significantly increases the robot search time in finding a target.\\
+
+\subsubsection{Glowworm Swarm Optimization}
+	% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4168420
+	% http://download.springer.com/static/pdf/222/art%253A10.1007%252Fs10514-006-7567-0.pdf?auth66=1394147139_af00584bf597ed53b5eabaf7dcd176d2&ext=.pdf
+	% In \cite{jatmiko2007pso} and \cite{marques2006particle} we see algorithms in which PSO based algorithms are used for Odor Source Localization.
+	% http://www.metapress.com/content/5derfrq1m1w0jncd/fulltext.pdf
+	An algorithm based on Glowworm Swarm Optimization (GSO) is described in \cite{krishnanand2006glowworm} and is not only \emph{location-free} and \emph{range-based}, but also \emph{memoryless}. The idea is, just as in PSO, to distribute "glowworms" randomly over the area and let them, according to the fitness function, carry a certain lumeniscence quantity called luciferin. The closer they get to the target the more luciferin they contain - thus the brighter they are - and the more they attract other glowworms. In every movement step each glowworm moves towards a neighbour within a certain range that carries more luciferin, so they eventually conglomerate at the target. The glowworms have a varying communication that changes each step with a certain randomness, to make sure multiple targets can be found.
+
+\subsubsection{Ant Colony Optimization}
+	An algorithm based on Ant Colony Optimization (ACO) is decribed in ... (needs work!)\\
+
+\subsubsection{Other algorithms?}
+	% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=810278
+	In \cite{zarzhitsky2005agent} a framework called \emph{artificial physics} is provided for distributed control of agents.\\
+	\\
+	% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.76.4691&rep=rep1&type=pdf
+	In \cite{zarzhitsky2005distributed} a toxic plume is being searched by a roboti swarm using only local information. \\
+	\\
+	% http://www.u.arizona.edu/~wkerr/pubs/faabs.pdf
+	Multi-agent sweeping with limited sensors and communication, gas model in \cite{kerr2005two}.
+
+\subsubsection{Main differences and problems}
+	The main differences between PSO and GSO lie in the fact that GSO does not use any memory element. More importantly, GSO makes its decisions based on a continiously varying range, while PSO moves itself according to the $k$ nearest neighbours. Furthermore standard PSO is limited to numerical optimization models, while GSO is also able to effectively detect multiple peaks or sources.
