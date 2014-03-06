@@ -1,0 +1,20 @@
+Structure chapter Algorithms
+
+Technique
+	Algorithms
+		Alle algoritmes even noemen, ingedeeld als:
+			-Location-free
+			-Location-based
+			-Range-free
+			-Range-based
+		Als er geen algoritme te vinden is voor bijvoorbeeld location-based, paragraaf gewoon weglaten!
+	Problems
+		Kort noemen wat per algoritmen de problemen waren en hoe die opgelost werden
+	Discussion
+		Toekomstige problemn + tabel met eigenschappen algoritmes:
+			-Naame
+			-Type
+			-Performance
+			-Scalability
+			-(size of robots)
+			- etc.
