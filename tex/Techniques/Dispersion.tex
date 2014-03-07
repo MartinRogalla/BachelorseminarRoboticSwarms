@@ -29,3 +29,25 @@ One of the key techniques used in robotic swarms is dispersion. The goal of disp
 		\item \textbf{Clique-Intensity}\cite{ludwig2006robotic}:\\
 			This algorithm uses the connectivity in a cyclic graph for swarm robots to disperse the robots, without the robots knowing their relative location. By using multiple behaviours as many robots as possible try to stay connected to only one other robot, thus making a very spread out system, which still remains connected.
 	\end{itemize}
+
+  \subsubsection{Overview}
+  \begin{table}[!t]
+  \renewcommand{\arraystretch}{1.3}
+  \label{table_example}
+  \centering
+    \begin{tabular}{|l|p{2.2cm}|p{2.2cm}|p{2.2cm}|}
+    \hline
+    \bfseries Algorithm & \bfseries Type & \bfseries Performance & \bfseries Scalability\\
+    \hline
+    \bfseries DFLF& Location-Free & Medium-High & High\\\hline
+    \bfseries BFLF & Location-Free & High & High\\\hline
+    \bfseries Directed Dispersion & Range-Based & Medium & High\\\hline
+    \bfseries Random Walk& Range-Based & Low & Low\\\hline
+    \bfseries Follow Wall& Range-Based & Low & Low\\\hline
+    \bfseries Seek Open& Range-Based & Low & Medium\\\hline
+    \bfseries Fiducial& Range-Based & Medium & High\\\hline
+    \bfseries Clique-Intensity& Range-Free & High & High\\\hline
+    \end{tabular}
+  \caption{Overview of Common Dispersion Algorithms}
+  \end{table}
+
