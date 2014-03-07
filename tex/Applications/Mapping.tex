@@ -1,3 +1,19 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
-\emph{The mapping of an unkown environment can be conveniently done with the usage of robotic swarms, this is called collaborative mapping. Collaborative mapping is very useful in hazourous and unaccessable environments.\cite{hardin2004modified} In \cite{sheng2006distributed} a model is described in which the robots have limited communication range and full knowledge of their location. By continuously looking for the closest undiscovered area in combination with a nearest measure it tends to explore the complete area by staying together and continiously updating each others maps.}
+
+Mapping is a technique in which a swarm of robots try to make a map of the surrounding unknown environment. 
+The mapping of an unkown environment can be efficiently done with the usage of robotic swarms; this is called collaborative mapping. 
+As with other algorithms, this mapping should be done as fast as possible without losing accuracy. 
+The core of the mapping technique looks very similar to exploration, but an important difference is that in mapping a map should be made and stored. 
+This leads to more communication between robots and more distributed intelligence. \\
+
+Mapping of an unknown environment is very useful in hazardous and unaccessable environments. \cite{hardin2004modified}
+In this paper a practical application is mentioned, the detection of hazardous aerosol in a contaminated, confined area. 
+Robotic swarms are used in this work because it is safer to use them. 
+Of course, as mentioned earlier, some techniques overlap, and mapping is no exception to this. 
+The mapping technique uses elements of exploration, dispersion and localization.  
+
+%OLD
+%The mapping of an unkown environment can be conveniently done with the usage of robotic swarms, this is called collaborative mapping. 
+%Collaborative mapping is very useful in hazourous and unaccessable environments.\cite{hardin2004modified} 
+In \cite{sheng2006distributed} a model is described in which the robots have limited communication range and full knowledge of their location. By continuously looking for the closest undiscovered area in combination with a nearest measure it tends to explore the complete area by staying together and continiously updating each others maps.
 Some of the techniques used in these types of applications are localization, exploration, dispersion, mapping. \cite{sheng2006distributed,rothermich2005distributed} 
