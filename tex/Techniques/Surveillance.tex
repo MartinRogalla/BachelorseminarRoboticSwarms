@@ -6,38 +6,48 @@ This is obvious, because when a robotic swarm is surveilling an unknown environm
 So it makes sense to review this technique as last, as it references algorithms already used in other techniques.  
 Surveillance as a technique is also very close to the application domain, as surveillance is more of a goal than a technique. 
 But, because it combines other techniques and is used in many applications, it is deemed useful to review a few popular algorithms. 
-In this surveillance technique, we also consider the formation technique, in which the robot swarms have to dynamically retain their formation, because this is most often combined with surveillance. 
+In some surveillance algorithms, we also consider the formation technique, in which the robot swarms have to dynamically retain their formation which is important for most of the surveillance algorithms. 
 
 \subsubsection{Surveillance Algorithms}
-As listed before, first we consider some algorithms concerned with safe and scalable transport of objects, without actually finding the objects. Because of this, the algorithms listed here are all \emph{location-based}.; the location is assumed to be known. 
-Two different types of swarm transport are considered here: ground transport and aerial transport. \\
+ \\
 
 \textbf{Location-free surveillance}
 \begin{itemize}
-\item \textbf{Zooi1}\\
-\item \textbf{Zooi2}\\
-\item \textbf{Zooi3}\\
+\item \textbf{Kinetic Theory of Gases Algorithm}\\
+The first surveillance algorithm which will be expanded on is a novel one, based on the article Robotic Simulation of Gases for a Surveillance Task. \cite{Kerr2005}.
+The goal that is defined for this algorithm is that it requires a swarmof robots to monitor a corridor, by sweeping through it while avoiding obstacles. 
+The problem reaching this goal is maintaining spatial coverage, especially after passing obstacles, while the swarm robots are only equipped with limited sensors and communication.
+The algorithm that is used is described as a Kinetic Theory algorithm, which is modelled after the movement of gases. 
+In this algorithm, every molecule of a gas cloud is modeled as a robot, but because robots are not that small, this system is made for a larger scale. 
+Every robot has 24 different sonar sensors to detect walls/obstacles, plus the capability to communicate with low bandwidth radio frequency communication. 
+The goal direction is detected with a light sensor.\\
+The algorithm works as follows. Each robots tries to detect the goal destination. If a robot finds it, it communicates this to all other to specify the direction in which they have to go. 
+It is pretty similar to the flocking algorithm, but the difference in algorithms is the way they handle internal and external collisions (i.e. collisions between robots and walls). 
+When collisions in the Kinetic Theory algorithm are detected, the robots calculates its new position and orientation depending on the speed and orientation of the obstacle (robot or wall). 
+This is modelled after the way particles of a gas cloud move when colliding. 
+	
+\item \textbf{Scouts and Rangers}\\
+	2000 - Rybski - A Team of Robotic Agents for Surveillance
 \end{itemize}
 
 \textbf{Location-based surveillance}
 \begin{itemize}
-\item \textbf{Zooi1}\\
-\item \textbf{Zooi2}\\
-\item \textbf{Zooi3}\\
+\item \textbf{Networked Robotic Surveillance}\\
+	2012 - Ghaffarkhah - Path Planning for Networked Robotic Surveillance
+\item \textbf{Surveillance Event Agents}\\
+	2006 - Roman-Ballesteros - A Framework for Cooperative Multi-Robot Surveillance Tasks
 \end{itemize}
 
 \textbf{Range-free surveillance}
 \begin{itemize}
-\item \textbf{Zooi1}\\
-\item \textbf{Zooi2}\\
-\item \textbf{Zooi3}\\
+\item \textbf{Stochastic Strategies}\\
+	2005 - Grace - stochastic Strategies for Autonomous Robotic Surveillance
 \end{itemize}
 
 \textbf{Range-based surveillance}
 \begin{itemize}
-\item \textbf{Zooi1}\\
-\item \textbf{Zooi2}\\
-\item \textbf{Zooi3}\\
+\item \textbf{Dynamic Directed Movement Behaviour}\\
+	2013 - Mullen - Reactive Coordination and Adaptive Lattice Formation in Mobile Robotic surveillance Swarms
 \end{itemize}
 
   \begin{table}[!t]
