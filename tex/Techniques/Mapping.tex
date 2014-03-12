@@ -1,1 +1,33 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
+Mapping is a technique which is used for many applications and is incorporated in other techniques. Exploration is one of the techniques, which rely on mapping. The goal of mapping is to make a rough overview of the surrounding unknown environment. In this section we will focus on collaborative mapping algorithms for usage with robotic swarms.
+
+\subsubsection{Algorithms}
+
+\textbf{Range-Based}\\
+\begin{itemize}
+  \item \url{http://robots.stanford.edu/papers/thrun.map3d.pdf}, \url{http://robots.stanford.edu/papers/thrun.maps-multi.pdf}
+  \item \url{http://link.springer.com/chapter/10.1007/978-3-540-30552-1_6}
+  \item \url{http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1014804}
+  \item \url{http://books.google.nl/books?hl=en&lr=&id=3c9w6XEUxIMC&oi=fnd&pg=PA1&dq=collaborative+mapping+robots&ots=ZB-hzyo0zK&sig=8oT_KIZnGViutyzkds4PvC-YwEE#v=onepage&q=collaborative%20mapping%20robots&f=false}
+\end{itemize}
+
+  \begin{table}[H]
+  \renewcommand{\arraystretch}{1.3}
+  \label{table_alg_mapping}
+  \caption{Overview of Common Mapping Algorithms}
+  \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \bfseries Algorithm & \bfseries Type & \bfseries Performance & \bfseries Scalability\\
+    \hline
+    \bfseries DFLF& Location-Free & Medium-High & High\\\hline
+    \bfseries BFLF & Location-Free & High & High\\\hline
+    \bfseries Directed Dispersion & Range-Based & Medium & High\\\hline
+    \bfseries Random Walk& Range-Based & Low & Low\\\hline
+    \bfseries Follow Wall& Range-Based & Low & Low\\\hline
+    \bfseries Seek Open& Range-Based & Low & Medium\\\hline
+    \bfseries Fiducial& Range-Based & Medium & High\\\hline
+    \bfseries Clique-Intensity& Range-Based & High & High\\\hline
+    \end{tabular}
+  \end{table}
+
