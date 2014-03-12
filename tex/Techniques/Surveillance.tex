@@ -14,7 +14,7 @@ In some surveillance algorithms, we also consider the formation technique, in wh
 \begin{itemize}
 \item \textbf{Kinetic Theory of Gases Algorithm}\\
 The first surveillance algorithm which will be expanded on is a novel one, based on the article Robotic Simulation of Gases for a Surveillance Task. \cite{Kerr2005}.
-The goal that is defined for this algorithm is that it requires a swarmof robots to monitor a corridor, by sweeping through it while avoiding obstacles. 
+The goal that is defined for this algorithm is that it requires a homogeneous swarm of robots to monitor a corridor, by sweeping through it while avoiding obstacles. 
 The problem reaching this goal is maintaining spatial coverage, especially after passing obstacles, while the swarm robots are only equipped with limited sensors and communication.
 The algorithm that is used is described as a Kinetic Theory algorithm, which is modelled after the movement of gases. 
 In this algorithm, every molecule of a gas cloud is modeled as a robot, but because robots are not that small, this system is made for a larger scale. 
@@ -23,10 +23,8 @@ The goal direction is detected with a light sensor.\\
 The algorithm works as follows. Each robots tries to detect the goal destination. If a robot finds it, it communicates this to all other to specify the direction in which they have to go. 
 It is pretty similar to the flocking algorithm, but the difference in algorithms is the way they handle internal and external collisions (i.e. collisions between robots and walls). 
 When collisions in the Kinetic Theory algorithm are detected, the robots calculates its new position and orientation depending on the speed and orientation of the obstacle (robot or wall). 
-This is modelled after the way particles of a gas cloud move when colliding. 
-	
-\item \textbf{Scouts and Rangers}\\
-	2000 - Rybski - A Team of Robotic Agents for Surveillance
+This is modelled after the way particles of a gas cloud move when encountering a virtual collision. 
+
 \end{itemize}
 
 \textbf{Location-based surveillance}
@@ -35,6 +33,15 @@ This is modelled after the way particles of a gas cloud move when colliding.
 	2012 - Ghaffarkhah - Path Planning for Networked Robotic Surveillance
 \item \textbf{Surveillance Event Agents}\\
 	2006 - Roman-Ballesteros - A Framework for Cooperative Multi-Robot Surveillance Tasks
+\item \textbf{Scouts and Rangers}\\
+The second surveillance algorithm is also location-based and uses a more straight-forward approach, based on the article A Team of Robotic Agents for Surveillance.  \cite{Rybsky200}
+The goal for this algorithm is to explore every dark spot and try to detect motion. 
+The algorithm that is used is called the Ranger and Scout behavior, in which the Ranger robot and the Scout robot are heterogeneous robots in the same swarm. 
+The algorithm works as follows. The Ranger is a more sophisticated robot than the Scout robot, and keeps track of the environment with an internal grid, where each explored space is represented by a square. 
+A square in the virtual grid can be white, gray or black; respectively meaning no obstacles, insufficient knowledge and obstacles. 
+The behavior of the Ranger can be described as follows. The ranger will move around, detecting dark spots and obstacles with its sensors.
+When a dark spot or an opening in the wall (like a door) has been found, it launches a Scout robot to do reconnaisance, which reports the found information back to the Ranger. 
+The RAnger
 \end{itemize}
 
 \textbf{Range-free surveillance}
