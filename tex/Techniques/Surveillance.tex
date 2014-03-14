@@ -30,17 +30,21 @@ This is modelled after the way particles of a gas cloud move when encountering a
 \textbf{Location-based surveillance}
 \begin{itemize}
 \item \textbf{Networked Robotic Surveillance}\\
+
 	2012 - Ghaffarkhah - Path Planning for Networked Robotic Surveillance
 \item \textbf{Surveillance Event Agents}\\
 	2006 - Roman-Ballesteros - A Framework for Cooperative Multi-Robot Surveillance Tasks
 \item \textbf{Scouts and Rangers}\\
-The second surveillance algorithm is also location-based and uses a more straight-forward approach, based on the article A Team of Robotic Agents for Surveillance.  \cite{Rybsky200}
+This surveillance algorithm is also location-based and uses a more straight-forward approach, based on the article A Team of Robotic Agents for Surveillance.  \cite{Rybsky200}
 The goal for this algorithm is to explore every dark spot and try to detect motion. 
 The algorithm that is used is called the Ranger and Scout behavior, in which the Ranger robot and the Scout robot are heterogeneous robots in the same swarm. 
 The algorithm works as follows. The Ranger is a more sophisticated robot than the Scout robot, and keeps track of the environment with an internal grid, where each explored space is represented by a square. 
 A square in the virtual grid can be white, gray or black; respectively meaning no obstacles, insufficient knowledge and obstacles. 
 The behavior of the Ranger can be described as follows. The ranger will move around, detecting dark spots and obstacles with its sensors.
 When a dark spot or an opening in the wall (like a door) has been found, it launches a Scout robot to do reconnaisance, which reports the found information back to the Ranger. 
+The job of the Scout can be summarized by simple behavior: just drive towards the goal, while avoiding obstacles, and position yourself to detect motion. 
+The behaviors of the Ranger and the Scout together make an effective surveillance algorithm. 
+This algorithm is location-based because the system keeps track of a map and updates it from time to time. 
 The RAnger
 \end{itemize}
 
