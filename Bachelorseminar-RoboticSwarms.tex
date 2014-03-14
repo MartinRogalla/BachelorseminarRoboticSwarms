@@ -1,0 +1,83 @@
+\documentclass[a4paper]{article}
+%Commented in draft to allow for notes.
+\usepackage{fullpage}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{caption}
+\setlength\parindent{0pt}
+
+\title{A Brief Survey of Problems Faced \\ in Robotic Swarms}
+%\title{An Extensive Analysis of Scalability and Performance of Commonly Used Techniques in Robotic Swarms}
+\author{S.J.A. Bekhoven  \and
+    S.P. Metman \and
+    M.J. Rogalla}
+\date{\today}
+
+\pagestyle{empty}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+This is the abstract of my paper.
+\end{abstract}
+
+% Do not compile individual files, compile only this main file.
+
+\section{Introduction}
+  \input{./tex/0-Introduction.tex}
+
+\section{Collective Transport}
+  \input{./tex/1-CollectiveTransport.tex}
+  
+\section{Dispersion}
+  \input{./tex/2-Dispersion.tex}
+ 
+ \section{Exploration}
+  \input{./tex/3-Exploration.tex}
+ 
+ \section{Source Localization}
+  \input{./tex/4-Localization.tex}
+ 
+ \section{Mapping}
+  \input{./tex/5-Mapping.tex}
+ 
+ \section{Path-finding}
+  \input{./tex/6-Path-finding.tex}
+ 
+ \section{Formation}
+  \input{./tex/8-Formation.tex}
+
+\section{Discussion}
+  \input{./tex/9-Discussion.tex}
+
+% Default is plain
+\bibliographystyle{plain}
+
+% Usage of multiple bib input files through seperation by comma.
+\bibliography{./bib/Bibliography}
+
+
+\end{document}
+
+
+
+
+
+
+
+

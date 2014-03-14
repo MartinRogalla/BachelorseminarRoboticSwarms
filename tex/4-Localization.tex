@@ -1,30 +1,43 @@
+%!TEX root = ../Bachelorseminar-RoboticSwarms.tex
+
+\subsection{Applications}
+Source localization is a technique in which a swarm of robots try to locate a specific point, often used to find sources of disturbance. 
+The main goal of this technique is to find all sources of disturbance as fast as possible. 
+Source localization is used in virtually any other robotic swarms technique, because in most techniques something has to be found, whether it is a source or an object. \\
+
+Obviously, this means that this technique has many practical applications.
+A few of these examples will be mentioned here. 
+A first example is chemical plume tracing, in which localization is used to detect clouds of high density chemicals. \cite{zarzhitsky2005distributed}
+Another example which looks a lot like chemical plume tracing, is radiation source search. \cite{bashyal2008human} The difference is that in this case the source of leaking radiation is searched for, and not only for high density clouds. 
+A third example is searching for fire, used to assist fire-fighters in their every-day work. \cite{marjovi2009multi}
+As can be seen, this technique can be used to look for all kinds of emission sources, if the robots have the right sensors installed. \cite{cui2004swarm}
+Although many practical applications can be found, a large amount of the work done in this field is purely theoretical.
+This is due to the fact that the price of these individual robots is still rather high and thus it is expensive to produce a swarm.
+
+
+%Source localization is used in a large category of robotic-swarm applications. 
+%Some of the topics include, but are not limited to: chemical plume tracing\cite{zarzhitsky2005distributed}, radiation source search\cite{bashyal2008human}, fire searching\cite{marjovi2009multi} and other types of emission source localization\cite{cui2004swarm}. %A large amount of the work done in this field is purely theoretical, this is due to the fact that the price of these individual robots is still rather high and thus it is expensive to produce a large quantity.
+%The main techniques underlying these applications include: control, communication, path-planning and distribution.\cite{Li2012}
+
 %!TEX root = ../../main.tex
 
+\subsection{Algorithms}
 Localization of targets with robotic swarms is an area which has been receiving a lot of research attention in the past few years. 
 The main goal is to design an algorithm that effectively allows a swarm of robots to explore an unknown area and find the target(s).
 Localization as discussed here basically exists of two parts: exploring and searching.
 In this chapter mostly only the latter, so the actual localization, is discussed.
 For exploration methods the the chapters about \emph{exploration} and/or \emph{dispersion} should be read.
 
-\subsubsection{Algorithms}
-
-	\textbf{Location-based}
-	\begin{itemize}
-		\item
+	\subsubsection{Gradient-based}
 		% http://ac.els-cdn.com/S1574119208000618/1-s2.0-S1574119208000618-main.pdf?_tid=fcc68570-aaed-11e3-bbdc-00000aacb360&acdnat=1394742667_d3fd3d62038328cd6bea316cff88955e
-		\textit{Gradient-based}\\
 		In \cite{zhang2009gradient} a centralized implementation of a gradient-based algorithm is discussed in which all robots have knowledge of their location.
 		Each robot uses a received signal strength indicator to predict the location of the target with a certain probability and reports back to the base.
 		The base collects all readings and plans to create a global map and an uncertainty area which is sent to all robots.
 		With this data the robots continiously predict the target position with increasing accuracy as they move towards the target.
 		In general hill climbing or gradient-based algorithms are limited to single-source searches.
 		The proposed algorithm in this paper leads to a 40\% reduction in time compared to random path models and in \cite{dhariwal2004bacterium} we see it performs approximately twice as good as a biased random walk, which is discussed later.
-	\end{itemize}
 
-	\textbf{Location-based and range-based}
-	\begin{itemize}
-		\item 
-		\textit{Particle Swarm Optimization}\\
+	\subsubsection{Particle Swarm Optimization}
 		In Particle Swarm Optimization (PSO) a number of particles is randomly distributed over an unkown space of a problem or function. 
 		Each particle evalues its current location according to a certain fitness function and then calculates the best position to go to according to its own historical best position and the historical best positions of the particle(s) in its neighbourhood.
 		To prevent the particles from agglomeration a certain randomness is often implemented. 
@@ -35,47 +48,15 @@ For exploration methods the the chapters about \emph{exploration} and/or \emph{d
 		With the model the effect of the communication range and the number of robots have been investigated.
 		Main results are that the algorithm indeed achieved better results (smaller final distance to source) when enlarging the number of robots.
 		Furthermore the detection of the source with small communiation achieved poor results, but improved dramatically as the range increased.
-		At the maximum range the average final distance to the target was the smallest compared to all other communication ranges.
-
-		\item
-		\textit{Biasing Expansion Swarm Approach}\\
-		An implementation of the Biasing Expansion Swarm Approach (BESA) is discussed in \cite{cui2004swarm}.
-		In this approach robots have communication possibilities over limited range and together create a ad-hoc wireless network for global communication capibility.
-		Each agent maintains an occupancy grid map to represent the environment wchich is initiated with all cells unexplored.
-		After deployment robots share their locations and sensed concentrations with the swarm.
-		To uphold seperation a robot does not enter a cell which is already occupied and maintains cohesion by using a gradual expansion algorithm.
-		Robotos can therefore only move to cells that are unexplored, unoccupied and next to another robot in the swarm: the expansion cells.
-		To make sure the swarm moves to the emission source, each expansion cell is given a certain biasing parameter, based on the number of agents, the distance between the expansion cell and the robot and the concentration sensed at the particular cell.
-		The robot will choose the expansion cell with the highest parameter, so that the swarm will eventually move to the direction of the higher concentrations.
-		The BESA algorithm developed in this paper performs twice times better than the general gradient-based approaches.
-
-	\end{itemize}
-
-	\textbf{Location-free}
-	\begin{itemize}
-		\item
-		\textit{Biased Random Walk}
-		A rather simple algorithm inspired by nature is the Biased Random Walk (BSR) described in \cite{dhariwal2004bacterium} approach inspired by bacteria. 
-		Implementations of this algorithm do not use communication or any form of localization. 
-		Robots only have the possibility to perform two actions: move or tumble. 
-		When tumbling the robot just turns into a new random direction. 
-		When moving the robot travels a certain distance into the chosen direction. 
-		If the robot senses some form of emission, the tumble frequency is lowered, so the distance to be moved increases.
-	\end{itemize}
-
-
-	\textbf{Location-free and range-based}
-	\begin{itemize}
-		\item
-		\textit{Particle Swarm Optimization}\\
+		At the maximum range the average final distance to the target was the smallest compared to all other communication ranges.\\
+		\\
 		In \cite{derr2009multi} a decentralized application of PSO is implemented.
 		The developed algorithm is \emph{location-free} and \emph{range-based}.
 		The targets are equipped with a cell phone that radiates a radio frequency signal that can be detected by the robot, which can wirelessly communicate with limited range.
 		The paper shows that a distributed algorithm based on PSO can easily overshoot targets, but that this can be prevented with a correction on the standard PSO formula.
 		Furthermore it concludes by experiments that the variation in received signal strenghts (RSS) in an indoor environment significantly increases the robot search time in finding a target.
 
-		\item
-		\textit{Glowworm Swarm Optimization}\\
+	\subsubsection{Glowworm Swarm Optimization}
 		In Glowworm Swarm Optimization (GSO) the idea is to distribute "glowworms" randomly over the area and let them, according to the fitness function, carry a certain lumeniscence quantity called luciferin. 
 		The closer they get to the target the more luciferin they contain - thus the brighter they are - and the more they attract other glowworms. 
 		In every movement step each glowworm moves towards a neighbour within a certain range that carries more luciferin, so they eventually conglomerate at the target. 
@@ -86,7 +67,25 @@ For exploration methods the the chapters about \emph{exploration} and/or \emph{d
 		It is shown that the number of targets captured by the algorithm is a strong function of the sensor range.
 		Therefore, because we do not know how many targets to capture in an unkown environment, the sensor range is made a varying parameter.
 		Besides it shows that when blocking regions the inter-agent communication helps to still let robots select a feasible direction towards the source.
-	\end{itemize}
+
+	\subsubsection{Biasing Expansion Swarm Approach}
+		An implementation of the Biasing Expansion Swarm Approach (BESA) is discussed in \cite{cui2004swarm}.
+		In this approach robots have communication possibilities over limited range and together create a ad-hoc wireless network for global communication capibility.
+		Each agent maintains an occupancy grid map to represent the environment wchich is initiated with all cells unexplored.
+		After deployment robots share their locations and sensed concentrations with the swarm.
+		To uphold seperation a robot does not enter a cell which is already occupied and maintains cohesion by using a gradual expansion algorithm.
+		Robotos can therefore only move to cells that are unexplored, unoccupied and next to another robot in the swarm: the expansion cells.
+		To make sure the swarm moves to the emission source, each expansion cell is given a certain biasing parameter, based on the number of agents, the distance between the expansion cell and the robot and the concentration sensed at the particular cell.
+		The robot will choose the expansion cell with the highest parameter, so that the swarm will eventually move to the direction of the higher concentrations.
+		The BESA algorithm developed in this paper performs twice times better than the general gradient-based approaches.
+
+	\subsubsection{Biased Random Walk}
+		A rather simple algorithm inspired by nature is the Biased Random Walk (BSR) described in \cite{dhariwal2004bacterium} approach inspired by bacteria. 
+		Implementations of this algorithm do not use communication or any form of localization. 
+		Robots only have the possibility to perform two actions: move or tumble. 
+		When tumbling the robot just turns into a new random direction. 
+		When moving the robot travels a certain distance into the chosen direction. 
+		If the robot senses some form of emission, the tumble frequency is lowered, so the distance to be moved increases.
 
 	\begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
@@ -112,7 +111,6 @@ For exploration methods the the chapters about \emph{exploration} and/or \emph{d
 
 	\subsubsection{Problems}
 	The main problem of localization using swarms is (in the case of for example BESA, PSO and GSO) the way robots should cooperate and learn from each other. In other words: how big should the neighbourhood be in which robots cooperate to find targets? One might think it is ideal to use information of \emph{all} robots, but in case of multiple targets, the best position of all robots can be misleading and can cause premature convergence. Therefore in PSO often a particle neighbourhood within a certain range or a constant maximum value of neighbours is chosen and in GSO a range varying each step is being used to make sure multiple targets can be found, while in BESA based approaches the robots create an ad-hoc network to create global communication. In BRW inspired approaches no communication is used at all, which results in low performance compared to all other algorithms.
-
 
 	\subsubsection{Remaining problems}
 	There are a lot of factors that affect the performance of localization of multiple targets, for example the complexity of the implemented algorithms, the number of robots used or the number of targets that is being searched for. As is mentioned in \cite{mcgill2011robot} however there is a lack of validation cases and reference algorithms that form a ground truth for comparative analysis. Therefore it is relatively difficult to compare the developed algorithms for multi-robot localization. Another question in multi-robot localization is which mechanism is to be used after a target has been found. Some papers propose to collect the target and search further, but this is not always possible.

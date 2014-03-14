@@ -1,5 +1,19 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
 
+Collective transport of objects is the technique of a swarm of robots locating an object and collectively moving the object to another place, like a homebase. 
+This can be compared to a foraging technique; although this implies that a path is made to a certain place. 
+This does not apply to all collective transport techniques. \cite{hoff2010two}  
+It can be easily seen that localization is an important part of the collective transport technique, and thus has much overlap .\\
+Transporting objects by robotic swarms has many potential applications in many settings, from agriculture to construction to disaster relief. 
+Especially in dangerous settings like warzones or radio-active areas, robotic swarms can be a powerful tool to safely retrieve many objects. 
+More so because the robots used for this application are cheap to produce. 
+
+
+%For this application to work, each agent only has to know the target direction but does not have to know the object shape, weight, its own position or the position and number of other agents. This makes this application location-free and range-free. An extra invariant is that there must be enough robots to overcome the static friction of the object to be transported.  \cite{Rubenstein}
+
+
+%!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
+
 Robotic transportation is an interesting technique. 
 Recently Amazon, a large online retailer, announced it would make use of unmanned flying robots to deliver parcels at everyone's door. (\url{www.amazon.com/b?node=8037720011})
 But, as is obviously true, each robot can only carry a certain weight, which poses a problem. 
@@ -58,9 +72,9 @@ Another widely used algorithm for transporting objects is the \emph{pheromone} a
 In looking for swarm algorithms, you want the robots to be as simple as possible. An algorithm that only uses very simple robots is an algorithm that is based on granular convection, als known as the Brazil Nut Effect. This novel method is described in the paper Granular convection to transportation.\cite{Sugawara2012} The algorithms described in this paper are either intended for:
 
 \begin{itemize}
-	\item A swarm with homogeneous robots, with no explicit communication
-	\item A swarm of heterogeneous robots, composed of robots that change their direction with two different probabilities
-	\item A swarm of heterogeneous robots that uses local communication to adjust the fraction of robots that change their direction with higher probability
+  \item A swarm with homogeneous robots, with no explicit communication
+  \item A swarm of heterogeneous robots, composed of robots that change their direction with two different probabilities
+  \item A swarm of heterogeneous robots that uses local communication to adjust the fraction of robots that change their direction with higher probability
 \end{itemize}
 
 These algorithms listed above are ranked in effectiveness, in which the last one obviously is the most effective, but keep in mind that the robots used to implement this are harder to produce than for the first. \\ The way this algorithm works is as follows. The goal of the swarm robots is to transport the objedct to the goal location. Each swarm robot vibrates with a random force. The goal location outputs a repulsive force. As the robots are randomly placed around the object and the goal location, the object gets kicked around by the vibrating swarm robots, until the object is kicked to the target location. When the swarm increases, the amount of time it costs to transport the object significantly decreases. With heterogenuous robots, there is more communication between robots to lower the density of the robots around the object, because slows the process of moving the object.  This algorithm has different implementations, but is mostly location-free and  range-free. 
@@ -109,17 +123,3 @@ Especially considering transportation, a technique in which every robot must lat
 
 \textbf{Autonomous swarm transportation algorithms}\\
 In the mentioned algorithms, moving the object is mostly done by pushing. In real-life applications this would not always be a good option and a more sophisticated method of attaching should be used. When considering search-and-rescue operations for example, a solution to effectively grab the person to be rescued should be thought of. This is a problem that is yet to be identified in these algorithms and poses a good question for the future.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
