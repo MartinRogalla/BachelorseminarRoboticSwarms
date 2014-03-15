@@ -1,74 +1,106 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
 
-Collective transport of objects is the technique of a swarm of robots locating an object and collectively moving the object to another place, like a homebase. 
-This can be compared to a foraging technique; although this implies that a path is made to a certain place. 
-This does not apply to all collective transport techniques. \cite{hoff2010two}  
-It can be easily seen that localization is an important part of the collective transport technique, and thus has much overlap .\\
+Collective transport of objects is the problem in which a swarm of robots locates an object and collectively moves the object to another place, like a homebase. 
+This can be compared to the foraging problem; although this implies that a path is made to a certain place, which is not the case in the collective transport problem. \cite{hoff2010two}  
+The localization problem is an important part of the collective transport problem and has much overlap .\\
 Transporting objects by robotic swarms has many potential applications in many settings, from agriculture to construction to disaster relief. 
 Especially in dangerous settings like warzones or radio-active areas, robotic swarms can be a powerful tool to safely retrieve many objects. 
-More so because the robots used for this application are cheap to produce. 
+Recently Amazon, a large online retailer, announced it would make use of unmanned flying robots to deliver parcels at everyone's door. (\url{www.amazon.com/b?node=8037720011}) \\
 
+Collective transport can be seperated into two sub-problems:
+\begin{itemize}
+	\item  providing safe and reliable transport
+	\item moving a payload to its destination.
+\end{itemize}
+These two different problems will be handled separately because these are two entirely different problems that together compose the whole collective transport problem. 
 
-%For this application to work, each agent only has to know the target direction but does not have to know the object shape, weight, its own position or the position and number of other agents. This makes this application location-free and range-free. An extra invariant is that there must be enough robots to overcome the static friction of the object to be transported.  \cite{Rubenstein}
-
-
-%!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
-
-Robotic transportation is an interesting technique. 
-Recently Amazon, a large online retailer, announced it would make use of unmanned flying robots to deliver parcels at everyone's door. (\url{www.amazon.com/b?node=8037720011})
-But, as is obviously true, each robot can only carry a certain weight, which poses a problem. 
-With a robotic swarm of robots it could be possible to transport larger weights in a scalable system, adding swarm robots until you can carry the desired weight. 
-Of course, this does not limit itself to aerial robots, but also includes ground robots and even underwater robots. \\
-The main problem though of collectively transporting with robotic swarms is to move an object from the start to the destination.
-A simple distinction will be made in light of the different algorithms considered: the swarm is completely autonomous or the swarm is controlled by a single ground station.
-If a homogeneous swarm is controlled by a single ground station, the algorithm is not considered with finding an object, but is instead focused on safe, accurate and scalable transport. 
 In algorithms in which swarms are completely autonomous, the focus is on finding the object and transporting it to its destination.
-When considering these two types seperately, both types of algorithms are expanded give a good view of the current state of transporting algorithms.  \\
+If a homogeneous swarm is controlled by a single ground station, the algorithm is not considered with finding an object, but is instead focused on safe, accurate and scalable transport. 
+So, these problems can be effectively categorized as user-controlled transportation and autonomous transportation.
+In user-controlled transportation, the location the swarm operates in is know, so the algorithms used are location-based.
+In autonomous transportation, the location is not know and the algorithms are location-free. \\
 
 \subsubsection{User-controlled swarm transportation algorithms}
-As listed before, first we consider some algorithms concerned with safe and scalable transport of objects, without actually finding the objects. Because of this, the algorithms listed here are all \emph{location-based}.; the location is assumed to be known. 
-Two different types of swarm transport are considered here: ground transport and aerial transport. \\
-
-\textbf{Range-free user-controlled swarm transportation}
-\begin{itemize}
-\item \textbf{Aerial Equilibrium}\\
-An algorithm for stable aerial transport is given in the paper Cooperative manipulation and transportation with aerial robots. \cite{Michael2011}. 
-In this paper, a scalable solution for stable transport is presented, which can manipulate a payload to a desired pose (position and orientation).
-This is done by attaching cables from the flying swarm robots, in this paper quadrocopters are used, to a given object. 
-This paper formulates general conditions for the system equilibrium and thus can be scaled for many swarm robots, but is focused on three aerial swarm robots. 
-To accomodate for aerial transport, the workspace and the payload stability are very important, and are extensively calculated. 
+A robot, especially a flying robot, can only carry a certain weight, which poses a problem. 
+But with a robotic swarm of robots it is possible to transport larger weights in a scalable system, adding swarm robots until you can carry the desired weight. 
+So, a swarm of robots is useful for transporting large and/or heavy objects. 
+There are two different properties important for user-controlled swarm transportations: safety and scalability. 
+To ensure safe and stable transport, swarm robots have to be coordinated in such a way that the payload can be manipulated to a desired position and orientation.
+An algorithm for such transport is given in the paper Cooperative manipulation and transportation with aerial robots. \cite{Michael2011}, which we will call the \emph{Aerial Equilibrium} algorithm. 
+In this paper, a scalable solution for aerial transport is presented by attaching cables from quadrocopters to the payload, and letting each robot calculate its own movement by a mathematical model. 
+This paper formulates general conditions for the payload equilibrium but can be scaled to many swarm robots. 
 The mathematical model that is defined in the paper is tested with three quadrocopters and offers a stable transportation for objects, with a degree of freedom related to the amount of robots used and can thus be implemented in the field.
-Because the swarm robots do not calculate the exact distance between them, this algorithm can be defined as a range-free algorithm. Because
-The actual path-finding of the transport from the object to the goal location is not accounted for, as mentioned earlier.  \\
-\end{itemize}
+Because the swarm robots do not calculate the exact distance between them, this algorithm can be defined as a range-free algorithm. \\
 
-\textbf{Range-based user-controlled swarm transportation}
-\begin{itemize} 
-\item \textbf{Cluster space control}\\
 A second algorithm, used for transporting large objects on the ground, in the water and in the air, considers a multi-robot formation control framework, necessary to coordinate the motions of the robots in the group. 
-It is mentioned in the paper Object Manipulation Using Cooperative Mobile Multi-Robot Systems. \cite{Mas2012}
-This particular control approach is called \emph{cluster space control}, and is utilized to control swarm of four four-wheeled robots. 
+It is mentioned in the paper Object Manipulation Using Cooperative Mobile Multi-Robot Systems, \cite{Mas2012}, and we will call the algorithm the \emph{Cluster Space Control} algorithm.
+This is because control approach used is called cluster space control, and is utilized to control swarm of four four-wheeled robots. 
 A user using this type of transportation uses a joystick to input user controls to the whole swarm, after which the control framework specifies the formation and the position and shape of the swarm.
-Because the framework calculates the exact range between each robot in the swarm, this 
+Because the framework calculates the exact range between each robot in the swarm, this algorithm is range-based. 
 This control framework allows the user to effectively transport large objects with a scalable set of robots. \\
-\end{itemize}
+
+These two algorithms solve the same problem, namely the problem of transporting large and/or heavy objects, in two entirely different ways. 
+The properties are summarized in the following table. 
+
+
+  \begin{table}[H]
+  \renewcommand{\arraystretch}{1.3}
+  \caption{User-controlled swarm transportation algorithms}
+  \label{table_alg_coltrans}
+  \centering
+  \begin{tabular}{|p{3cm}|l|l|l|l|}
+    \hline
+    \bfseries Algorithm & \bfseries Range &\bfseries Location &  \bfseries Performance & \bfseries Scalability\\
+    \hline
+     Aerial Equilibrium & Range-free & Location-free & Medium & Low\\\hline
+     Cluster Space Control & Range-based & Location-based & Medium & Medium\\\hline
+
+    \end{tabular}
+  \end{table}
+
+The main differences between these two algorithms is that in the first mathematical model that is used, each swarm robot individually calculates its position to the other robots and the object, and is calculating the resulting tension on the object. 
+This way, the rotation and position can be controlled by the position and tension of each robot. 
+With the second algorithm, that uses the cluster \emph{cluster space control}, the calculations are not done individually. 
+Instead, the framework calculates the position of each robot and the orientation of the object. 
+Thus, these methods both provide stability to the transported object but in two completely different ways. \\
+
+The problems that these algorithms had was that the robots should be coordinated to rely on the location of other robots.
+With the mathematical model these are calculated through the tension of the cable attached to each robot, but in the framework it is calculated centrally. 
+Problems that are not treated in these articles is how these swarms can locate an object and autonomously can deliver it to a location. 
+Another problem for which no solution is provided is that when these swarms grow to account for heavier objects, the robots will get in each other's way. 
+Especially considering transportation, a technique in which every robot must latch on to an object, this can be hard to practically scale. 
 
 \subsubsection{Autonomous swarm transportation algorithms}
-Before transporting an object with a swarm of robots, first, the swarm has to find the object. Then, after finding it, the swarm has to get a hold on it. Lastly, they have to move it to the target location. In these types of algorithms, only algorithms that have to return one object are considered; we do not concern ourselves with foraging algorithms, which find  a path to the target to collect multiple objects. Because these algorithm require that the target object localization and the target goal location are unknown, these algorithms are\emph{ location-free.} \\
+The second sub-poroblem that has to be solved is finding the payload and transporting it to its destination.
+This sub-problem can again be divided in four smaller problems:
 
-\textbf{Range-free autonomous transportation}
-\begin{itemize} 
-\item \textbf{Flocking}\\
+\begin{itemize}
+	\item finding the payload
+	\item grabbing the payload
+	\item finding target location
+	\item moving the payload to the location
+\end{itemize}
+
+By defining these sub-problems, the problem is easier to solve and easier to explain each algorithm. \\
+
+Collective transport is the problem in which only one object has to be moved; we do not concern ourselves with foraging algorithms, which try to find a path to the target to collect multiple objects.
 The first algorithm is simple; find the location of the object through a flocking algorithm and let the swarm robots push the object to the goal location. 
-This algorithm is explained in the paper Collective Transport of Complex Objects by Simple Robots: Theory and Experiments. \cite{Rubenstein2013}
-Basically, this algorithm like many of the algorithms defined in this section can be divided by two parts: finding the object and moving it to the goal location.
-The algorithm used for finding the location of the object is called \emph{flocking}. The algorithm is quite simple; every robot looks if it can see the object location. If so, move towards the location. If not, the robot compares its own heading with the other robots nearby and corrects it until the robot finds the object location.
-So, algorithmically, each robot uses one of two behaviors. A robot that can see the goals aligns itself towards the goal while moving forward. A robot that cannot see the goal uses its IR sensors to determine the heading difference between itself and its neighbors. In this paper, the object location and the goal location are found with light sensors, communicates headings with infrared sensors and uses bump sensors to avoid obstacles. After finding the object, the robot pushes from an arbitrary side, calculating the amount of force needed in relation to the middle point of mass with its bump sensors and transporting it to the goal location with its light sensor.  This algorithm can thus be seen as a location-free .  Because the robots latch onto an arbitrary side, scaling of the swarm is extremely effective. \\ 
+This algorithm is explained in the paper Collective Transport of Complex Objects by Simple Robots: Theory and Experiments, \cite{Rubenstein2013}, and is called the \emph{flocking} algorithm.
+The algorithm is quite simple; every robot looks if it can see the object location. If so, move towards the location. If not, the robot compares its own heading with the other robots nearby and corrects it until the robot finds the object location.
+Each robot uses one of two behaviors.
+ A robot that can see the goals aligns itself towards the goal while moving forward.
+ A robot that cannot see the goal uses its IR sensors to determine the heading difference between itself and its neighbors.
+ In this paper, the object location and the goal location are found with light sensors, communicates headings with infrared sensors and uses bump sensors to avoid obstacles. 
+The robot latches on to the payload with a velcro strip.
+After finding the object, the robot pushes from an arbitrary side, calculating the amount of force needed in relation to the middle point of mass with its bump sensors and transporting it to the goal location with its light sensor.  
+And because the robots latch onto an arbitrary side, scaling of the swarm is extremely effective. \\ 
 
-\item \textbf{Pheromone}\\
-Another widely used algorithm for transporting objects is the \emph{pheromone} algorithm. Found in nature, used by ants, this algorithms relies on leaving a trail of marks that help guide other swarm robots. It is often used for foraging techniques to retrieve multiple objects, but can also be used for retrieving a single object, with which  a trail will guide many robots to make for an easier retrieval. This algorithm is used in the paper Cooperative Transportation by Swarm Robots Using Pheromone Communication. \cite{Fujisawa2013} In this article, this method is tested with swarm-bots which can release and detect spots of ethanol left on the ground, indicating a spot they have to follow. Although the pheromone algorithm implies that pheromones should be used, different varieties of markings can be used, including wireless sensor beacons, drops of paint and even objects. This algorithm is particularly useful for guiding many robots to an object, if for example the object is very heavy or if many robots are needed for accurate and/or stable transportation. This algorithm is location-free but range-based; it calculates the exact distance to a trail. This algorithm is pretty difficult to implement in dynamic environments, as marks made can dissapear. \\
+Another widely used algorithm for transporting objects is the \emph{pheromone} algorithm. 
+This algorithms relies on leaving a trail of marks that help guide other swarm robots. 
+Although this is algorithm can be used for foraging, it can also be used for retrieving a single object leading many robots to transport a single object.
+This algorithm is used in the paper Cooperative Transportation by Swarm Robots Using Pheromone Communication. \cite{Fujisawa2013}
+ In this paper, this algorithm is tested with swarm-bots which can release and detect spots of ethanol left on the ground, indicating a spot they have to follow. Although the pheromone algorithm implies that pheromones should be used, different varieties of markings can be used, including wireless sensor beacons, drops of paint and even objects. This algorithm is particularly useful for guiding many robots to an object, if for example the object is very heavy or if many robots are needed for accurate and/or stable transportation. This algorithm is range-based; it calculates the exact distance to a trail. This algorithm is difficult to implement in dynamic environments, as made marks can dissapear. \\
 
-\item \textbf{Granular Convection}\\
 In looking for swarm algorithms, you want the robots to be as simple as possible. An algorithm that only uses very simple robots is an algorithm that is based on granular convection, als known as the Brazil Nut Effect. This novel method is described in the paper Granular convection to transportation.\cite{Sugawara2012} The algorithms described in this paper are either intended for:
 
 \begin{itemize}
@@ -78,7 +110,6 @@ In looking for swarm algorithms, you want the robots to be as simple as possible
 \end{itemize}
 
 These algorithms listed above are ranked in effectiveness, in which the last one obviously is the most effective, but keep in mind that the robots used to implement this are harder to produce than for the first. \\ The way this algorithm works is as follows. The goal of the swarm robots is to transport the objedct to the goal location. Each swarm robot vibrates with a random force. The goal location outputs a repulsive force. As the robots are randomly placed around the object and the goal location, the object gets kicked around by the vibrating swarm robots, until the object is kicked to the target location. When the swarm increases, the amount of time it costs to transport the object significantly decreases. With heterogenuous robots, there is more communication between robots to lower the density of the robots around the object, because slows the process of moving the object.  This algorithm has different implementations, but is mostly location-free and  range-free. 
-\end{itemize}
 
 A short summarization of these algorithms will be given in the form of this table. 
 
@@ -87,39 +118,21 @@ A short summarization of these algorithms will be given in the form of this tabl
   \caption{Overview of Collective Transport Algorithms}
   \label{table_alg_coltrans}
   \centering
-  \begin{tabular}{|p{3cm}|l|l|l|}
+  \begin{tabular}{|p{3cm}|l|l|l|l|}
     \hline
-    \bfseries Algorithm & \bfseries Type & \bfseries Performance & \bfseries Scalability\\
+    \bfseries Algorithm & \bfseries Range & Location & \bfseries Performance & \bfseries Scalability\\
     \hline
-    \bfseries Flocking & Range-free & High & High\\\hline
-    \bfseries Pheromone & Range-free & Medium & Medium\\\hline
-    \bfseries Homogeneous granular convection & Range-free & Low  & High\\\hline
-    \bfseries Heterogeneous granular convection & Range-free & Medium & High\\\hline
-    \bfseries Heterogeneous granular convection with local communication & Range-based & High & High\\\hline
+    \bfseries Flocking & Range-free & Location-Free & High & High\\\hline
+    \bfseries Pheromone & Range-based & Location-Free & Medium & Medium\\\hline
+    \bfseries Homogeneous granular convection & Range-free& Location-Free & Low  & High\\\hline
+    \bfseries Heterogeneous granular convection & Range-free& Location-Free & Medium & High\\\hline
+    \bfseries Heterogeneous granular convection with local communication & Range-based& Location-Free & High & High\\\hline
 
     \end{tabular}
   \end{table}
 
-\subsubsection{Problems}
+These three algorithms are very different from each other, but they all serve a common goal. A problem these algorithms ran into was how to locate the object, how to move the object and how to find and reach the goal location. The main problem is locating the object, something which the granular convection algorithm actually never does.  What these three algorithms have in common is that the transportation process speeds up significantly when adding more swarm robots, but reaches a cap when it becomes ineffective due to maximal density. For this reason, small, easy and cheap to produce swarm robots should be required. The granular convection algorithm has the cheapest robots, but is not necessarily the best, because when the robots become slightly larger and more complicated, more sophisticated and faster algorithms could work. \\
 
-\textbf{User-controlled swarm transportation algorithms}\\
-The main differences between these two algorithms is that in the first mathematical model that is used, each swarm robot individually calculates its position to the other robots and the object, and is calculating the resulting tension on the object. 
-This way, the rotation and position can be controlled by the position and tension of each robot. 
-With the second algorithm, that uses the cluster \emph{cluster space control}, the calculations are not done individually. 
-Instead, the framework calculates the position of each robot and the orientation of the object. 
-Thus, these methods both provide stability to the transported object but in two completely different ways. \\
-
-\textbf{Autonomous swarm transportation algorithms}\\
-These three algorithms are very different from each other, but they all serve a common goal. A problem these algorithms ran into was how to locate the object, how to move the object and how to find and reach the goal location. The main problem is locating the object, something which the granular convection algorithm actually never does.  What these three algorithms have in common is that the transportation process speeds up significantly when adding more swarm robots, but reaches a cap when it becomes ineffective due to maximal density. For this reason, small, easy and cheap to produce swarm robots should be required. The granular convection algorithm has the cheapest robots, but is not necessarily the best, because when the robots become slightly larger and more complicated, more sophisticated and faster algorithms could work.
-
-\subsubsection{Remaining problems}
-
-\textbf{User-controlled swarm transportation algorithms}\\
-The problems that these algorithms had was that the robots should be coordinated to rely on the location of other robots.
-With the mathematical model these are calculated through the tension of the cable attached to each robot, but in the framework it is calculated centrally. 
-Problems that are not treated in these articles is how these swarms can locate an object and autonomously can deliver it to a location. 
-Another problem for which no solution is provided is that when these swarms grow to account for heavier objects, the robots will get in each other's way. 
-Especially considering transportation, a technique in which every robot must latch on to an object, this can be hard to practically scale. 
-
-\textbf{Autonomous swarm transportation algorithms}\\
 In the mentioned algorithms, moving the object is mostly done by pushing. In real-life applications this would not always be a good option and a more sophisticated method of attaching should be used. When considering search-and-rescue operations for example, a solution to effectively grab the person to be rescued should be thought of. This is a problem that is yet to be identified in these algorithms and poses a good question for the future.
+
+
