@@ -1,34 +1,41 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
-We consider dispersion as one of the sub-problems needed to be solved in Robotic Swarms.\cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} Dispersion can be compared to the blanket coverage problem.\cite{gage1992command} The objective of blanket coverage is defined as ``achieve a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.''\cite{gage1992command}
+We consider dispersion as one of the key sub-problems needed to be solved in Robotic Swarms.\cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} Dispersion can be compared to the blanket coverage problem, which was defined by in one of the first papers written on the topic of swarm robots: \emph{Command Control for Many-Robot Systems}.\cite{gage1992command} The objective of blanket coverage is defined as ``achieving a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.''\cite{gage1992command} The difference between dispersion and formation is often confused. While formation is trying to maintain explicitly specified spacing relationships, dispersion tries to find the best ``formation'' for the current environment. 
 
 \subsection{Applications}
-Exploration, surveillance, military, disaster response, planetary exploration and many other applications require dispersion.\cite{ludwig2006robotic,Penders2011,mclurkin2007distributed} Therefore all of these applications can be seen as super-problems of dispersion.
+Due to the fact that dispersion is one of the fundamental sub-problems in robotic swarms, it has a great number of applications.
+Some of these applications include, but are not limited to exploration, surveillance, military response, disaster response and planetary exploration.\cite{ludwig2006robotic,Penders2011,mclurkin2007distributed} 
 
-\subsubsection{Algorithms}
-  The following dispersion algorithms are the most widely used algorithms and thus will be taken into our analysis. A very brief description is given of each algorithm. For more information on the operation of these algorithms, please consult the references.\\
+\subsection{Algorithms}
+In this section we will discuss a few categories of approaches which are used to solve the dispersion problem.
+Further we will motivate as to why the algorithms was put into a specific category and we will discuss the scalability and performance for each type of algorithm.
+For more information on the operation of the mentioned algorithms, please consult the references.
 
-  \textbf{Location-Free Dispersion Algorithms}
-  \begin{itemize}
-    \item \textbf{Depth-First Leader-Follower Strategy (\emph{DFLF})}\cite{hsiang2004algorithms}:\\
-      A \emph{Depth First Search}(DFS) inspired algorithm in which the swarm has one leader at any given point in time. The robotic swarm has the overview of a map in which specific regions, called \emph{pixels}, are defined. \emph{Frontier pixels}, are pixels which haven't been traversed yet. The leader robot keeps looking for frontier pixels until there are none left and stops and tells its \emph{successor robot} to be the leader. If there are no successors left, the algorithm halts and the total dispersion of the area. The other robots always try to follow the leader and traverse the tiles around it.
-    \item \textbf{Breadth-First Leader-Follower (\emph{BFLF})}\cite{hsiang2004algorithms}:\\
-      A \emph{Breadth First Search}(\emph{BFS}) inspired algorithm, which does not exactly perform \emph{BFS}, but approximates it. It is a more complex algorithm than the \emph{DFLF} algorithm, but has to make fewer moves to fully cover the map. In an extension of the \emph{DFLF} algorithm, the \emph{BFLF} algorithm also contains a waiting state, in which a robot pauses to make the next move. Furthermore, instead of having only one leader, this algorithm allows for multiple leaders. The leaders again strive to find all the frontier pixels, but now also make sure that the follower robots don't stray to far away. Once no frontier pixels can be found by the leader, the leader waits for the followers to arrive and passes on its leadership to one of the followers, the successor. The \emph{BFLF} strategy tries to create as many paths as possible. Visited pixels form a tree, the tree can be branched, which then represent the alternate pixels reachable from that pixel. This branching balances the flow by giving the possiblity to go through pixels multiple times, to be able to go into differerent directions.
-  \end{itemize}
-  \textbf{Range-Based Dispersion Algorithms}\\
-  \begin{itemize}
-    \item \textbf{Directed Dispersion/Disperse Uniformly}\cite{mclurkin2007distributed}:\\
-      The directed dispersion algorithm has the goal to disperse the robots quickly and uniformly, while keeping the robots connected. The algorithm consists of two sub-algorithms: \emph{disperseUniformly} and \emph{frontierGuidedDispersion}. The \emph{disperseUniformly} algorithm spreads the robots evenly with given constraints. It works by calculating an opposite direction vector of the positions of the nearest robots. This means that communication between robots is of vital importance. The \emph{frontierGuidedDispersion} directs robots towards unexplored areas, while keeping the robots connected. It uses robots which are on the frontiers of explored space to guide the Swarm in unexplored space. An optimal path is created for the other robots to move optimally towards the frontier. For an exact description of the implementation of these algorithms please see \cite{mclurkin2007distributed}.
-    \item \textbf{Random Walk}\cite{morlok2007dispersing}:\\
-      This algorithm has 2 states: \emph{walking} and \emph{avoid obstacle}. In the \emph{walking} state each robot keeps going straight with an orientation which randomizes over a certain time interval until there is an object and switches to the \emph{avoid obstacle} state. In the case that it detects a possible collision, the robot changes orientation dramatically until the obstacle has been avoided and continues in the \emph{walking} state.
-    \item \textbf{Follow Wall}\cite{morlok2007dispersing}:\\
-      The follow wall algorithm has 4 states: \emph{find wall}, \emph{align to wall}, \emph{follow wall} and \emph{navigate corner}. The details of this algorithm will not be discussed, as there are quite a few major flaws in this algorithm. This algorithm does not take the existance of other robots into account and thus it is possible for robots to see each other as walls. The usage of this algorithm for dispersion is thus very limited and should be avoided.
-    \item \textbf{Seek Open}\cite{morlok2007dispersing}:\\
-      By calculating an average obstacle vector with support of distance censors, a vector in the exact opposite direction is calculated and the robot, will follow this vector. Depending on the magnitede of the vector, a new assesment will be done once the robot reaches the approximated location. This means that the robot does not need to take further care of collisions with walls, but it is possible for robots to run into each other, or other dynamically moving objects, unless collision avoindance is separetely implemented.
-    \item \textbf{Fiducial} \cite{morlok2007dispersing}:\\
-      By using a beacon system, every robot is able to get the relative location of other robots within a certain range. This information is the used to steer away from the other robots. If no robots are in range, the robot uses the \emph{Random Walk} algorithm.
-    \item \textbf{Clique-Intensity}\cite{ludwig2006robotic}:\\
-      This algorithm uses the connectivity in a cyclic graph for swarm robots to disperse the robots, by knowing their relative distance. By using multiple behaviours as many robots as possible try to stay connected to only one other robot, thus making a very spread out system, which still remains connected.
-  \end{itemize}
+\subsubsection{Brute-Force Approach}
+Under the brute-force approach we categorize algorithms such as \emph{random-walk} and \emph{follow-wall} algorithms.\cite{morlok2007dispersing} 
+The base of these algorithms are location-free, but often include collision detection which makes them range-based.
+The scalibility of the algorithms in this category differs greatly.
+Random-walk for instance is known as one of the most scalable algorithms, due to its independence of other robots in the swarm.
+On the other hand the performance of the follow-wall algorithm deteriorates greatly when increasing the scale. 
+This due to the fact that they can not easily distinguish between the wall and other objects and thus creates the possiblity for the swarm-bots to circle around each other.
+
+\subsubsection{Graph Theory Approach}
+The algorithms which are inspired by graph theory can be divided into two sub-categories: algorithms inspired by tree search algorithms and algorithms inspired by connectivity in graphs.\\
+
+In a paper on algorithms for rapidly dispersing robot swarms in unkown environments\cite{hsiang2004algorithms}, two tree search inspired algorithms were named.
+The paper mentions two strategies: \emph{Depth-First Leader-Follower(DFLF)} Strategy and the \emph{Breadth-First Leader-Follower} Strategy.
+The implementation of these algorithms are mainly considered as \emph{location-based} algorithms, due to the fact that they work with grids which require absolute or relative positioning.
+Performance wise the DFLF algorithm requires less moves compared to the BFLF algorithm, but it is also a more complex algorithm.
+Due to the high amount of computation which needs to be done centrally, the scalibility of this type of algorithms are rather low.
+Every robot has to be taken care of by one or multiple robots. By centralizing this computation, there is a greater risk of something going wrong compared to decentralized control.\\
+
+One of the algorithms regarding connectivity in graphs is the clique-intensity algorithm.\cite{ugur2007dispersion}
+The clique-intensity algorithm is range-based since it measures and uses the distance between itself and other surrounding swarm-bots.
+The performance and scalability of the algortihm is very high, due to decentralized control.
+
+\subsubsection{Inverse-Vector Approach}
+Some examples of the inverse-vector approach are the seek-open algorithm\cite{morlok2007dispersing}, the fiducial algorithm\cite{morlok2007dispersing} and the uniform directed dispersion(UDD) algorithm\cite{mclurkin2007distributed}.
+Each of the algorithms basically senses where obstacles and other swarm-bots are relatively positioned and calculates a vector of that data. Afterwards it calculates the inverse of that vector and moves into that direction.
+The fiducial algorithm uses a beacon system. The seek-open and UDD algorithm use other distance measures mostly using ultrasonic sensors. In both cases the algorithm is an range-based algorithm, where every robot is able to get the relative location. 
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
@@ -42,7 +49,7 @@ Exploration, surveillance, military, disaster response, planetary exploration an
     \bfseries DFLF& Location-Free & Medium-High & High\\\hline
     \bfseries BFLF & Location-Free & High & High\\\hline
     \bfseries Directed Dispersion & Range-Based & Medium & High\\\hline
-    \bfseries Random Walk& Range-Based & Low & Low\\\hline
+    \bfseries Random Walk& Range-Based & Medium & High\\\hline
     \bfseries Follow Wall& Range-Based & Low & Low\\\hline
     \bfseries Seek Open& Range-Based & Low & Medium\\\hline
     \bfseries Fiducial& Range-Based & Medium & High\\\hline
@@ -50,7 +57,11 @@ Exploration, surveillance, military, disaster response, planetary exploration an
     \end{tabular}
   \end{table}
 
-  \subsubsection{Problems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Todo: Problems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \subsection{Problems}
   \textbf{Range-Based}
 
   Starting from the simpler Algorithms such as random walk and wall following, we show the problems that the dispersion technique has faced in the past and how the newer algorithms have solved these problems. The \emph{Random Walk} algorithm has to be one of the simpelest algorithms, the problem this algorithm faces though, is that dispersiveness of the robots does not guarantee uniform dispersion. The algorithm can be seen as a brute-force approach, it possibly achieves our end-goal, but it does not do this in an optimal and scalable way.
