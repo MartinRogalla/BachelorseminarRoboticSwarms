@@ -11,7 +11,7 @@ Further we will motivate as to why the algorithms was put into a specific catego
 For more information on the operation of the mentioned algorithms, please consult the references.
 
 \subsubsection{Brute-Force Approach}
-Under the brute-force approach we categorize algorithms such as \emph{random-walk} and \emph{follow-wall} algorithms.\cite{morlok2007dispersing} 
+Under the brute-force approach we categorize algorithms such as \emph{Random-Walk} and \emph{Follow-Wall} algorithms.\cite{morlok2007dispersing} 
 The base of these algorithms are location-free, but often include collision detection which makes them range-based.
 The scalibility of the algorithms in this category differs greatly.
 Random-walk for instance is known as one of the most scalable algorithms, due to its independence of other robots in the swarm.
@@ -81,9 +81,16 @@ It is important to stress that the algorithms should perform periodic checks to 
 The \emph{Fiducial} algorithm has a advantage over the \emph{Seek-Open} algorithm: it uses a beacon like system, which prevents robots from running into each other and encourages uniformatiy of the distribution.
 
 \subsubsection{Graph Theory Approach}
-The \emph{BFLF} algorithm, requires the robots to travel less compared to the \emph{DFLF} algortihm. The DFLF algorithm is furthermore also more computationally expensive than the DFLF algorithm. There is no big difference further during the execution of both algorithms, and thus BFLF has the preference. The problems that these types of algorithms face are not theoretical, but are coming forth from the category that they're in: often it is impossible to know the exact location, even if it's relative. There are quite a few ways that people try to achieve to create a relative position grid, however it difficult if not impossible to achieve in many real world applications.
+The \emph{BFLF} algorithm, requires the robots to travel less compared to the \emph{DFLF} algortihm. The DFLF algorithm is furthermore also more computationally expensive than the DFLF algorithm.
+There is no big difference further during the execution of both algorithms, and thus BFLF has the preference.
+The problems that these types of algorithms face are not theoretical, but are coming forth from the category that they are in: often it is impossible to know the exact location, even if it's relative.
+There are quite a few ways that people try to achieve to create a relative position grid, however it difficult if not impossible to achieve in many real world applications.
 
-The main problem with the \emph{Clique-Intensity} algorithm is the fact that due to high amounts of noise in the wireless intensity signals there is a lot of uncertainty in some real world applications. In a perfect situation, the algorithm would also work near perfectly. The work in this area has mostly been theoretical, real-world application is very different compared to theoretical situations.\\
+The \emph{Clique-Intensity} algorithm is one of the algorithms which relies on the connectivity in graphs approach.
+It faces problems due to the fact that there are high amounts of noise in the wireless intensity signals which creates a lot of uncertainty in some real world applications.
+In a perfect situation, the algorithm would work near perfectly.
+The work in this area has mostly been theoretical, real-world application is very different compared to theoretical situations.
+Focus should be put on the localization using wireless signals.\\
 
 \subsubsection{Remaining-Problems}
 The remaining problems in dispersion algorithms can be generally categorized into range-based problems and location-based problems.
@@ -91,4 +98,4 @@ All the algorithms that are in these categories are facing similar problems.
 The focus needed for the range-based approach needs to be on the uniformity of the dispersion. So how can we guarantee uniformity when dispersing the robots.
 In the location-based approach category focus needs to be put on the applicability for real-world applications.
 There are minor to no problems in theory, however to actually bring the relative positioning into a grid is quite difficult.
-Research in this area should be focussed on how to create these relative positioning grids into a dependable and accurate manner.
+Research in this area should be focussed on creating high-accuracy relative positioning grids.
