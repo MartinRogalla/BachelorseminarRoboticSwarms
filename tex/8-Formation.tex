@@ -1,1 +1,33 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
+
+Formation is the problem of controlling the relative position and orientation of the robots in a group while allowing the group to move as a whole. \cite{consolini}
+The formation problem is an important part in applications, as it is used in virtually every other problem. 
+In particular in the collective transport problem, where a swarm has to hold a formation to move an object. 
+An application in which formation is extensively used is surveillance, because when an area has to be monitored, formation is used to increase coverage. \cite{burkle2011} \\
+
+Over the years, many different algorithms have been used to solve the formation problem. \cite{chen2005}
+These algorithms became more advanced as the field of robotics became more advanced, but the older algorithms can be categorized as:
+
+\begin{itemize}
+	\item leader-follower strategy \cite{consoline2007}
+	\item visual structure approach \cite{ren}
+	\item Behavior-based method \cite{balch1998}
+\end{itemize}
+
+These algorithms are expanded upon in later algorithms, of which a few are:
+
+\begin{itemize}
+	\item virtual space configuration \cite{Wee}
+	\item vision-based framework \cite{Das}
+	\item fuzzy formation control \cite{Ranjbar-Sahraei}
+	\item team-work software control \cite{Kaminka}
+\end{itemize}
+
+Two main problems can be extracted from the original formation problem: communication and stability. 
+Each swarm has to have some form of communication to keep track of the relative distance between each robot. 
+The algorithms differ in ways of communication, as one algorithm only relies on local communication and the other works with a central framework.
+Some algorithms keep track of each robot's location and are thus location-based, while others are location-free. \\
+
+Another prevalentproblem that these algorithms need to deal with is how to provide a stable formation. 
+Specifically, how to dampen the effects of disturbance propagation when travelling from the source robot to the other robots. 
+For each algorithm, we will review how these problems are solved. 
