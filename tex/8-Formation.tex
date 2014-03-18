@@ -5,20 +5,19 @@ The formation problem is an important part in applications, as it is used in vir
 In particular in the collective transport problem, where a swarm has to hold a formation to move an object. 
 An application in which formation is extensively used is surveillance, because when an area has to be monitored, formation is used to increase coverage. \cite{burkle2011} \\
 
-Over the years, many different algorithms have been used to solve the formation problem. \cite{chen2005}
-These algorithms became more advanced as the field of robotics became more advanced, but the older algorithms can be categorized as:
+Over the years, many different algorithms have been used to solve the formation problem. \cite{chen2005} \cite{consolini}
+These algorithms can categorized as:
 
 \begin{itemize}
-	\item leader-follower strategy \cite{consoline2007}
-	\item visual structure approach \cite{ren}
-	\item Behavior-based method \cite{balch1998}
+	\item leader-follower strategy \cite{consolini2007} \cite{Das}
+	\item Behavior-based method \cite{balch1998} \cite{lawton}
+	\item visual structure approach \cite{ren} \cite{Do}
 \end{itemize}
 
-These algorithms are expanded upon in later algorithms, of which a few are:
+These algorithms are expanded upon in later algorithms to create more novel algorithms, of which a few are:
 
 \begin{itemize}
 	\item virtual space configuration \cite{Wee}
-	\item vision-based framework \cite{Das}
 	\item fuzzy formation control \cite{Ranjbar-Sahraei}
 	\item team-work software control \cite{Kaminka}
 \end{itemize}
@@ -28,6 +27,30 @@ Each swarm has to have some form of communication to keep track of the relative 
 The algorithms differ in ways of communication, as one algorithm only relies on local communication and the other works with a central framework.
 Some algorithms keep track of each robot's location and are thus location-based, while others are location-free. \\
 
-Another prevalentproblem that these algorithms need to deal with is how to provide a stable formation. 
+Another prevalent problem that these algorithms need to deal with is how to provide a stable formation. 
 Specifically, how to dampen the effects of disturbance propagation when travelling from the source robot to the other robots. 
-For each algorithm, we will review how these problems are solved. 
+For each algorithm, we will review how these problems are solved. \\
+
+First, we will discuss the leader-follow strategy. 
+In the leader-follower approach a robot of the swarm is designed as the leader, 
+and moves along a predefined trajectory while the other robots, the followers, are to maintain a desired distance and orientation to the leader. \cite{Consolini}
+This can for instance be implemented by equipping the leader robot with a omni-directional camera and advanced sensors, which instructs the followers through local communication. \cite{Das}
+The main problem with this algorithms is that it depends heavily on the leader and when something happens to the leader, the algorithm fails. 
+Source disturbance dampening is done by the leader; the leader communicates any disturbance to its followers. \\
+
+The second algorithm we will discuss is the behavior-based method. 
+In the behavior-based method, every robot is programmed with a certain behavior, for example collision avoidance, formation keeping, target seeking, etc. 
+The action that is taken is decided by weighing the relative importance of each behavior. \cite{consolini}
+These behaviors can then be used to maintain certain formations like a line, a column, a diamond and a wedge. \cite{Balch}
+The dynamics and stability of this algorithm can be calculated with the Lapyunov function, which can be used to account for many stability issues. \cite{Lawton}
+Decisions are not made locally, but are made within a framework.
+Disturbance source dampening is applied by the different behaviors. \\
+
+The last of the more basic algorithms is the virtual structure approach. 
+The virtual structure approach considers the formation as a single virtual rigid structure so that the behavior of the robotic system is similar to that of a physical object. 
+Desired trajectories are not assigned to each single robot but tot the entire formation as a whole. 
+The behavior of the formation in this case is exactly predictable but a large overhead is generated. \cite{consolini}
+Such a virtual structure is thus decentralized and appopriate distributed control strategies can be made. \cite{Ren}
+
+
+
