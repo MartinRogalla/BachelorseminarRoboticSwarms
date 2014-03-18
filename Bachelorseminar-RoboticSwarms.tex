@@ -7,6 +7,7 @@
 \usepackage{tikz}
 \usepackage{caption}
 \setlength\parindent{0pt}
+\renewcommand{\thefootnote}{\Roman{footnote}}
 
 \title{A Brief Survey of Problems and Solutions \\ in Robotic Swarms}
 %\title{An Extensive Analysis of Scalability and Performance of Commonly Used Techniques in Robotic Swarms}
@@ -22,18 +23,10 @@
 \thispagestyle{empty}
 
 \begin{abstract}
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
-This is the abstract of my paper.
+% As an emerging field, Robotic Swarms has faced many problems. 
+The majority for distributedly controlling large networks of robots, commonly reffered to as swarms, are either location or range based.
+In this paper we will give a general survey of common problems faced in robotic swarms and the algorithms that solve these problems.
+We have identified the key problems that have been and have not been solved. Finally we make a comparison of the solution, based on performance, scalability and the usage of location information.
 \end{abstract}
 
 % Do not compile individual files, compile only this main file.
@@ -63,6 +56,7 @@ This is the abstract of my paper.
   \input{./tex/0-Introduction.tex}
 
 \section{Collective Transport}
+\label{sec:CollectiveTransport}
   \input{./tex/1-CollectiveTransport.tex}
   
 \section{Dispersion}
@@ -74,16 +68,17 @@ This is the abstract of my paper.
  \section{Source Localization}
   \input{./tex/4-Localization.tex}
  
- \section{Collaborative Mapping}
+ \section{Collaborative Mapping \& Localization}
   \input{./tex/5-Collaborative-Mapping.tex}
  
  \section{Path-finding}
   \input{./tex/6-Path-finding.tex}
  
  \section{Formation}
+ \label{sec:Formation}
   \input{./tex/8-Formation.tex}
-
 \section{Discussion}
+ \label{sec:Discussion}
   \input{./tex/9-Discussion.tex}
 
 % Default is plain
