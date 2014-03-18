@@ -1,6 +1,5 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
-\subsection{Applications}
 Source localization is a technique in which a swarm of robots try to locate a specific point, often used to find sources of disturbance. 
 The main goal of this technique is to find all sources of disturbance as fast as possible. 
 Source localization is used in virtually any other robotic swarms technique, because in most techniques something has to be found, whether it is a source or an object. \\
@@ -29,7 +28,7 @@ In this chapter mostly only the latter, so the actual localization, is discussed
 For exploration methods the the chapters about \emph{exploration} and/or \emph{dispersion} should be read.
 
 	\subsubsection{Gradient-based}
-		% http://ac.els-cdn.com/S1574119208000618/1-s2.0-S1574119208000618-main.pdf?_tid=fcc68570-aaed-11e3-bbdc-00000aacb360&acdnat=1394742667_d3fd3d62038328cd6bea316cff88955e
+		% http://ac.els-cdn.com/S1574119208000518/1-s2.0-S1574119208000518-main.pdf?_tid=fcc58570-aaed-11e3-bbdc-00000aacb350&acdnat=1394742557_d3fd3d52038328cd5bea315cff88955e
 		In \cite{zhang2009gradient} a centralized implementation of a gradient-based algorithm is discussed in which all robots have knowledge of their location.
 		Each robot uses a received signal strength indicator to predict the location of the target with a certain probability and reports back to the base.
 		The base collects all readings and plans to create a global map and an uncertainty area which is sent to all robots.
@@ -60,7 +59,7 @@ For exploration methods the the chapters about \emph{exploration} and/or \emph{d
 		In Glowworm Swarm Optimization (GSO) the idea is to distribute "glowworms" randomly over the area and let them, according to the fitness function, carry a certain lumeniscence quantity called luciferin. 
 		The closer they get to the target the more luciferin they contain - thus the brighter they are - and the more they attract other glowworms. 
 		In every movement step each glowworm moves towards a neighbour within a certain range that carries more luciferin, so they eventually conglomerate at the target. 
-		The glowworms have a communication range that varies at each step with a certain randomness, to make sure not all agents focus on the same target. \cite{krishnanand2006glowworm}\\
+		The glowworms have a communication range that varies at each step with a certain randomness, to make sure not all agents focus on the same target. \cite{krishnanand2005glowworm}\\
 		\\
 		A robotic implementation based on GSO is succesfully ipmlemented and described in \cite{krishnanand2005detection}.
 		In comparison to PSO based algorithms this algorithm is completely \emph{memoryless}.
