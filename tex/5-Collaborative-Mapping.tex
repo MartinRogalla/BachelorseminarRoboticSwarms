@@ -1,16 +1,28 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
-Collaborative Mapping in Robotic Swarms is a problem in which a robotic swarm collaboratively tries to map the surrounding environment. 
-The Collaborative Mapping problem is interdependent with the Localization problem. Due to its dependency on \emph{relative} or \emph{absolute} location, the Collaborative Mapping problem requires a techniques to solve the Localization problem.\\
+Collaborative Mapping in robotic swarms is a problem in which a robotic swarm collaboratively tries to map the surrounding environment. 
+The Collaborative Mapping problem is interdependent with the Localization problem.\cite{thrun2000real}
+Due to its dependency on \emph{relative} or \emph{absolute} location, the Collaborative Mapping problem requires a solution for the Localization problem.
+Algorithms for solving the Localization problem, given a map have also been created.\cite{borenstein1996navigating} Hence the interdependency between the two problems.\\
 
 Collaborative Mapping of an unknown environment is very useful in hazardous and unaccessable environments.\cite{hardin2004modified}
 Due to the ability of delegation in Robotic Swarm, the interdependence between robots within the robotic swarm is greatly reduced.
-This greatly improves the stability of the mapping problem in comparison with using single robots. This greatly increases the reliability in hostile situations.\\
+This greatly improves the stability of the mapping problem in comparison with using single robots and increases the reliability in hostile situations.\\
 
 In \emph{Distributed multi-robot coordination in area exploration} \cite{sheng2006distributed} a model is described in which the robots have a limited communication range and have full knowledge of their location.
 By continuously looking for the closest undiscovered area in combination with a nearest measure it tends to explore the complete area by staying together and continiously updating each others maps.
 
-\subsubsection{Algorithms}
+\subsection{Algorithms}
 In this section we will focus on collaborative mapping algorithms for usage in Robotic Swarms.
+
+%Problems in cyclic environments see paper of thrun\ldots solved by EM approach. Can't be run in real-time. Only 2d maps, not yet 3d maps.
+\subsubsection{A Probablilistic Approach}
+The EM
+\subsubsection{Another Approach}
+\url{http://www.aaai.org/Papers/AAAI/2000/AAAI00-131.pdf}
+The Collaborative Localization Algorithm
+Dynamic Task Allocation Algorithm
+\url{http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1067998}
+
 
 \begin{itemize}
   \item \url{http://robots.stanford.edu/papers/thrun.map3d.pdf}, \url{http://robots.stanford.edu/papers/thrun.maps-multi.pdf}
