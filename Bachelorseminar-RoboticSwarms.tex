@@ -7,7 +7,7 @@
 \usepackage{tikz}
 \usepackage{caption}
 \setlength\parindent{0pt}
-\renewcommand{\thefootnote}{\Roman{footnote}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 \title{A Brief Survey of Problems Faced \\ in Robotic Swarms}
 %\title{An Extensive Analysis of Scalability and Performance of Commonly Used Techniques in Robotic Swarms}
@@ -34,30 +34,31 @@ We have identified the key problems that have been and have not been solved. Fin
 \section{Introduction}
   \input{./tex/0-Introduction.tex}
 
+\section{Formation}
+  \label{sec:Formation}
+  \input{./tex/8-Formation.tex}
+
+\section{Exploration}
+  \input{./tex/3-Exploration.tex}
+ 
+\section{Collaborative Mapping \& Localization}
+  \input{./tex/5-Collaborative-Mapping.tex}
+ 
+\section{Source Localization}
+  \input{./tex/4-Localization.tex}
+
 \section{Collective Transport}
-\label{sec:CollectiveTransport}
+  \label{sec:CollectiveTransport}
   \input{./tex/1-CollectiveTransport.tex}
   
 \section{Dispersion}
   \input{./tex/2-Dispersion.tex}
  
- \section{Exploration}
-  \input{./tex/3-Exploration.tex}
- 
- \section{Source Localization}
-  \input{./tex/4-Localization.tex}
- 
- \section{Collaborative Mapping \& Localization}
-  \input{./tex/5-Collaborative-Mapping.tex}
- 
- \section{Path-finding}
+\section{Path-finding}
   \input{./tex/6-Path-finding.tex}
  
- \section{Formation}
- \label{sec:Formation}
-  \input{./tex/8-Formation.tex}
 \section{Discussion}
- \label{sec:Discussion}
+  \label{sec:Discussion}
   \input{./tex/9-Discussion.tex}
 
 % Default is plain
