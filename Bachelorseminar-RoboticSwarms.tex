@@ -32,27 +32,6 @@ We have identified the key problems that have been and have not been solved. Fin
 % Do not compile individual files, compile only this main file.
 
 \section{Introduction}
-  
-  \begin{center}
-  \def\rb{(0:2.5cm) circle (2.5cm)}
-  \def\lb{(90:2.5cm) circle (2.5cm)}
-  \def\rf{(180:2.5cm) circle (2.5cm)}
-  \def\lf{(270:2.5cm) circle (2.5cm)}
-    \begin{tikzpicture}
-      \begin{scope}
-    \clip \lb;
-    \fill[cyan] \rb;
-      \end{scope}
-      \begin{scope}
-    \clip \lb;
-    \fill[cyan] \lf;
-      \end{scope}
-      \draw \rb node[text=black,right] {Range-based};
-      \draw \lb node [text=black,above] {Location-based};
-      \draw \rf node [text=black,left] {Range-free};
-      \draw \lf node [text=black,below] {Location-free};
-    \end{tikzpicture}
-  \end{center}
   \input{./tex/0-Introduction.tex}
 
 \section{Collective Transport}
