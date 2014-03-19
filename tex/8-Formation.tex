@@ -1,9 +1,10 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
 
 Formation is the problem of controlling the relative position and orientation of the robots in a group while allowing the group to move as a whole. \cite{consolini}
-The formation problem is an important part in applications, as it is used in virtually every other problem. 
-In particular in the collective transport problem, where a swarm has to hold a formation to move an object. 
-An application in which formation is extensively used is surveillance, because when an area has to be monitored, formation is used to increase coverage. \cite{burkle2011} \\
+The formation problem is an important part in robotic swarm applications, as it is used in virtually every other problem. 
+In particular it is used in the collective transport problem, where a swarm has to hold a formation to move an object. 
+An application in which formation is also extensively used is surveillance
+Because when an area has to be monitored, formation is used to increase coverage. \cite{burkle2011} \\
 
 Over the years, many different algorithms have been used to solve the formation problem. \cite{chen2005} \cite{consolini}
 These algorithms can categorized as:
@@ -32,14 +33,15 @@ Specifically, how to dampen the effects of disturbance propagation when travelli
 For each algorithm, we will review how these problems are solved. \\
 
 First, we will discuss the leader-follow strategy. 
-In the leader-follower approach a robot of the swarm is designed as the leader, 
-and moves along a predefined trajectory while the other robots, the followers, are to maintain a desired distance and orientation to the leader. \cite{Consolini}
+In the leader-follower approach a robot of the swarm is designed as the leader.
+The leader moves along a predefined trajectory while the other robots, the followers, are to maintain a desired distance and orientation to the leader. \cite{Consolini}
 This can for instance be implemented by equipping the leader robot with a omni-directional camera and advanced sensors, which instructs the followers through local communication. \cite{Das}
 The main problem with this algorithms is that it depends heavily on the leader and when something happens to the leader, the algorithm fails. 
 Source disturbance dampening is done by the leader; the leader communicates any disturbance to its followers. \\
 
 The second algorithm we will discuss is the behavior-based method. 
-In the behavior-based method, every robot is programmed with a certain behavior, for example collision avoidance, formation keeping, target seeking, etc. 
+In the behavior-based method, every robot is programmed with a certain behavior.
+For example collision avoidance, formation keeping, target seeking, etc. 
 The action that is taken is decided by weighing the relative importance of each behavior. \cite{consolini}
 These behaviors can then be used to maintain certain formations like a line, a column, a diamond and a wedge. \cite{Balch}
 The dynamics and stability of this algorithm can be calculated with the Lapyunov function, which can be used to account for many stability issues. \cite{Lawton}
@@ -102,10 +104,10 @@ We will give a summarization of these algorithms in the form of a table:
   \end{table}
 
 Concluding this chapter we will discuss the future problems of these algorithms. 
-As the algorithms become more advanced, the robots have to advance their specifications too.
-The problem with this is that this is not benificial for the scalability of a swarm, because more communication should be done between the robots. 
+As the algorithms become more advanced, the robots have to become more advanced too.
+This is not benificial for the scalability of a swarm, because there would exist more communication between the robots. 
 One example of this is the stability of the formation. 
-To create more formation stability, more communication between robots should be done. 
+To more effectively stabilize the formation, more communication exists between robots. 
 But communication on such a large scale is detrimental for the speed of the algorithm. 
 Another problem faced by these algorithms is reliabiliy, especially for the leader-follower strategy. 
 If the leader is lost (for example destroyed), the algorithm will not work anymore. 
