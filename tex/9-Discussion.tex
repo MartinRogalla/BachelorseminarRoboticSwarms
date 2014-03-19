@@ -1,6 +1,11 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
-	\begin{center}
+	\begin{figure}[h]
+		\label{venn_diagram}
+		\caption{Super-awesome Venn-diagram}
+
+		\centering
+
 		\def\loclb{(180:2.0cm) circle (2.0cm)}
 	  	\def\loclf{(0:2.0cm) circle (2.0cm)}
 	  	\def\locrb{(90:2.0cm) circle (2.0cm)}
@@ -13,36 +18,36 @@
 			\draw \locrb node [text=black] {Range-based};
 			\draw \locrf node [text=black] {Range-free};
 
-			% Range-based localization-free
-			\draw[thick,-] (1,1) -- (3.5,3.5) node[anchor=north west] {};
-			\node[draw,align=left,anchor=west] at (3.5,3.5) {PSO\\GSO\\BESA};
+			% Range-based location-free
+			\draw[dashed,-] (1,1) -- (3.5,3.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=west] at (3.5,3.5) {PSO\\GSO};
 
-			% Range-free, localization-free
-			\draw[thick,-] (1,-1) -- (3.5,-3.5) node[anchor=north west] {};
+			% Range-free, location-free
+			\draw[dashed,-] (1,-1) -- (3.5,-3.5) node[anchor=north west] {};
 			\node[draw,align=left,anchor=west] at (3.5,-3.5) {};
 
-			% Localization-free
-			\draw[thick,-] (3.5,0) -- (5,0) node[anchor=north west] {};
+			% location-free
+			\draw[dashed,-] (3.5,0) -- (5,0) node[anchor=north west] {};
 			\node[draw,align=left,anchor=west] at (5,0) {BRW};
 
-			% Localization-based
-			\draw[thick,-] (-3.5,0) -- (-5,0) node[anchor=north west] {};
+			% location-based
+			\draw[dashed,-] (-3.5,0) -- (-5,0) node[anchor=north west] {};
 			\node[draw,align=left,anchor=east] at (-5,0) {Gradient-based};
 
-			% Range-free, localization-based
-			\draw[thick,-] (-1,-1) -- (-3.5,-3.5) node[anchor=north west] {};
-			\node[draw,align=left,anchor=east] at (-3.5,-3.5) {};
+			% Range-free, location-based
+			\draw[dashed,-] (-1,-1) -- (-3.5,-3.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=east] at (-3.5,-3.5) {BESA};
 
-			% Range-based, localization-based
-			\draw[thick,-] (-1,1) -- (-3.5,3.5) node[anchor=north west] {};
-			\node[draw,align=left,anchor=east] at (-3.5,3.5) {PSO};
+			% Range-based, location-based
+			\draw[dashed,-] (-1,1) -- (-3.5,3.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=east] at (-3.5,3.5) {};
 
 			% Range-based
-			\draw[thick,-] (0,3) -- (0,4.5) node[anchor=north west] {};
+			\draw[dashed,-] (0,3) -- (0,4.5) node[anchor=north west] {};
 			\node[draw,align=left,anchor=south] at (0,4.5) {};
 
 			% Range-free
-			\draw[thick,-] (0,-3) -- (0,-4.5) node[anchor=north west] {};
+			\draw[dashed,-] (0,-3) -- (0,-4.5) node[anchor=north west] {};
 			\node[draw,align=left,anchor=north] at (0,-4.5) {};
 		\end{tikzpicture}
-    \end{center}
+    \end{figure}
