@@ -5,9 +5,9 @@ These problems however, do overlap, because the problems found in this field oft
 We focused on each problem, highlighting the communication methods of every solution and properties of these communication methods. 
 These properties can be summarized in a Venn diagram, allowing for a compact overview of these solutions. 
 
-	\begin{figure}[h]
+	\begin{figure}[!h]
 		\label{venn_diagram}
-		\caption{Super-awesome Venn-diagram}
+		\caption{Venn-diagram of all mentioned approaches}
 
 		\centering
 
@@ -24,8 +24,8 @@ These properties can be summarized in a Venn diagram, allowing for a compact ove
 			\draw \locrf node [text=black] {Range-free};
 
 			% Range-based location-free
-			\draw[dashed,-] (1,1) -- (1.5,4.5) node[anchor=north west] {};
-			\node[draw,align=left,anchor=west] at (1.5,4.5) {
+			\draw[dashed,-] (1,1) -- (2,5.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=west] at (2,5.5) {
 				Leader-follower \ref{sec:Formation}\\
 				Virtual structure \ref{sec:Formation}\\
 				Virtual space \ref{sec:Formation}\\
@@ -34,13 +34,17 @@ These properties can be summarized in a Venn diagram, allowing for a compact ove
 				Glowworm Swarm Optimization \ref{sec:Localization}\\
 				Pheromone \ref{sec:CollectiveTransport}\\
 				Heterogeneous granular convection WLC \ref{sec:CollectiveTransport}\\
-				 \ref{sec:Dispersion}\\
-
+				Random Walk \ref{sec:Dispersion}\\
+				Follow wall \ref{sec:Dispersion}\\
+				Directed Dispersion \ref{sec:Dispersion}\\
+				Seek open \ref{sec:Dispersion}\\
+				Fiducial \ref{sec:Dispersion}\\
+				Clique-intensity \ref{sec:Dispersion}
 			};
 
 			% Range-free, location-free
-			\draw[dashed,-] (1,-1) -- (1.5,-4.5) node[anchor=north west] {};
-			\node[draw,align=left,anchor=west] at (1.5,-4.5) {
+			\draw[dashed,-] (1,-1) -- (2,-4.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=west] at (2,-4.5) {
 				Behavior-based \ref{sec:Formation}
 				Fuzzy control \ref{sec:Formation}\\
 				Flocking \ref{sec:CollectiveTransport}\\
@@ -48,7 +52,7 @@ These properties can be summarized in a Venn diagram, allowing for a compact ove
 				Heterogeneous granular convection \ref{sec:CollectiveTransport}\\
 				Aerial Equilibrium \ref{sec:CollectiveTransport}\\
 				Virtual Pheromone \ref{sec:Path-planning}\\
-				Cardinality \ref{sec:Path-planning}\\
+				Cardinality \ref{sec:Path-planning}
 			};
 
 			% location-free
@@ -60,7 +64,7 @@ These properties can be summarized in a Venn diagram, allowing for a compact ove
 			% location-based
 			\draw[dashed,-] (-3.5,0) -- (-5,0) node[anchor=north west] {};
 			\node[draw,align=left,anchor=east] at (-5,0) {
-				Frontier-based \ref{sec:Exploration}
+				Frontier-based \ref{sec:Exploration}\\
 				Gradient-based \ref{sec:Localization}
 			};
 
@@ -76,6 +80,8 @@ These properties can be summarized in a Venn diagram, allowing for a compact ove
 				Frontier-based \ref{sec:Exploration}\\
 				Market Economy based \ref{sec:Exploration}\\
 				Cluster Space Control \ref{sec:CollectiveTransport}\\
+				DFLF \ref{sec:Dispersion}\\
+				BFLF \ref{sec:Dispersion}\\
 				Artificial Bee Colony \ref{sec:Path-planning}\\
 				Multihop Communication \ref{sec:Path-planning}\\
 				Genetic Programming \ref{sec:Path-planning}
