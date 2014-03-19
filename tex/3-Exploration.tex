@@ -21,51 +21,61 @@ Exploration is used in many more different robotic swarm applications and is a b
 \subsection{Algorithms}
 
 	\subsubsection{Frontier-based}
-	Frontier-based exploration is inspired by the question "Given what you know about the world, where should you move to gain as much new information as possible?".
-	Frontiers are defined as areas on the boundary between open space and unexplored space.
-	When a robot moves to a frontier, it moves to unexplored space and therefore adds new information to its map.
-	By repeating this step, the robots constantly increases its knowledge of the world. \cite{yamauchi1998frontier}.\\
-	\\
-	In the orignal implementation by Yamauchi an evidence grid is used in which the occupancy probability is stored for each cell, so it is purely \emph{location-based}.
-	All cells are initiated at a certain prior value, for example $0.5$.
+	Frontier-based exploration is inspired by the question "Given what you know about the world, where should you move to gain as much new information as possible?". In the orignal implementation by Yamauchi et al. \cite{yamauchi1998frontier} an evidence grid is used in which the occupancy probability is stored for each cell, so it is purely \emph{location-based}.
+	All cells are initiated at a certain prior value.
 	In the further process they are divided in three classes according to their value: open, unkown or occupied.
 	Every open cell adjacent to an unkown cell is labeled as a frontier edge cell.
 	Every group of frontier cells above a minimum size is considered a frontier.
-	Once these frontiers have been deteced, the robot navigates to the nearest univsited frontier.
+	Once these frontiers have been deteced, the robot navigates to the nearest unvisited frontier.
 	While travelling already found obstructions can be avoided.
 	When the robot reaches its destination it does a 360 degree sensor sweep and adds the new information to the evidence grid.
 	When the robot doesn't make progress for a certain amount of time it will conclude its current location is inaccessible and update its evidence grid.
 	Whenever a robot arrives at a new frontier it creates a local grid, which is shared with all other robots.\\
 	\\
-	One limitation of this approach are that since navigation is independent, robots may waste time navigation to the same frontier.
-	This will either cause an avoidance of collision or the robots will block each other.
-	One of the robots will then mark its own spot as 
-
+	A limitation of this approach is that since navigation is independent, robots may waste time navigation to the same frontier.
+	This will either cause an avoidance manoeuvre or the robots will block each other.
+	In the last case the robots will mark their destination frontiers as inaccessible.
 
 
 	% http://www4.cs.umanitoba.ca/~jacky/Robotics/Papers/frontierExploration.pdf
 
 	\subsubsection{Frontier-based with bidding}
-	This implementation is is an extended form of the frontier-based algorithm as described above.
-	It is extended with a bidding algorithm which solves the problem of robots heading for the same frontier or robots 
-	Furthermore it only range-based which makes it scalable. as described by Sheng all robots have limited communcation range and full knowledge of their location.
-	Therefore this approach is \emph{location-based} and \emph{range-based}.
-	All robots start from initital positions which are very close to each other.
-	The frontier-base
-	The robots can be either sensing, mapping or bidding.
+	The implementation discussed in a paper by Sheng et al. \cite{sheng2006distributed} is an extended form of the frontier-based algorithm.
+	It is extended with a bidding algorithm which solves the problem of robots heading for the same frontier or robots blocking each other as described above.
+	Furthermore the robots have limited range and this approach therefore not only is \emph{location-based}, but also \emph{range-based}.
+	In this implementation all robots start from initital positions which are very close to each other.
+	The robots broadcast their bid to all other robots in the sensor range and wait for a constant time.
+	If their bid is the best, they travel to the frontier-based best location to go to.
+	If not they remap, recalculate and bid again.
+	The bid exists of information about each cell (based on the current map and the targets of robots in the neighbourhood), the distance to each cell (based on Dijkstra) and a nearness measure (to sustain communication between robots).
+	By implementing the nearness measure, the robots tend to stay close to each other. 
+	This results in better communication, which leads to less repeated coverage and less exploration time in comparison to general frontier-based approaches.
+	Furthermore we see that when increasing the range the exploration time and the traveled distance dramatically decrease.	
 
-
-
-
-
-	\cite{sheng2006distributed}
 	% http://ac.els-cdn.com/S092188900600114X/1-s2.0-S092188900600114X-main.pdf?_tid=33bf4874-ab01-11e3-a577-00000aacb35f&acdnat=1394750920_0424c8c4f3098477e3985d83f4f339f2
 
-	\subsubsection{Market-place}
-	% http://repository.cmu.edu/cgi/viewcontent.cgi?article=1174&context=robotics&sei-redir=1&referer=http%3A%2F%2Fscholar.google.nl%2Fscholar%3Fq%3Dmulti-robot%2Bexploration%26btnG%3D%26hl%3Dnl%26as_sdt%3D0%252C5#search=%22multi-robot%20exploration%22
-	\cite{zlot2002multi}
-
-	\subsubsection{Sweeping}
+	\subsubsection{Market-economy based}
+	Zlot et al. have chosen another approach which also uses some kind of bidding principle called a market architecture. \cite{zlot2002multi}
+	The robots have perfect knowledge of their location and keep track of a map.
+	Furthermore the robots communicate with each other over limited range, so this is an \emph{location-based} and \emph{range-based} approach.
+	The distributed algorithm starts by generating a list of goal points.
+	Goal points are generated to navigate to with three different strategies.
+	The strategies used by the robots may be all the same, vary across robots or even over time.
+	The three strategies are 1) random, 2) greedy exploration and 3) space division by quadtree.
+	All strategies are very simplistic, because the intention is that the market architecture removes the inefficiencies.
+	The goal points generated are greedily ordered (shortest-path).
+	The robot then tries to sell all of its tasks to robots it can communicate with by auction for a specified amount of time.
+	Each goal point is awarded a certain revenue according to the amount of information it will provide and a certain cost according to the resources it will cost to achieve it.
+	The robots start bidding and the highest bidder is awarded the task if it is higher than the minimum amount set by the auctioneer.
+	After trying to sell all of its tasks by auction the robot travels towards a goal point.
+	If it reaches the goal point, it generates a certain amount of new goal points, starts off with its next goal and offers its remaining goals to other robots.
+	Finally at regular intervals robots can exchange pieces of their own map with each other for a certain cost/revenue depending on the expected utility.
+	When asked, all robots send their maps to a central base, so a global map can be created.\\
+	\\
+	Surprisingly simulation shows that when only using the random strategy the algorithm performs just as good as when using the quadtree strategy.
+	Furthermore the algorithm using the random or quadtree strategy is compared to a communicationless situation.
+	We can see that allowing the robots to communicate via the market place architecture improves the exploration efficiency with a factor of $3.4$ in a four-robot system.
+	The system could be improved by for example using a time-based cost scale instead of a distance-based for minimizing while exploring.
 
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
@@ -79,51 +89,48 @@ Exploration is used in many more different robotic swarm applications and is a b
 	    \hline
 	    \bfseries Frontier-based & - & Location-based & Medium & Low\\
 	    \hline
-	    \bfseries Bidding method & Range-based & Location-based & High & High\\
+	    \bfseries Frontier-based with bidding & Range-based & Location-based & High & High\\
+	    \hline
+	    \bfseries Market Economy based & Range-based & Location-based & Medium-high & Medium\\
 	    \hline
     \end{tabular}
 \end{table}
 
 
 
-
-Coordinated multi-robot exploration
+%Coordinated multi-robot exploration
 % http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1435481
-\cite{burgard2005coordinated}
+%\cite{burgard2005coordinated}
 
-Collaborative multi-robot exploration
+%Collaborative multi-robot exploration
 % http://www.cs.cmu.edu/afs/.cs.cmu.edu/Web/People/motionplanning/papers/sbp_papers/integrated2/burgard_multi_robot_explor.pdf
-\cite{burgard2000collaborative}
+%\cite{burgard2000collaborative}
 
-Coordination for Multi-Robot Exploration and Mapping
+%Coordination for Multi-Robot Exploration and Mapping
 % http://isl.ecst.csuchico.edu/DOCS/Papers/simmons2000coordination4MultirobotExploration.pdf
-\cite{simmons2000coordination}
+%\cite{simmons2000coordination}
 
-Multi-robot exploration Controlled by a Market Economy\\
-Market-place algorithm, seems good, ++
+%Multi-robot exploration Controlled by a Market Economy\\
+%Market-place algorithm, seems good, ++
 % http://repository.cmu.edu/cgi/viewcontent.cgi?article=1174&context=robotics&sei-redir=1&referer=http%3A%2F%2Fscholar.google.nl%2Fscholar%3Fq%3Dmulti-robot%2Bexploration%26btnG%3D%26hl%3Dnl%26as_sdt%3D0%252C5#search=%22multi-robot%20exploration%22
-\cite{zlot2002multi}
+%\cite{zlot2002multi}
 
-Multi-robot exploration under the constraints of wireless networking
+%Multi-robot exploration under the constraints of wireless networking
 %http://ac.els-cdn.com/S0967066106001547/1-s2.0-S0967066106001547-main.pdf?_tid=2dbdf35e-ab00-11e3-b5b9-00000aab0f6c&acdnat=1394750480_8d4547f2c72259f166f10342891ca745
-\cite{rooker2007multi}
+%\cite{rooker2007multi}
 
-A practical, decision-theoretic approach to multi-robot mapping and exploration
+%A practical, decision-theoretic approach to multi-robot mapping and exploration
 % http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1249654
-\cite{ko2003practical}
+%\cite{ko2003practical}
 
-Multi-robot collaboration for robust exploration
-\cite{rekleitis2001multi}
+%Multi-robot collaboration for robust exploration
+%\cite{rekleitis2001multi}
 % http://download.springer.com/static/pdf/926/art%253A10.1023%252FA%253A1016636024246.pdf?auth66=1394923400_27944ba6f349eb21a47a2c60f843ab9f&ext=.pdf
 
-Distributed multi-robot coordination in area exploration +++++
-\cite{sheng2006distributed}
+%Distributed multi-robot coordination in area exploration +++++
+%\cite{sheng2006distributed}
 % http://ac.els-cdn.com/S092188900600114X/1-s2.0-S092188900600114X-main.pdf?_tid=33bf4874-ab01-11e3-a577-00000aacb35f&acdnat=1394750920_0424c8c4f3098477e3985d83f4f339f2
 
-Coverage for robotics–A survey of recent results
+%Coverage for robotics–A survey of recent results
 
-multi-robot coverage??
-
-\subsubsection{Problems}
-
-\subsection{Remaining problems}
+%multi-robot coverage??
