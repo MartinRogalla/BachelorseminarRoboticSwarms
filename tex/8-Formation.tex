@@ -11,7 +11,7 @@ These algorithms can categorized as:
 \begin{itemize}
 	\item leader-follower strategy \cite{consolini2007} \cite{Das}
 	\item Behavior-based method \cite{balch1998} \cite{lawton}
-	\item visual structure approach \cite{ren} \cite{Do}
+	\item virtual structure approach \cite{ren} \cite{Do}
 \end{itemize}
 
 These algorithms are expanded upon in later algorithms to create more novel algorithms, of which a few are:
@@ -51,6 +51,62 @@ The virtual structure approach considers the formation as a single virtual rigid
 Desired trajectories are not assigned to each single robot but tot the entire formation as a whole. 
 The behavior of the formation in this case is exactly predictable but a large overhead is generated. \cite{consolini}
 Such a virtual structure is thus decentralized and appopriate distributed control strategies can be made. \cite{Ren}
+The control system can be derived in four sequential stages: \cite{Do}
+\begin{itemize}
+	\item the dynamics of the virtual structure are defined
+	\item the motion of the virtual structure is translated into the desired motion for eacht robot
+	\item output feedback for each robot is derived
+	\item formation feedback is introduced from each robot to the virtual structure
+\end{itemize} 
 
+Aside from these three algorithms which have become a standard way for implementing formation control, more novel algorithms have been developed. 
+One of these algorithms is the virtual space configuration algorithm. \cite{Wee}
+This algorithm uses a leader-follower strategy, but each robot uses virtual space and virtual robots inside that space.
+These virtual robots are then used by each robot to avoid collisions. 
+The main difference is thus that multiple follower robots in clusters can maintain formation without crashing (using only virtual collisions), and they can have scalability of formation. 
+This method is range-based and location-free, but produces a lot of overhead in local communication.\\ 
 
+Another novel algorithm is fuzzy formation control.\cite{Ranjbar-Sahraei}
+In robotic swarms, optimal control techniques have been found to treat robust stabilization and tracking problems. 
+But in these cases, the exact model of the system has to be known. 
+But this fuzzy formation control technique provides a robust scheme with fuzzy logic approximator to implement effective controls for uncertain dynamic models.
+This way, the exact model does not need to be known, as nonlinearity, external disturbances and model uncertainties are dealt with by fuzzy approximation. \\
 
+Lastly, the last formation control we discuss is the teamwork software control. \cite{Kaminka}
+This algorithm combines different control methods and tries to integrate this in one formation control approach.
+It is mostly behavior-based, and each of the robots in the swarm has its own behavioral process. 
+But instead of carrying out its behavior directly, each robot communicates with each other to set a 'team flag'. 
+When every robot agrees with this flag, only then is this order carried out. 
+This resembles the virtual structure control approach a little, as in that the swarm is considered as a whole. 
+This approach is location-free but range-based, and produces more overhead than the behavior-based approach. \\
+
+We will give a summarization of these algorithms in the form of a table:
+
+  \begin{table}[H]
+  \renewcommand{\arraystretch}{1.3}
+  \label{table_alg_coltrans2}
+  \caption{Overview of Collective Transport Algorithms}
+  \centering
+  \begin{tabular}{|p{5cm}|l|l|l|l|}
+    \hline
+    \bfseries Algorithm & \bfseries Range & Location & \bfseries Stability & \bfseries Scalability\\
+    \hline
+    \bfseries Leader-follower & Range-based & Location-Free & Medium & Low\\\hline
+    \bfseries Behavior-based & Range-free & Location-Free & Medium & High\\\hline
+    \bfseries Virtual structure& Range-based& Location-Free & High  & Medium\\\hline
+    \bfseries Virtual space & Range-based& Location-Free & High  & Low\\\hline
+    \bfseries Fuzzy control& Range-free& Location-Free & High  & Medium\\\hline
+    \bfseries Teamwork control& Range-based& Location-Free & High  & Low\\\hline
+
+    \end{tabular}
+  \end{table}
+
+Concluding this chapter we will discuss the future problems of these algorithms. 
+As the algorithms become more advanced, the robots have to advance their specifications too.
+The problem with this is that this is not benificial for the scalability of a swarm, because more communication should be done between the robots. 
+One example of this is the stability of the formation. 
+To create more formation stability, more communication between robots should be done. 
+But communication on such a large scale is detrimental for the speed of the algorithm. 
+Another problem faced by these algorithms is reliabiliy, especially for the leader-follower strategy. 
+If the leader is lost (for example destroyed), the algorithm will not work anymore. 
+This is a problem that most of these algorithms do not take in account.  
