@@ -26,14 +26,14 @@ But with a robotic swarm of robots it is possible to transport larger weights in
 So, a swarm of robots is useful for transporting large and/or heavy objects. 
 There are two different properties important for user-controlled swarm transportations: safety and scalability. 
 To ensure safe and stable transport, swarm robots have to be coordinated in such a way that the payload can be manipulated to a desired position and orientation.
-An algorithm for such transport is given in the paper Cooperative manipulation and transportation with aerial robots. \cite{Michael2011}, which we will call the \emph{Aerial Equilibrium} algorithm. 
+An algorithm for such transport is given in the paper Cooperative manipulation and transportation with aerial robots. \cite{Michael2011cooperative}, which we will call the \emph{Aerial Equilibrium} algorithm. 
 In this paper, a scalable solution for aerial transport is presented by attaching cables from quadrocopters to the payload, and letting each robot calculate its own movement by a mathematical model. 
 This paper formulates general conditions for the payload equilibrium but can be scaled to many swarm robots. 
 The mathematical model that is defined in the paper is tested with three quadrocopters and offers a stable transportation for objects, with a degree of freedom related to the amount of robots used and can thus be implemented in the field.
 Because the swarm robots do not calculate the exact distance between them, this algorithm can be defined as a range-free algorithm. \\
 
 A second algorithm, used for transporting large objects on the ground, in the water and in the air, considers a multi-robot formation control framework, necessary to coordinate the motions of the robots in the group. 
-It is mentioned in the paper payload Manipulation Using Cooperative Mobile Multi-Robot Systems, \cite{Mas2012}, and we will call the algorithm the \emph{Cluster Space Control} algorithm.
+It is mentioned in the paper payload Manipulation Using Cooperative Mobile Multi-Robot Systems, \cite{Mas2012object}, and we will call the algorithm the \emph{Cluster Space Control} algorithm.
 This is because control approach used is called cluster space control, and is utilized to control swarm of four four-wheeled robots. 
 A user using this type of transportation uses a joystick to input user controls to the whole swarm, after which the control framework specifies the formation and the position and shape of the swarm.
 Because the framework calculates the exact range between each robot in the swarm, this algorithm is range-based. 
@@ -85,7 +85,7 @@ By defining these sub-problems, the problem is easier to solve and easier to exp
 
 Collective transport is the problem in which only one payload has to be moved; we do not concern ourselves with foraging algorithms, which try to find a path to the target to collect multiple objects.
 The first algorithm is simple; find the location of the payload through a flocking algorithm and let the swarm robots push the payload to the goal location. 
-This algorithm is explained in the paper Collective Transport of Complex Objects by Simple Robots: Theory and Experiments, \cite{Rubenstein2013}, and is called the \emph{flocking} algorithm.
+This algorithm is explained in the paper Collective Transport of Complex Objects by Simple Robots: Theory and Experiments, \cite{Rubenstein2013collecive}, and is called the \emph{flocking} algorithm.
 The algorithm is quite simple; every robot looks if it can see the payload location. If so, move towards the location. If not, the robot compares its own heading with the other robots nearby and corrects it until the robot finds the payload location.
 Each robot uses one of two behaviors.
  A robot that can see the goals aligns itself towards the goal while moving forward.
@@ -98,10 +98,10 @@ And because the robots latch onto an arbitrary side, scaling of the swarm is ext
 Another widely used algorithm for transporting objects is the \emph{pheromone} algorithm. 
 This algorithms relies on leaving a trail of marks that help guide other swarm robots. 
 Although this is algorithm can be used for foraging, it can also be used for retrieving a single payload leading many robots to transport a single payload.
-This algorithm is used in the paper Cooperative Transportation by Swarm Robots Using Pheromone Communication. \cite{Fujisawa2013}
+This algorithm is used in the paper Cooperative Transportation by Swarm Robots Using Pheromone Communication. \cite{fujisawa2013cooperative}
  In this paper, this algorithm is tested with swarm-bots which can release and detect spots of ethanol left on the ground, indicating a spot they have to follow. Although the pheromone algorithm implies that pheromones should be used, different varieties of markings can be used, including wireless sensor beacons, drops of paint and even objects. This algorithm is particularly useful for guiding many robots to a payload, if for example the payload is very heavy or if many robots are needed for accurate and/or stable transportation. This algorithm is range-based; it calculates the exact distance to a trail. This algorithm is difficult to implement in dynamic environments, as made marks can dissapear. \\
 
-In looking for swarm algorithms, you want the robots to be as simple as possible. An algorithm that only uses very simple robots is an algorithm that is based on granular convection, als known as the Brazil Nut Effect. This novel method is described in the paper Granular convection to transportation.\cite{Sugawara2012} The algorithms described in this paper are either intended for:
+In looking for swarm algorithms, you want the robots to be as simple as possible. An algorithm that only uses very simple robots is an algorithm that is based on granular convection, als known as the Brazil Nut Effect. This novel method is described in the paper Granular convection to transportation.\cite{sugawara2012object} The algorithms described in this paper are either intended for:
 
 \begin{itemize}
   \item A swarm with homogeneous robots, with no explicit communication

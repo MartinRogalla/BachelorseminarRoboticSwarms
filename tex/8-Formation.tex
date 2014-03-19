@@ -1,26 +1,26 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
 
-Formation is the problem of controlling the relative position and orientation of the robots in a group while allowing the group to move as a whole. \cite{consolini}
+Formation is the problem of controlling the relative position and orientation of the robots in a group while allowing the group to move as a whole. \cite{consolini2008leader}
 The formation problem is an important part in robotic swarm applications, as it is used in virtually every other problem. 
 In particular it is used in the collective transport problem, where a swarm has to hold a formation to move an object. 
 An application in which formation is also extensively used is surveillance
-Because when an area has to be monitored, formation is used to increase coverage. \cite{burkle2011} \\
+Because when an area has to be monitored, formation is used to increase coverage. \cite{burkle2011towards} \\
 
-Over the years, many different algorithms have been used to solve the formation problem. \cite{chen2005} \cite{consolini}
+Over the years, many different algorithms have been used to solve the formation problem. \cite{chen2005formation} \cite{consolini2008leader}
 These algorithms can categorized as:
 
 \begin{itemize}
-	\item leader-follower strategy \cite{consolini2007} \cite{Das}
-	\item Behavior-based method \cite{balch1998} \cite{lawton}
-	\item virtual structure approach \cite{ren} \cite{Do}
+	\item leader-follower strategy \cite{consolini2008leader} \cite{das2002vision}
+	\item Behavior-based method \cite{balch1998behavior} \cite{lawton2003decentralized}
+	\item virtual structure approach \cite{ren2004decentralized} \cite{do2007nonlinear}
 \end{itemize}
 
 These algorithms are expanded upon in later algorithms to create more novel algorithms, of which a few are:
 
 \begin{itemize}
-	\item virtual space configuration \cite{Wee}
-	\item fuzzy formation control \cite{Ranjbar-Sahraei}
-	\item team-work software control \cite{Kaminka}
+	\item virtual space configuration \cite{wee2013formation}
+	\item fuzzy formation control \cite{ranjbar2012novel}
+	\item team-work software control \cite{kaminka2013use}
 \end{itemize}
 
 Two main problems can be extracted from the original formation problem: communication and stability. 
@@ -34,26 +34,26 @@ For each algorithm, we will review how these problems are solved. \\
 
 First, we will discuss the leader-follow strategy. 
 In the leader-follower approach a robot of the swarm is designed as the leader.
-The leader moves along a predefined trajectory while the other robots, the followers, are to maintain a desired distance and orientation to the leader. \cite{Consolini}
-This can for instance be implemented by equipping the leader robot with a omni-directional camera and advanced sensors, which instructs the followers through local communication. \cite{Das}
+The leader moves along a predefined trajectory while the other robots, the followers, are to maintain a desired distance and orientation to the leader. \cite{consolini2008leader}
+This can for instance be implemented by equipping the leader robot with a omni-directional camera and advanced sensors, which instructs the followers through local communication. \cite{das2002vision}
 The main problem with this algorithms is that it depends heavily on the leader and when something happens to the leader, the algorithm fails. 
 Source disturbance dampening is done by the leader; the leader communicates any disturbance to its followers. \\
 
 The second algorithm we will discuss is the behavior-based method. 
 In the behavior-based method, every robot is programmed with a certain behavior.
 For example collision avoidance, formation keeping, target seeking, etc. 
-The action that is taken is decided by weighing the relative importance of each behavior. \cite{consolini}
-These behaviors can then be used to maintain certain formations like a line, a column, a diamond and a wedge. \cite{Balch}
-The dynamics and stability of this algorithm can be calculated with the Lapyunov function, which can be used to account for many stability issues. \cite{Lawton}
+The action that is taken is decided by weighing the relative importance of each behavior. \cite{consolini2008leader}
+These behaviors can then be used to maintain certain formations like a line, a column, a diamond and a wedge. \cite{balch1998behavior}
+The dynamics and stability of this algorithm can be calculated with the Lapyunov function, which can be used to account for many stability issues. \cite{lawton2003decentralized}
 Decisions are not made locally, but are made within a framework.
 Disturbance source dampening is applied by the different behaviors. \\
 
 The last of the more basic algorithms is the virtual structure approach. 
 The virtual structure approach considers the formation as a single virtual rigid structure so that the behavior of the robotic system is similar to that of a physical object. 
 Desired trajectories are not assigned to each single robot but tot the entire formation as a whole. 
-The behavior of the formation in this case is exactly predictable but a large overhead is generated. \cite{consolini}
-Such a virtual structure is thus decentralized and appopriate distributed control strategies can be made. \cite{Ren}
-The control system can be derived in four sequential stages: \cite{Do}
+The behavior of the formation in this case is exactly predictable but a large overhead is generated. \cite{consolini2008leader}
+Such a virtual structure is thus decentralized and appopriate distributed control strategies can be made. \cite{ren2004decentralized}
+The control system can be derived in four sequential stages: \cite{do2007nonlinear}
 \begin{itemize}
 	\item the dynamics of the virtual structure are defined
 	\item the motion of the virtual structure is translated into the desired motion for eacht robot
@@ -62,19 +62,19 @@ The control system can be derived in four sequential stages: \cite{Do}
 \end{itemize} 
 
 Aside from these three algorithms which have become a standard way for implementing formation control, more novel algorithms have been developed. 
-One of these algorithms is the virtual space configuration algorithm. \cite{Wee}
+One of these algorithms is the virtual space configuration algorithm. \cite{wee2013formation}
 This algorithm uses a leader-follower strategy, but each robot uses virtual space and virtual robots inside that space.
 These virtual robots are then used by each robot to avoid collisions. 
 The main difference is thus that multiple follower robots in clusters can maintain formation without crashing (using only virtual collisions), and they can have scalability of formation. 
 This method is range-based and location-free, but produces a lot of overhead in local communication.\\ 
 
-Another novel algorithm is fuzzy formation control.\cite{Ranjbar-Sahraei}
+Another novel algorithm is fuzzy formation control.\cite{ranjbar2012novel}
 In robotic swarms, optimal control techniques have been found to treat robust stabilization and tracking problems. 
 But in these cases, the exact model of the system has to be known. 
 But this fuzzy formation control technique provides a robust scheme with fuzzy logic approximator to implement effective controls for uncertain dynamic models.
 This way, the exact model does not need to be known, as nonlinearity, external disturbances and model uncertainties are dealt with by fuzzy approximation. \\
 
-Lastly, the last formation control we discuss is the teamwork software control. \cite{Kaminka}
+Lastly, the last formation control we discuss is the teamwork software control. \cite{kaminka2013use}
 This algorithm combines different control methods and tries to integrate this in one formation control approach.
 It is mostly behavior-based, and each of the robots in the swarm has its own behavioral process. 
 But instead of carrying out its behavior directly, each robot communicates with each other to set a 'team flag'. 

@@ -11,7 +11,7 @@ Of course, this can also be extended to path-planning for oil spills, crime vict
 Path-planning algorithms are often combined with some form of particle swarm optimization. \cite{poli2007particle}. \\
 
 There are many algorithms that can be used to solve the path-planning problem. 
-We will point out a few of the most important and recent algorithms. \cite{hoff2010two} \cite{Bhattacharjee} \cite{Jung} \cite{Kala}
+We will point out a few of the most important and recent algorithms. \cite{hoff2010two} \cite{bhattacharjee2011multi} \cite{jung2010multi} \cite{kala2012multi}
 We will discuss these algorithms, pointing out how they work and what problems are solved. \\
 
 The first algorithm is the foraging algorithm. \cite{hoff2010two}
@@ -30,7 +30,7 @@ Conclusive results are produced in the article that the Cardinality-algorithm ou
 These two algorithms both use only local communication and every robot does not detect exact range between other robots.
 So, the two algorithms are bot location-free and range-free. \\
 
-The second algorithm we will discuss is the Artificial Bee Colony algorithm. \cite{Bhattacharjee}
+The second algorithm we will discuss is the Artificial Bee Colony algorithm. \cite{bhattacharjee2011multi}
 Again, this algorithm is inspired by nature, but this time is based on the stoach behavior of foraging in bees.
 In this algorithm, the robots (from this point on referenced as bees), can be divided in three groups:
 \begin{itemize}
@@ -50,7 +50,7 @@ Steps 2, 3, and 4 are continuously repeated, until an optimal path is created fo
 This algorithm does make use of a given environment and the path-planning is done with local sensors. 
 So, this algorithm is location-based and range-based.\\
 
-A third algorithm we will research is the Multihop Communication algorithm. \cite{Jung}
+A third algorithm we will research is the Multihop Communication algorithm. \cite{jung2010multi}
 This algorithm uses robots that communicate via wireless communication, utilizing multihop communications to use in networked robotics. 
 The problem that is defined here is how a swarm of robots can find its way out of a random maze as fast as possible.
 Each robot is equipped with sensors that detec walls and paths, and can save the learned map in its memory and move toward its desired direction. 
@@ -62,7 +62,7 @@ Another problem is that the walls of the maze limit the communication range of t
 This algorithm lets robots keep track of its own location,  and needs the exact range of all the swarm robots to determine the robot furthest away.
 So, this algorithm is location-based and range-based. \\
 
-The last algorithm we will discuss here is Genetic Programming. \cite{Kala}
+The last algorithm we will discuss here is Genetic Programming. \cite{kala2012multi}
 The paper presents a co-evolutionary genetic programming based planning of multiple robots. 
 Like the previous algorithm, the goal of this swarm is to find the optimal path in a random given maze.
 Each robot has its own optimization process that is based on the principles of grammatical evolution. 
