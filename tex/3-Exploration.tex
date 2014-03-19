@@ -1,14 +1,15 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
-Exploration is a technique in which a swarm of robots try to fully explore an environment, which is one of the fundamental problems faced in mobile robotics. 
+Exploration is a technique in which a swarm of robots tries to fully explore an environment, which is one of the fundamental problems faced in mobile robotics. 
 The main goal is to minimize the overall exploration time while still exploring the whole environment. 
 The main problem faced when trying to achieve this goal is finding appropriate target points for each individual robot so that they simultaneously explore different regions of the environment. \cite{burgard2005coordinated} \\
-The exploration technique is found in many robotic swarms techniques, for example in \emph{path-finding}, \emph{collective transport} and \emph{surveillance}.
-Practical applications that apply the exploration technique are for example rescue missions. \cite{Naghsh2008,Penders2011}
-In this particular paper, a robotic swarm applying the exploration technique is used to assist navigation for firefighters, used in situations in which their vision is blocked by smoke and obstacles. 
+Exploration is found in many robotic swarms problems, for example in \emph{path-finding}, \emph{collective transport} and \emph{surveillance}.
+Practical applications that use exploration are for example rescue missions. \cite{Naghsh2008,Penders2011}
+In this particular paper, a robotic swarm applying exploration is used to assist navigation for firefighters.
+It is used in situations in which their vision is blocked by smoke and obstacles. 
 A last example of an application is cleaning. \cite{wagner2008cooperative}
-Here, the exploration technique is used to clean a surface with cleaning robots, that communicate in a swarm, as fast and as efficient as possible. 
-Of course, exploration techniques are used in many more different robotic swarm applications, and is the building block for many different other techniques. 
+Here, exploration is used to clean a surface with cleaning robots as fast and as efficient as possible. 
+Exploration is used in many more different robotic swarm applications and is a building block for many other problems.
 
 %OLD
 %Exploring an environment is one of the fundamental problems faced in mobile robotics. 
@@ -17,7 +18,74 @@ Of course, exploration techniques are used in many more different robotic swarm 
 
 %!TEX root = ../../main.tex
 
-\subsubsection{Exploration}
+\subsection{Algorithms}
+
+	\subsubsection{Frontier-based}
+	Frontier-based exploration is inspired by the question "Given what you know about the world, where should you move to gain as much new information as possible?".
+	Frontiers are defined as areas on the boundary between open space and unexplored space.
+	When a robot moves to a frontier, it moves to unexplored space and therefore adds new information to its map.
+	By repeating this step, the robots constantly increases its knowledge of the world. \cite{yamauchi1998frontier}.\\
+	\\
+	In the orignal implementation by Yamauchi an evidence grid is used in which the occupancy probability is stored for each cell, so it is purely \emph{location-based}.
+	All cells are initiated at a certain prior value, for example $0.5$.
+	In the further process they are divided in three classes according to their value: open, unkown or occupied.
+	Every open cell adjacent to an unkown cell is labeled as a frontier edge cell.
+	Every group of frontier cells above a minimum size is considered a frontier.
+	Once these frontiers have been deteced, the robot navigates to the nearest univsited frontier.
+	While travelling already found obstructions can be avoided.
+	When the robot reaches its destination it does a 360 degree sensor sweep and adds the new information to the evidence grid.
+	When the robot doesn't make progress for a certain amount of time it will conclude its current location is inaccessible and update its evidence grid.
+	Whenever a robot arrives at a new frontier it creates a local grid, which is shared with all other robots.\\
+	\\
+	One limitation of this approach are that since navigation is independent, robots may waste time navigation to the same frontier.
+	This will either cause an avoidance of collision or the robots will block each other.
+	One of the robots will then mark its own spot as 
+
+
+
+	% http://www4.cs.umanitoba.ca/~jacky/Robotics/Papers/frontierExploration.pdf
+
+	\subsubsection{Frontier-based with bidding}
+	This implementation is is an extended form of the frontier-based algorithm as described above.
+	It is extended with a bidding algorithm which solves the problem of robots heading for the same frontier or robots 
+	Furthermore it only range-based which makes it scalable. as described by Sheng all robots have limited communcation range and full knowledge of their location.
+	Therefore this approach is \emph{location-based} and \emph{range-based}.
+	All robots start from initital positions which are very close to each other.
+	The frontier-base
+	The robots can be either sensing, mapping or bidding.
+
+
+
+
+
+	\cite{sheng2006distributed}
+	% http://ac.els-cdn.com/S092188900600114X/1-s2.0-S092188900600114X-main.pdf?_tid=33bf4874-ab01-11e3-a577-00000aacb35f&acdnat=1394750920_0424c8c4f3098477e3985d83f4f339f2
+
+	\subsubsection{Market-place}
+	% http://repository.cmu.edu/cgi/viewcontent.cgi?article=1174&context=robotics&sei-redir=1&referer=http%3A%2F%2Fscholar.google.nl%2Fscholar%3Fq%3Dmulti-robot%2Bexploration%26btnG%3D%26hl%3Dnl%26as_sdt%3D0%252C5#search=%22multi-robot%20exploration%22
+	\cite{zlot2002multi}
+
+	\subsubsection{Sweeping}
+
+\begin{table}[H]
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Overview of Common Localization Algorithms}
+	\label{table_alg_exploration}
+	\centering
+
+    \begin{tabular}{|l|l|l|l|l|l|}
+	    \hline
+	    \bfseries Algorithm & \bfseries Range-type & \bfseries Location-type & \bfseries Performance & \bfseries Scalability\\
+	    \hline
+	    \bfseries Frontier-based & - & Location-based & Medium & Low\\
+	    \hline
+	    \bfseries Bidding method & Range-based & Location-based & High & High\\
+	    \hline
+    \end{tabular}
+\end{table}
+
+
+
 
 Coordinated multi-robot exploration
 % http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1435481
@@ -31,7 +99,8 @@ Coordination for Multi-Robot Exploration and Mapping
 % http://isl.ecst.csuchico.edu/DOCS/Papers/simmons2000coordination4MultirobotExploration.pdf
 \cite{simmons2000coordination}
 
-Multi-robot exploration Controlled by a Market Economy
+Multi-robot exploration Controlled by a Market Economy\\
+Market-place algorithm, seems good, ++
 % http://repository.cmu.edu/cgi/viewcontent.cgi?article=1174&context=robotics&sei-redir=1&referer=http%3A%2F%2Fscholar.google.nl%2Fscholar%3Fq%3Dmulti-robot%2Bexploration%26btnG%3D%26hl%3Dnl%26as_sdt%3D0%252C5#search=%22multi-robot%20exploration%22
 \cite{zlot2002multi}
 
@@ -47,10 +116,14 @@ Multi-robot collaboration for robust exploration
 \cite{rekleitis2001multi}
 % http://download.springer.com/static/pdf/926/art%253A10.1023%252FA%253A1016636024246.pdf?auth66=1394923400_27944ba6f349eb21a47a2c60f843ab9f&ext=.pdf
 
-Distributed multi-robot coordination in area exploration
+Distributed multi-robot coordination in area exploration +++++
 \cite{sheng2006distributed}
 % http://ac.els-cdn.com/S092188900600114X/1-s2.0-S092188900600114X-main.pdf?_tid=33bf4874-ab01-11e3-a577-00000aacb35f&acdnat=1394750920_0424c8c4f3098477e3985d83f4f339f2
 
 Coverage for robotics–A survey of recent results
 
 multi-robot coverage??
+
+\subsubsection{Problems}
+
+\subsection{Remaining problems}
