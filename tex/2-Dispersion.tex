@@ -1,14 +1,13 @@
 %!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
-We consider dispersion as one of the key sub-problems needed to be solved in Robotic Swarms.\cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} Dispersion can be compared to the blanket coverage problem, which was defined by in one of the first papers written on the topic of swarm robots: \emph{Command Control for Many-Robot Systems}.\cite{gage1992command} The objective of blanket coverage is defined as ``achieving a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.''\cite{gage1992command} The difference between dispersion and formation is often confused. While formation is trying to maintain explicitly specified spacing relationships, dispersion tries to find the best ``formation'' for the current environment. 
+We consider dispersion as one of the key problems needed to be solved in Robotic Swarms.\cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} Dispersion can be compared to the blanket coverage problem, which is defined by in one of the first papers written on the topic of swarm robots: \emph{Command Control for Many-Robot Systems}.\cite{gage1992command} The objective of blanket coverage is defined as ``achieving a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.''\cite{gage1992command} The difference between dispersion and formation is often confused. While formation is trying to maintain explicitly specified spacing relationships, dispersion tries to find the best ``formation'' for the current environment. \\
 
-\subsection{Applications}
-Due to the fact that dispersion is one of the fundamental sub-problems in robotic swarms, it has a great number of applications.
+Due to the fact that dispersion is one of the fundamental problems in robotic swarms, it has a great number of applications.
 Some of these applications include, but are not limited to exploration, surveillance, military response, disaster response and planetary exploration.\cite{ludwig2006robotic,Penders2011,mclurkin2007distributed} 
 
 \subsection{Algorithms}
-In this section we will discuss a few categories of approaches which are used to solve the dispersion problem.
-Starting from the simpler algorithms wich are based on the brute-force approach such as random-walk and wall-following, we show the problems that the dispersion technique has faced in the past and how the newer algorithms have solved these problems.
-Further we will motivate as to why the algorithms were put into a specific category and we will discuss the scalability and performance for each type of algorithm.
+In this section we discuss a few categories of approaches which are used to solve the dispersion problem.
+Starting from the simpler algorithms wich are based on the brute-force approach such as random-walk and wall-following, we show the problems that the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
+Further we motivate as to why the algorithms are put into a specific category and we discuss the scalability and performance for each type of algorithm.
 For more information on the operation of the mentioned algorithms, please consult the references.
 
   \begin{table}[H]
@@ -43,7 +42,7 @@ This causes an extereme amount of collisions and thus with large amounts of robo
 
 The only drawback with the \emph{Random-Walk} algorithm is that it does not guarantee uniform dispersion.
 Of course as with many other brute-force algorithms, the algorithm is also not optimal, but due to its simplicity it is often recommended to be used.
-In situation in which low-energy consumption has a high priority, the usage of this algorithm is discouraged. Due to its non-optimalism it will use a lot of energy when trying to disperse in a uniform manner.
+In situation in which low-energy consumption has a high priority, the usage of this algorithm is discouraged. Due to its non-optimalism it uses a lot of energy when trying to disperse in a uniform manner.
 
 \subsubsection{Graph Theory Approach}
 The algorithms which are inspired by graph theory can be divided into two sub-categories: algorithms inspired by tree search algorithms and algorithms inspired by connectivity in graphs.\\
@@ -54,7 +53,7 @@ The implementation of these algorithms are mainly considered as \emph{location-b
 The \emph{BFLF} algorithm, requires the robots to travel less compared to the \emph{DFLF} algortihm. The DFLF algorithm is furthermore also more computationally expensive than the DFLF algorithm.
 Further, there are no big differences during the execution of both algorithms, and thus BFLF has the preference.
 Due to the high amount of computation which needs to be done centrally, the scalibility of this type of algorithms are rather low.
-Every robot has to be taken care of by one or multiple robots. By centralizing this computation, there is a greater risk of something going wrong compared to decentralized control.\\
+Every robot has to be taken care of by one or multiple robots. By centralizing this computation, there is a greater risk of failure due to instability compared to decentralized control.\\
 
 The problems that these types of algorithms face are not theoretical, but are coming forth from the category that they are in. They are all location-based. Often it is impossible to know the exact location, even if it's relative, but this a part of the Localization problem, which has to be solved.
 

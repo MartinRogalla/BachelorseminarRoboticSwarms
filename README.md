@@ -32,5 +32,5 @@ Main Tex File:
     
 Bibliography Files:
 
-    Can be found in the ``bib'' directory
+    Can be found here: ``./bib/Bibliography.bib'' 
 
