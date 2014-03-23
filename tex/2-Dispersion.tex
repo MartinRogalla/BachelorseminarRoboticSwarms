@@ -34,7 +34,16 @@ One of the algorithms regarding connectivity in graphs is the clique-intensity a
 The clique-intensity algorithm is range-free since it simply tries to detect other surrounding swarm-bots within the limited connection range and does not have the need to measure distances. The performance and scalability of the algortihm is very high, due to decentralized control.
 The clique-intensity algorithm faces problems due to the fact that there are high amounts of noise in the wireless intensity signals when used in real-world applications. 
 
-\subsubsection{Potential Field Approach}
+\subsubsection{Artificial Potential Fields Approach}
+Artificial Potential Fields(APF) algorithms use fields to repel robots away from each other and attract them to their goal.\cite{khatib1986real}
+There are many differences between implementations of these algorithms, but all implementations use relative locations, both measuring and bearing. Therefore the algorithms which use this approach are location-free.\cite{pakanati2010swarm}
+The algorithms are well-scalable due to their relatively low complexity.
+The performance of the algorithms is rated high, as the robots are uniformly dispersed.
+Some minor problems with this type of algorithm exist.
+Minor changes in sensing positions from other robots can cause ripple effects throughout the network.
+This can however be solved by incorporating \emph{dead-zones}.
+These dead-zones allow very minor changes in location, without the immediate reaction of the network and thus the ripple effects are reduced.\cite{pakanati2010swarm}
+
 
 \subsubsection{Inverse-Vector Approach}
 Some examples of the Inverse-Vector approach are the seek-open algorithm\cite{morlok2007dispersing}, the Fiducial algorithm\cite{morlok2007dispersing} and the Uniform Directed Dispersion(UDD) algorithm\cite{mclurkin2007distributed}.
@@ -54,12 +63,13 @@ It is important to stress that the algorithms should perform periodic checks to 
     \hline
     \bfseries Random Walk & Brute-Force & Range-Based & Location-Free & Medium & High\\\hline
     \bfseries Follow Wall & Brute-Force & Range-Based & Location-Free & Low & Low\\\hline
+    \bfseries DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
+    \bfseries BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
+    \bfseries Clique-Intensity & Graph-Theory & Range-Free & Location-Free & Medium & High\\\hline
+    \bfseries APF & Potential-Fields & Range-Based & Location-Free & Medium & High\\\hline
     \bfseries Directed Dispersion & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
     \bfseries Seek Open & Inverse-Vector & Range-Based & Location-Free & Low & Medium\\\hline
     \bfseries Fiducial & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
-    \bfseries DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
-    \bfseries BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
-    \bfseries Clique-Intensity & Graph-Theory & Range-Based & Location-Free & Medium & High\\\hline
     \end{tabular}
   \caption{Overview of Common Dispersion Algorithms}
   \end{table}
