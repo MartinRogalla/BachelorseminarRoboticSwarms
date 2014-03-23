@@ -66,7 +66,7 @@ It is important to stress that the algorithms should perform periodic checks to 
     \bfseries DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
     \bfseries BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
     \bfseries Clique-Intensity & Graph-Theory & Range-Free & Location-Free & Medium & High\\\hline
-    \bfseries APF & Potential-Fields & Range-Based & Location-Free & Medium & High\\\hline
+    \bfseries APF & Potential-Fields & Range-Based & Location-Free & High & High\\\hline
     \bfseries Directed Dispersion & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
     \bfseries Seek Open & Inverse-Vector & Range-Based & Location-Free & Low & Medium\\\hline
     \bfseries Fiducial & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
@@ -75,9 +75,7 @@ It is important to stress that the algorithms should perform periodic checks to 
   \end{table}
 
 \subsection{Discussion}
-The remaining problems in dispersion algorithms can be generally categorized into range-based problems and location-based problems.
-All the algorithms that are in these categories are facing similar problems.
-The focus needed for the range-based approach needs to be on the uniformity of the dispersion. So how can we guarantee uniformity when dispersing the robots.
-In the location-based approach category focus needs to be put on the applicability for real-world applications.
-There are minor to no problems in theory, however to actually bring the relative positioning into a grid is quite difficult.
-Research in this area should be focussed on creating high-accuracy relative positioning grids.
+There are many problems with the implementation of the dispersion algorithms. Many problems have been solved, but there are also some remaining problems left to be solved. In this section we discuss both topics.
+Some problems concerning small fluctuations in relative position data can have a major effect in range-based approaches such as the Artifical Potential-Field approach and the Inverse-Vector approach. This has been solved in \emph{Swarm Dispersion via Potential Fields, Leader Election, and Counting Hops} with the introduction of \emph{dead-zones}. These dead-zones are limited error ranges, which allow for small location changes, without affecting the whole robotic swarm.
+
+In location-based algorithms, there are problems with the building of the exact overview of the environment. Very often applications do not allow for this, due to for example dynamic changes in the environment or a lack of observability. Research in this area should be focussed on high-accuracy real-time observation tools in combination with range-based algorithms which prevent obstacle-collision. 
