@@ -6,8 +6,8 @@ Some of these applications include, but are not limited to exploration, surveill
 
 \subsection{Algorithms}
 In this section we discuss a few categories of approaches which are used to solve the dispersion problem.
-Starting from the simpler algorithms wich are based on the brute-force approach such as random-walk and wall-following, we show the problems that the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
-Further we motivate as to why the algorithms are put into a specific category and we discuss the scalability and performance for each type of algorithm.
+Starting from the simpler algorithms which are based on the approach which includes randomness such as random-walk and wall-following, we show the problems that the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
+Further we motivate as to why the algorithms are put into a specific category and discuss the scalability and performance for each type of algorithm.
 For more information on the operation of the mentioned algorithms, please consult the references.
 
   \begin{table}[H]
@@ -30,19 +30,22 @@ For more information on the operation of the mentioned algorithms, please consul
     \end{tabular}
   \end{table}
 
-\subsubsection{Brute-Force Approach}
-Under the brute-force approach we categorize algorithms such as \emph{Random-Walk} and \emph{Follow-Wall} algorithms.\cite{morlok2007dispersing} 
-The most notable being the \emph{Random-Walk} algorithm due to its simplicity and efficiency. 
-The base of these algorithms are location-free, but often include collision detection which makes them range-based.
-The scalibility of the algorithms in this category differs greatly.
-Random-walk for instance is known as one of the most scalable algorithms, due to its independence of other robots in the swarm.
-On the other hand the performance of the follow-wall algorithm deteriorates greatly when increasing the scale. 
-This due to the fact that they can not easily distinguish between the wall and other objects and thus creates the possiblity for the swarm-bots to circle around each other.
-This causes an extereme amount of collisions and thus with large amounts of robots, making the algorithm non-scalable and many times not fit for the situation.
+\subsubsection{Randomness Approach}
+%TODO: Find a few more references talking about random walk and follow-wall concerning usage in Robotic Swarms
+The algorithms in this category try to solve the dispersion problem with an approach which relies on randomness to perform the dispersion.
+All of these algorithms are mainly location-free, but often include collision detection which makes them range-based.\\
+The most pre-eminent algorithm in this category is the \emph{Random-Walk} algorithm due to its simplistic nature and efficiency. 
+The \emph{Random-Walk} algorithm changes the robot's orientation randomly and moves it forward until an obstacle is detected. The algorithm then repeats the steps indefinetely.\cite{morlok2007dispersing}
+The algorithm is very scalable, due to the simple set of steps that have to be performed and due to its non-interdependence of other robots in the swarm.
+A minor drawback with the \emph{Random-Walk} algorithm is that it does not guarantee uniform dispersion.
+Due to the reliance on randomness, the algorithm is not optimal. If low-energy consumption has a high priority in the system, we do not recommend the usage of this algorithm.
+In all other situations which allow its usage the \emph{Random-Walk} algorithm is greatly recommended due to its satisfying performance and highly rated scalability.\\
+Another algorithm which is also used for dispersion purposes is the \emph{Follow-Wall} algorithm.\cite{morlok2007dispersing}
+Originally the algorithm is not random, but follows an exact set of rules depending on the environment. 
+The algorithm is created for a non-dynamic environment and not for usage in robotic swarms.
+The robot is unable to see the difference between robots and other obstacles. This creates the possibility for robots to constantly follow each other, while thinking that they're actually moving around a wall or other static obstacly.
+The performance rating is low due to the meager amount of randomness and its unability to gurantee the uniformity of the dispersion. The scalability is also rated low, due to the performance deterioration when increasing the scale.\\
 
-The only drawback with the \emph{Random-Walk} algorithm is that it does not guarantee uniform dispersion.
-Of course as with many other brute-force algorithms, the algorithm is also not optimal, but due to its simplicity it is often recommended to be used.
-In situation in which low-energy consumption has a high priority, the usage of this algorithm is discouraged. Due to its non-optimalism it uses a lot of energy when trying to disperse in a uniform manner.
 
 \subsubsection{Graph Theory Approach}
 The algorithms which are inspired by graph theory can be divided into two sub-categories: algorithms inspired by tree search algorithms and algorithms inspired by connectivity in graphs.\\
@@ -75,7 +78,7 @@ The seek-open and UDD algorithm use other distance measures mostly using ultraso
 It is important to stress that the algorithms should perform periodic checks to detect dynamic changes in the environment, such as other moving robots.
 
 
-\subsubsection{Remaining-Problems}
+\subsection{Discussion}
 The remaining problems in dispersion algorithms can be generally categorized into range-based problems and location-based problems.
 All the algorithms that are in these categories are facing similar problems.
 The focus needed for the range-based approach needs to be on the uniformity of the dispersion. So how can we guarantee uniformity when dispersing the robots.
