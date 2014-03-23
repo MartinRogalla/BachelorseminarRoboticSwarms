@@ -10,7 +10,7 @@ For more information on the operation of the mentioned algorithms, please consul
 \subsubsection{Randomness Approach}
 %TODO: Find a few more references talking about random walk and follow-wall concerning usage in Robotic Swarms
 The algorithms in this category solve the dispersion problem with an approach which relies on randomness to perform the dispersion.
-All of these algorithms are mainly location-free, but often include collision detection which makes them range-based.\\
+All of these algorithms are mainly location-free and primarily do not measure distances making them also range-free.\\
 The most pre-eminent algorithm in this category is the \emph{Random-Walk} algorithm due to its simplistic nature and efficiency.\cite{morlok2007dispersing}
 The \emph{Random-Walk} algorithm changes the robot's orientation randomly and moves it forward until an obstacle is detected. The algorithm then repeats the steps indefinetely.
 The algorithm is very scalable, due to the simple set of steps that have to be performed and due to its non-interdependence of other robots in the swarm.
@@ -61,8 +61,8 @@ It is important to stress that the algorithms should perform periodic checks to 
     \hline
     \bfseries Algorithm & \bfseries Approach & \bfseries Range & \bfseries Location & \bfseries Performance & \bfseries Scalability\\
     \hline
-    \bfseries Random Walk & Brute-Force & Range-Based & Location-Free & Medium & High\\\hline
-    \bfseries Follow Wall & Brute-Force & Range-Based & Location-Free & Low & Low\\\hline
+    \bfseries Random Walk & Brute-Force & Range-Free & Location-Free & Medium & High\\\hline
+    \bfseries Follow Wall & Brute-Force & Range-Free & Location-Free & Low & Low\\\hline
     \bfseries DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
     \bfseries BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
     \bfseries Clique-Intensity & Graph-Theory & Range-Free & Location-Free & Medium & High\\\hline
