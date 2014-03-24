@@ -2,66 +2,71 @@
 
 Path-planning is the problem of a robotic swarm for each robot to find the optimal collistion-free path from the start location to the target location. \cite{qin2004path}.
 Another term for path-planning is path-finding. 
-This is a problem found in many robotic swarms applications.
-This is because when robots move to a location in any distributed algorithm, this should be done as fast as possible. 
-Path finding can be used in multiple real-life applications.
-These applications include trying to find the optimal path to food sources and bringing food back to the base, which is often called foraging \cite{hoff2010two}.
+Path-planning is a problem found in many robotic swarms applications.
+An example is trying to find the optimal path to food sources and bringing food back to the base, which is often called foraging \cite{hoff2010two}.
 Another application is finding an optimal path to survivors from a disaster, for search-and-rescue operations.
 Of course, this can also be extended to path-planning for oil spills, crime victims or other targets.\cite{pugh2007inspiring} 
 Path-planning algorithms are often combined with some form of particle swarm optimization. \cite{poli2007particle}. \\
 
+\subsection{Algorithms}
+
 There are many algorithms that can be used to solve the path-planning problem. 
-We will point out a few of the most important and recent algorithms. \cite{hoff2010two} \cite{bhattacharjee2011multi} \cite{jung2010multi} \cite{kala2012multi}
-We will discuss these algorithms, pointing out how they work and what problems are solved. \\
+We point out a few of the most important and recent algorithms. \cite{hoff2010two} \cite{bhattacharjee2011multi} \cite{jung2010multi} \cite{kala2012multi}
+We discuss these algorithms, pointing out how they work and what problems are solved. \\
 
-The first algorithm is the foraging algorithm. \cite{hoff2010two}
-Foraging algorithms are based on the foraging behavior of ants to find food sources. 
-Ants can leave chemical pheromones behind for other ants, which they use to decide which way they go. 
-Two different algorithms can be used for this: the Virtual Pheromone algorithm and the Cardinality algorithm.
-The Virtual Pheromone algorithm uses two different types marks instead of many, to keep the robots low-level. 
-For the same reason, the marks are made virtual by direct local communication between robots in the swarm.
-The core of the algorithm is that some robots will stop their search for the target food source, and become 'pheromone robots', also known as beacons.
-These beacons send out marks as floating point numbersfor other foraging swarm robots, telling them where or where not to move. \\
-The second foraging algorithm is the Cardinality algorithm. 
-This works similar to the Virtual Pheromone algorithm, as in that walker robots can become beacons. 
-The difference is that the beacons send out integer values, indicating how many other beacons it would hear, including the nest beacon. 
-Every integer value of beacon can then be interpreted as the number of beacons between that beacon and the nest. \\
-Conclusive results are produced in the article that the Cardinality-algorithm outperforms the Virtual Pheromone algorithm, proving that the ant pheromone algorithm can be improved.
-These two algorithms both use only local communication and every robot does not detect exact range between other robots.
-So, the two algorithms are bot location-free and range-free. \\
+%The first algorithm is the foraging algorithm. \cite{hoff2010two}
+%Foraging algorithms are based on the foraging behavior of ants to find food sources. 
+%Ants can leave chemical pheromones behind for other ants, which they use to decide which way they go. 
+%Two different algorithms can be used for this: the Virtual Pheromone algorithm and the Cardinality algorithm.
+%The Virtual Pheromone algorithm uses two different types marks instead of many, to keep the robots low-level. 
+%For the same reason, the marks are made virtual by direct local communication between robots in the swarm.
+%The core of the algorithm is that some robots will stop their search for the target food source, and become 'pheromone robots', also known as beacons.
+%These beacons send out marks as floating point numbersfor other foraging swarm robots, telling them where or where not to move. \\
+%The second foraging algorithm is the Cardinality algorithm. 
+%This works similar to the Virtual Pheromone algorithm, as in that walker robots can become beacons. 
+%The difference is that the beacons send out integer values, indicating how many other beacons it would hear, including the nest beacon. 
+%Every integer value of beacon can then be interpreted as the number of beacons between that beacon and the nest. \\
+%Conclusive results are produced in the article that the Cardinality-algorithm outperforms the Virtual Pheromone algorithm, proving that the ant pheromone algorithm can be improved.
+%These two algorithms both use only local communication and every robot does not detect exact range between other robots.
+%So, the two algorithms are bot location-free and range-free. \\
 
-The second algorithm we will discuss is the Artificial Bee Colony algorithm. \cite{bhattacharjee2011multi}
-Again, this algorithm is inspired by nature, but this time is based on the stoach behavior of foraging in bees.
-In this algorithm, the robots (from this point on referenced as bees), can be divided in three groups:
-\begin{itemize}
-	\item A bee waiting on a dance area for making decision to choose a food source is called an onlooker.
-	\item A bee going to the food source visited by it previously is named as employed bee.
-	\item A bee carrying out random search is called a scout.
-\end{itemize}
-The algorithm then consists of four phases:
-\begin{enumerate}
-	\item The behaviors are randomly distributed among all the robots (according to a certain distribution).
-	\item The employed bees move to find a new or better food source, if they can find it based on visual information. 
-	\item The onlooker bees then calculate the best places to gather food depending on the input from the employed bees.
-	\item Finally, if there are food sources of which the path to it can not be improved and have reached a limit, they are abandoned and replaced by scouts.
-\end{enumerate}
-
-Steps 2, 3, and 4 are continuously repeated, until an optimal path is created for all the employed bees.
+\subsection{Artificial Bee Colony}
+The first algorithm we will discuss is the Artificial Bee Colony algorithm. \cite{bhattacharjee2011multi}
+This algorithm is inspired by nature: it is based on the stochatic behavior of foraging in bees.
+In this algorithm, the robots (from this point on referenced as bees), can be divided in three groups: onlooker, employed and scout.
+Onlooker bees oversee the other bees in the swarm and determine the best gathering spots from given information. 
+Emplyed bes gather food from sources, and scouts explore the environment searching for food sources.
 This algorithm does make use of a given environment and the path-planning is done with local sensors. 
 So, this algorithm is location-based and range-based.\\
 
-A third algorithm we will research is the Multihop Communication algorithm. \cite{jung2010multi}
-This algorithm uses robots that communicate via wireless communication, utilizing multihop communications to use in networked robotics. 
-The problem that is defined here is how a swarm of robots can find its way out of a random maze as fast as possible.
-Each robot is equipped with sensors that detec walls and paths, and can save the learned map in its memory and move toward its desired direction. 
-Each robot then, while exploring the maze, update his learned map with the newly explored territory, after which he relays this to the next robot in the multihop routing sequence. 
-This way, every robot eventually shares the same map and can extrapolate the fastest path out of the maze. 
-A major drawback of multihop communications is the multi-hop delay which is generated. 
-This delay is decreased for the network by letting each robot send its map to a robot furthest away. 
-Another problem is that the walls of the maze limit the communication range of the wireless network.
-This algorithm lets robots keep track of its own location, and needs the exact range of all the swarm robots to determine the robot furthest away.
-So, this algorithm is location-based and range-based. \\
+%\begin{itemize}
+%	\item A bee waiting on a dance area for making decision to choose a food source is called an onlooker.
+%	\item A bee going to the food source visited by it previously is named as employed bee.
+%	\item A bee carrying out random search is called a scout.
+%\end{itemize}
+%The algorithm then consists of four phases:
+%\begin{enumerate}
+%	\item The behaviors are randomly distributed among all the robots (according to a certain distribution).
+%	\item The employed bees move to find a new or better food source, if they can find it based on visual information. 
+%	\item The onlooker bees then calculate the best places to gather food depending on the input from the employed bees.
+%	\item Finally, if there are food sources of which the path to it can not be improved and have reached a limit, they are abandoned and replaced by scouts.
+%\end{enumerate}
+%
+%Steps 2, 3, and 4 are continuously repeated, until an optimal path is created for all the employed bees.
 
+%A third algorithm we will research is the Multihop Communication algorithm. \cite{jung2010multi}
+%This algorithm uses robots that communicate via wireless communication, utilizing multihop communications to use in networked robotics. 
+%The problem that is defined here is how a swarm of robots can find its way out of a random maze as fast as possible.
+%Each robot is equipped with sensors that detec walls and paths, and can save the learned map in its memory and move toward its desired direction. 
+%Each robot then, while exploring the maze, update his learned map with the newly explored territory, after which he relays this to the next robot in the multihop routing sequence. 
+%This way, every robot eventually shares the same map and can extrapolate the fastest path out of the maze. 
+%A major drawback of multihop communications is the multi-hop delay which is generated. 
+%This delay is decreased for the network by letting each robot send its map to a robot furthest away. 
+%Another problem is that the walls of the maze limit the communication range of the wireless network.
+%This algorithm lets robots keep track of its own location, and needs the exact range of all the swarm robots to determine the robot furthest away.
+%So, this algorithm is location-based and range-based. \\
+
+\subsection{Genetic Programming}
 The last algorithm we will discuss here is Genetic Programming. \cite{kala2012multi}
 The paper presents a co-evolutionary genetic programming based planning of multiple robots. 
 Like the previous algorithm, the goal of this swarm is to find the optimal path in a random given maze.
@@ -74,7 +79,16 @@ A major problem is the speed of the communication.
 Every robot does calculate its own position in the maze through other robots, and calculates the range between robots for collisions.
 So, this algorithm is location-based and range-based. \\
 
-We have summarized these algorithms in the following table.
+
+\subsection{Discussion}
+The Genetic Programming has a lot of overhead, because the whole map of the environment needs to be documented. 
+This results in a higher accuracy for finding the optimal path, even in very complex environments. 
+The downside for this is a lower scalability, because more overhead means slower communication.
+So we can see that the Artifical Bee Colony is more scalable than Genetic Programming.
+This makes sense, as the algorithm used by bees is used in settings where hundreds of bees work together. 
+Future discussion is how this scalability for these algorithms can be improved, while still keeping the accuracy and performance. \\
+    
+We summarize these algorithms in the following table:
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
@@ -85,17 +99,19 @@ We have summarized these algorithms in the following table.
     \hline
     \bfseries Algorithm & \bfseries Range &\bfseries Location &  \bfseries Performance & \bfseries Scalability\\
     \hline
-     Virtual Pheromone & Range-free & Location-free & Medium & High\\\hline
-     Cardinality & Range-free & Location-free& High & High\\\hline
+     %Virtual Pheromone & Range-free & Location-free & Medium & High\\\hline
+     %Cardinality & Range-free & Location-free& High & High\\\hline
      Artifical Bee Colony & Range-based & Location-based & Medium & Medium\\\hline
-     Multihop Communication & Range-based & Location-based & High & Low\\\hline
+     %Multihop Communication & Range-based & Location-based & High & Low\\\hline
      Genetic Programming & Range-based & Location-based & High & Low\\\hline
     \end{tabular}
   \end{table}
 
-As can be concluded from the table, we can see that the nature-inspired algorithms are more scalable then the other algorithms
-This makes sense, as the algorithms used by ants and bees are used in settings where hundreds of insects work together. 
-But, as stated in the descriptions, algorithms like Multihop Communication and Genetic Programming try to map the whole environment. 
-This results in a higher accuracy for finding the optimal path, even in very complex environments. 
-The downside for this is a lower scalability. 
-Future discussion is how this scalability for these algorithms can be made better, while still keeping the accuracy and performance. \\
+  
+
+%As can be concluded from the table, we can see that the nature-inspired algorithms are more scalable then the other algorithms
+%This makes sense, as the algorithms used by ants and bees are used in settings where hundreds of insects work together. 
+%But, as stated in the descriptions, algorithms like Multihop Communication and Genetic Programming try to map the whole environment. 
+%This results in a higher accuracy for finding the optimal path, even in very complex environments. 
+%The downside for this is a lower scalability. 
+%Future discussion is how this scalability for these algorithms can be made better, while still keeping the accuracy and performance. \\
