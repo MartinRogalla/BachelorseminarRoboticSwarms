@@ -4,10 +4,10 @@ Source localization with robotic swarms is an area which has been receiving a lo
 The main goal is to design an algorithm that effectively allows a swarm of robots to explore an unknown area and find (multiple) source(s).
 Source localization can be used for lots of real-world applications.
 One of these applications is chemical plume tracing, in which localization is used to detect clouds of high density chemicals. \cite{zarzhitsky2005distributed}
-Another example which looks a lot like chemical plume tracing, is radiation source search. \cite{bashyal2008human} 
+Another example similar to chemical plume tracing is radiation source search. \cite{bashyal2008human} 
 The difference is that in this case the source of leaking radiation is searched for, and not only for high density clouds. 
 A third example is searching for fire, used to assist fire-fighters in their every-day work. \cite{marjovi2009multi}
-As can be seen, this technique can be used to look for all kinds of emission sources, if the robots have the right sensors installed. \cite{cui2004swarm}
+As can be seen, source localization can be used to look for all kinds of emission sources, if the robots have the right sensors installed. \cite{cui2004swarm}
 Although many practical applications can be found, a large amount of the work done in this field is purely theoretical.
 This is due to the fact that the price of these individual robots is still rather high and thus it is expensive to produce a swarm.
 
@@ -16,74 +16,96 @@ This is due to the fact that the price of these individual robots is still rathe
 %The main techniques underlying these applications include: control, communication, path-planning and distribution.\cite{Li2012}
 
 \subsection{Algorithms}
-Source localization basically exists of two parts: exploring and localization.
-In some approaches the robots are randomly distributed over the area, but to do this in real-life applications, some form of exploration or dispersion should be used.
-These approaches can be found in section \ref{sec:Exploration} and \ref{sec:Dispersion}.
+%Source localization basically exists of two parts: exploring and localization.
+%In some approaches the robots are randomly distributed over the area, but to do this in real-life applications, some form of exploration or dispersion should be used.
+%These approaches can be found in section \ref{sec:Exploration} and \ref{sec:Dispersion}.
+In general the algorithms for localizing (multiple) source(s) can be roughly divided in two categories: hill climbing algorithms and biologically inspired algorithms.
+In this chapter we discuss some examples of algorithms belonging to each category and compare them to each other.
+When comparing the \emph{performance} of the algorithms we mean the distance to the source(s) after a certain amount of time. When comparing the \emph{scalability} of the algorithms we mean the scalability of the number of robots.
 
-	\subsubsection{Gradient-based}
+	\subsubsection{Hill Climbing Algorithms}
+		One of the first attempts to localize a source is implemented with a simple gradient ascent algorithm. This algorithm uses a mobile robot with an electric nose which follows a gas gradient to the source. \cite{rozas1991artificial}
+		By using multiple robots executing this kind of algorithm the source can be found even faster.
+		If the robots cooperate by communicating the concentration they currently sense and combine that with the range and direction they receive it from, a wider and more precise gradient can be derived. \cite{sandini1993gradient}\\
+		\\
 		% http://ac.els-cdn.com/S1574119208000518/1-s2.0-S1574119208000518-main.pdf?_tid=fcc58570-aaed-11e3-bbdc-00000aacb350&acdnat=1394742557_d3fd3d52038328cd5bea315cff88955e
-		In gradient-based algorithms each robots uses a received signal strength indicator to predict the location of the source with a certain probability, adds this to his map and reports back to a central base.
-		This approach is therefore \emph{location-based} and \emph{range-free}.
+		In another more advanced gradient-based algorithm robots use a signal strength indicator to predict the location of the source with a certain probability, add this to their map and report it back to a central base.
 		This base collects all readings and maps to create a global map and an uncertainty area which is sent back to all robots.
-		With this data the robots continuously predict the source position with increasing accuracy as they move towards the source. 
-		In common gradient-based algorithms the robots have perfect knowlegde of their location and are limited to single-source searches.
-		Compared to random path models it leads to a 40\% reduction in performance time. \cite{zhang2009gradient}
-		Furthermore gradient-based algorithms in general perform approximately twice as good as biased random walk algorithm, which will be discussed later. \cite{zhang2009gradient}
+		With this data the robots continuously predict the source position with increasing accuracy as they move towards the source. \cite{zhang2009gradient}\\
+		\\
+		In general gradient-based algorithms robots have perfect knowledge of their location and are therefore \emph{location-based}.
+		Furthermore they are \emph{range-free} since they use a central base to communicate.
+		This affects the scalability of the algorithms in a negative way, since it is dependent of the capacity of the central base.
+		Gradient-based algorithms are limited to single-source localization and can converge at local maxima instead of the real source.
+		Some attempts have been made to prevent the robots from converging at a local maximum by implementing for example a random walk \cite{dhariwal2004bacterium} or a swarm approach \cite{cui2004swarm}. These algorithms will be discussed in the next section (Section \ref{subsubsec:BiologicallyInspired}).
+		Gradient-based algorithms seem to perform better than random walk algorithms as is shown by simulation in the paper by Zhang et al. \cite{zhang2009gradient}
 
-	\subsubsection{Particle Swarm Optimization}
-		In Particle Swarm Optimization (PSO) a number of particles is randomly distributed over an unkown space of a problem or function. 
+	\subsubsection{Biologically Inspired Algorithms}
+		\label{subsubsec:BiologicallyInspired}
+		In nature swarms of organisms also have the need to look for targets (for example for hunting). Inspired by this nature several algorithms have emerged. Some are extensions of the hill climbing algorithms, but in this chapter we mainly focus on swarming algorithms and random walk algorithms.\\
+		\\
+		A swarming algorithm for localizing multiple sources is Particle Swarm Optimization (PSO), which is originally inspired by flocks of birds.
+		In PSO a number of particles is randomly distributed over an unkown space of a problem or function. 
 		Each particle - in our case a robot - evaluates its current location according to a certain fitness function.
-		Then it calculates the best position to go to according to its own historical best position and the historical best positions of the particle(s) in its neighbourhood.
-		To prevent the particles from agglomeration a certain randomness is often implemented. 
-		By continuously looking for a better position by helping each other, the swarm of particles eventually positions itself at the position of source. \cite{poli2007particle,pugh2007inspiring,derr2009multi}\\
-		\\
-		In a paper by Jim Pugh and Alcherio Martinoli an attempt to model robotic swarm search based on PSO has been made. \cite{pugh2007inspiring}
-		To achieve this a couple of modifications had to be made, for example: changing the normally discrete time to continuous, handling the movement limitations and collisions of robots and limiting the particle neighbourhood of each robot, which is often unlimited in general PSO.
-		In this particular paper the algorithm is \emph{location-based} and \emph{range-based}.
-		Attempts to make the algorithm \emph{location-free} have been made.
-		Conclusions are that either location-based or location-free the performance improves when upscaling the amount of robots.
-		When testing the location-free variant, the increase in performance is very abrupt at a certain number of robots while in the location-based variant the performance improves gradually.
-		Furthermore detection of the source with small communication range achieves poor results, but improves dramatically as the range increases.\\
-		\\
-		Another implementation of a decentralized application of PSO is implemented in a paper by Derr. \cite{derr2009multi}
-		The developed algorithm is completely \emph{location-free} and \emph{range-based}.
-		The targets are equipped with a cell phone that radiates a radio frequency signal that can be detected by the robot, which can wirelessly communicate with limited range.
-		The paper shows that a distributed algorithm based on PSO can easily overshoot sources
-		This can be prevented with a correction on the standard PSO formula.
-		Furthermore it concludes by experiments that the variation in received signal strenghts (RSS) in an indoor environment significantly increases the robot search time in finding the sources.
-
-	\subsubsection{Glowworm Swarm Optimization}
-		In Glowworm Swarm Optimization (GSO) the idea is to distribute "glowworms" randomly over the area.
+		Then it calculates the best position to go to according to its own historical best position and the historical best positions of the particle(s) in its neighbourhood within a certain range.
+		To prevent the particles from converging at a local maximum or just one of the sources a certain randomness is implemented. 
+		By continuously looking for a better position by sharing information, the swarm of particles eventually positions itself at the position of the source(s). \cite{poli2007particle} 
+		PSO based algorithms in general are more complex than for example gradient-based algorithms and will therefore require more processing power.
+		This however results in a more robust algorithm which perform better in unstable environments than for example gradient-based algorithms. \cite{marques2006particle}.
+		%\\
+		%In a paper by Jim Pugh et al. an attempt to model single-source robotic swarm search based on PSO has been made. \cite{pugh2007inspiring}
+		%In this particular paper the algorithm is \emph{location-based} and \emph{range-based}, but an attempt to make the algorithm \emph{location-free} has been made.
+		%Conclusions are that either location-based or location-free the performance of PSO improves when upscaling the amount of robots until a certain upper limit.
+		%When testing the location-free variant, the increase in performance is very abrupt at a certain number of robots while in the location-based variant the performance improves gradually.
+		%Furthermore detection of the source with small communication range achieves poor results, but improves dramatically as the range increases.\\
+		%\\
+		%Although PSO is mainly focusing on single source localization, in Derr et al. give an implementation which is able to localize multiple sources. \cite{derr2009multi}
+		%The developed algorithm is completely \emph{location-free} and \emph{range-based}.
+		%The targets are equipped with a cell phone that radiates a radio frequency signal that can be detected by the robot, which can wirelessly communicate with limited range.
+		%The paper shows that a distributed algorithm based on PSO can easily overshoot sources
+		%This can be prevented with a correction on the standard PSO formula.
+		%Furthermore it concludes by experiments that the variation in received signal strenghts (RSS) in an indoor environment significantly increases the robot search time in finding the sources.
+		\\ \\
+		In Glowworm Swarm Optimization (GSO), which is obviously inspired by glowworms, the algorithm starts by distributing the glowworms randomly over the area.
 		The glowworms, according to the fitness function, carry a certain lumeniscence quantity called luciferin. 
 		The closer they get to the source the more luciferin they contain and the more they attract other glowworms. 
-		At every movement step each glowworm moves towards a neighbour within a certain range that carries more luciferin, so they eventually conglomerate at the source(s). 
-		The glowworms have a communication range that varies at each step with a certain randomness, to make sure not all robots focus on the same source. \cite{krishnanand2005detection}\\
-		\\
-		In a paper by Krishnanand a GSO based distributed robotic algorithm is succesfully implemented. \cite{krishnanand2005detection}
-		In comparison to PSO based algorithms this algorithm is completely \emph{memoryless}.
-		The number of sources found by this particular algorithm is proven to be a strong function of the sensor range.
-		Since the number of sources to find is not known in advance, the sensor range is made a varying paramter.
-		Besides it shows that when blocking regions the inter-robot communication helps to still let robots select a feasible direction towards the source.
-
-	\subsubsection{Biasing Expansion Swarm Approach}
-		In the Biasing Expansion Swarm Approach (BESA) robots have communication possibilities over limited range and together create a ad-hoc wireless network for global communication capibility.
-		The algorithm is therefore \emph{location-free} and \emph{range-based}.
-		Each robot maintains an occupancy grid map to represent the environment wchich is initiated with all cells unexplored.
+		At every movement step each glowworm moves towards a neighbour within a certain range that carries more luciferin, so they eventually converge at the source(s). 
+		To prevent the robots from converging at local optima or just one source the communication range of each robot varies at each step with a certain randomness.
+		In comparison to PSO based algorithms GSO algorithms are completely \emph{memoryless}.
+		The number of sources found by GSO is proven to be a strong function of the sensor range.
+		The sensor range and with that the robots neighbourhood is therefore made a variable paramater, while in PSO based algorithms the particle neighbourhood exists of a constant amount of robots.
+		In gradient-based algorithms blocking regions cause problems, while in GSO based algorithms the robots are able to select a feasable direction around the blocking region by communicating with each other. \cite{krishnanand2005detection}
+		\\ \\
+		In the Biasing Expansion Swarm Approach (BESA) robots have communication possibilities over limited range and together create an ad-hoc wireless network for global communication capability.
+		The algorithm is therefore \emph{range-based}.
+		Each robot maintains an occupancy grid map to represent the environment which is initiated with all cells unexplored and is therefore \emph{location-based}.
 		After deployment robots share their locations and sensed concentrations with the swarm.
-		To uphold seperation a robot does not enter a cell which is already occupied and maintains cohesion by using a gradual expansion algorithm.
-		Robotos can therefore only move to cells that are unexplored, unoccupied and next to another robot in the swarm: the expansion cells.
+		The robots then communicate and navigate with three relatively simple rules: seperation, cohesion and alignment.
+		Robots can therefore only move to cells that are unexplored, unoccupied and next to another robot in the swarm: the expansion cells.
 		To make sure the swarm moves to the emission source, each expansion cell is given a certain biasing parameter, based on the number of robots, the distance between the expansion cell and the robot and the concentration sensed at the particular cell.
-		The robot will choose the expansion cell with the highest parameter, so that the swarm will eventually move to the direction of the higher concentrations.
-		The BESA algorithm developed in this paper performs twice times better than the general gradient-based approaches. \cite{cui2004swarm}
-
-	\subsubsection{Biased Random Walk}
-		A rather simple algorithm inspired by nature is the Biased Random Walk (BSR) approach inspired by bacteria as is described in a paper by Dhariwal \cite{dhariwal2004bacterium}.
-		Implementations of this algorithm do not use communication or any form of localization and are therefore \emph{location-free} and neither range-based or range-free.
+		The robot will choose the expansion cell with the highest parameter, so that the swarm will eventually move in the direction of the higher concentrations.
+		The BESA algorithm in general performs twice times better than the general gradient-based approaches and is proven to be more robust for unstable environments. \cite{cui2004swarm}
+		\\ \\
+		A rather simple algorithm inspired by nature is the Biased Random Walk (BSR) approach inspired by bacteria.
+		This algorithm does not use communication or any form of localization and is therefore \emph{location-free} and \emph{range-free}.
 		Robots only have the possibility to perform two actions: move or tumble. 
 		When tumbling the robot just turns into a new random direction. 
 		When moving the robot travels a certain distance into the chosen direction. 
 		If the robot senses some form of emission from the source, the tumble frequency is lowered, so the distance moved per step increases.
 		Eventually the robots will conglomerate at multiple sources.
+		One of the issues with multiple source localization is not converging at local maxima.
+		Because of the high amount of randomness in the BSR algorithm, it seems to almost always find all sources. Sources with low emission will of course end up with a smaller fraction of the robots, but there are enough applications in which this would not matter. \cite{dhariwal2004bacterium}.
+
+	\subsection{Discussion}
+  	As already mentioned the main problem in source localization with robotic swarms comes up when trying to find multiple sources. A lot of research has been done to single source localization, but the extension to multiple sources seems to be rather difficult. For example simple hill climbing algorithms are limited to single source localization, because they simply follow the first gradient they find in an ascending way, which makes its performance quite weak. In the other algorithms  attempts have been made to overcome this problem by introducing some kind of randomness. In PSO it is added to the velocity of the robots, in GSO a varying communication range is implemented and in the BSR a random direction is chosen. In BESA however, an ad-hoc network is set up which gives robots the possibility to share their findings. In this way they help each other to find all sources and by the rule of seperation do not enter each others cells so they do not converge at local maxima. \\
+	\\
+	In general we see a trade-off has to be made. If we choose for a location-based algorithm which keeps track of explored sources/parts in a map, the robotic swarm needs global communication. This can be managed by for example using a central base as in hillclimbing algorithms or setting up an ad-hoc network as in BESA algorithms. Choosing for a central base limits the scalability and when creating an ad-hoc network the swarm it is impossible to form partitions. On the other hand, if we choose for a location-free approach, we do not have an overview and thus are not sure if we have covered all sources. This can be managed by implementing some form of randomness as described above. Furthermore these approaches often require a randomly distributed start, which is rather difficult in real-life approaches. Either ways (location-free or location-based) result in medium to high performance.\\
+	\\
+	The BSR algorithm does not participate in this trade-off, given the fact that is is neither location-based or range-based and does not use any form of communcation. This obviously results in lower complexity, but also in lower performance. \\
+	\\
+	In the end all algorithms face the same problem of converging and then staying at sources. In many real-life applications however it is not necessary to stay at a source once its found; it only has to be found. The answer to the question what to do when the task is finished, stays slightly unanswered.\\
+	\\
+	Finally it is important to acknowledge that it is difficult to fairly compare source localization algorithms. Not only are there a lot of factors that influence the performance of the algorithms, there is also a general lack of base cases and references that form a proper ground truth for comparison.
 
 	\begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
@@ -94,32 +116,17 @@ These approaches can be found in section \ref{sec:Exploration} and \ref{sec:Disp
     \hline
     \bfseries Algorithm & \bfseries Range-type & \bfseries Location-type & \bfseries Performance & \bfseries Scalability\\
     \hline
+    \bfseries Hillclimbing & Range-free & Location-based & Medium & Low\\
+    \hline
     \bfseries PSO & Range-based & Location-free & High & High\\
     \hline
     \bfseries GSO & Range-based & Location-free & High & High\\
     \hline
-    \bfseries BESA & Range-based & Location-free & Medium & Medium\\
+    \bfseries BESA & Range-based & Location-based & Medium & High\\
     \hline
-    \bfseries Gradient-based & Range-free & Location-based & Medium & Low\\
-    \hline
-    \bfseries BRW & - & Location-free & Low & High\\
+    \bfseries BRW & Range-free & Location-free & Low & High\\
     \hline
     \end{tabular}
   \end{table}
 
-	\subsubsection{Problems}
-	The main problem of localization using swarms in the \emph{range-based} approaches is the way robots should cooperate and learn from each other. 
-	In other words: how big should the neighbourhood be in which robots cooperate to find sources? 
-	One might think it is ideal to use information of all robots.
-	However, in case of multiple sources, the best position of all robots can be misleading and cause premature convergence. 
-	Therefore in PSO a particle neighbourhood within a certain range or a constant maximum value of neighbours is often chosen. 
-	In GSO a range varying each step is implemented to make sure multiple sources can be found.
-	Finally in BESA based approaches the robots create an ad-hoc network to create global communication. 
-
-	\subsubsection{Remaining problems}
-	There are a lot of factors that affect the performance of localization of multiple sources.
-	For example the complexity of the implemented algorithms, the number of robots used or the number of sources that is being searched for. 
-	As is mentioned in a paper by McGill however there is a lack of validation cases and reference algorithms that form a ground truth for comparative analysis. \cite{mcgill2011robot} 
-	Therefore it is relatively difficult to compare the developed algorithms for (multi-)source localization with robotic swarms. 
-	Another question in this field is which approach should be used after a source has been found. 
-	Some papers propose to collect the source/target and search further, but this is not always possible.
+	
