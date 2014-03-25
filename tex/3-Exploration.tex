@@ -19,27 +19,27 @@ Exploration is used in many more different robotic swarm applications and is a b
 %!TEX root = ../../main.tex
 
 \subsection{Algorithms}
-When comparing the \emph{performance} of the algorithms we mean the explored area per distance travelled. When comparing the \emph{scalability} of the algorithms we mean the scalability of the number of robots.
+When comparing the \emph{performance} of the algorithms we mean the explored area per distance traveled. When comparing the \emph{scalability} of the algorithms we mean the scalability of the number of robots.
 
 	\subsubsection{Frontier-based Algorithms}
 	A first approach is frontier-based exploration, which is inspired by the question "Given what you know about the world, where should you move to gain as much new information as possible?".
-	Its goal is to gain as much information as possible when travelling towards a new location.
+	Its goal is to gain as much information as possible when traveling towards a new location.
 	An evidence grid is used in which the occupancy probability is stored for each cell, so the algorithm is \emph{location-based}.
-	The cells have, dependent to their occupancy probability, a certain state which is either open, unkown or occupied.
-	Each open cell that is adjacent to an unkown cell is labeled as a frontier cell.
+	The cells have, dependent to their occupancy probability, a certain state which is either open, unknown or occupied.
+	Each open cell that is adjacent to an unknown cell is labeled as a frontier cell.
 	Every group of frontier cells above a certain size is considered a frontier.
 	Once the frontiers have been detected, the robot navigates towards the nearest unvisited frontier.
 	If the robot is unable to make progress to its destination, it will add the frontier to the list of inaccessible frontiers.
 	Each time a robot does or does not reach a frontier it performs a sensor sweep and adds the new information to a local grid, which is communicated and then merged with every robots global map. \cite{yamauchi1998frontier}\\
 	\\
 	A limitation of the general frontier-based approach is that since navigation is independent, robots may waste time navigating to the same frontier.
-	This will either cause an avoidance manoeuvre or the robots will block each other.
+	This will either cause an avoidance maneuver or the robots will block each other.
 	In the last case the robots will mark their destination frontiers as inaccessible which of course is not preferable.
 	Furthermore global communication is assumed, which in real-world applications is  impossible since robots have limited communication range. 
 	Several attempts have been made to solve the problems described at the previous section by for example implementing a bidding algorithm based on the frontier principle.
 	The robots first select a certain target according to the frontier-based algorithm.
-	It then broadcasts a bid acording to: the target of the robots in the sensor range, the distance to the targeted cell and a nearness measure.
-	This nearness measure is a factor which is dependent of the number of robots in the neighbourhood to keep the robots together and thus sustain communication.
+	It then broadcasts a bid according to: the target of the robots in the sensor range, the distance to the targeted cell and a nearness measure.
+	This nearness measure is a factor which is dependent of the number of robots in the neighborhood to keep the robots together and thus sustain communication.
 	After waiting for constant time, if the robot bids the highest value, it travels towards its target.
 	This approach makes sure two robots never travel towards the same frontier and tend to stay together, so communication stays possible.
 	This approach results in better communication, less repeated coverage and less exploration time. \cite{sheng2006distributed}\\
@@ -48,10 +48,10 @@ When comparing the \emph{performance} of the algorithms we mean the explored are
 	In case of for example search and rescue missions, it is important that the area explored more gradually to spot targets in every part in short time. 
 	An approach that solves this problem is the algorithm based on K-means clustering.
 	First the algorithm divides the unknown space in as many regions as robots by the K-means clustering algorithm with $K$ the number of robots.
-	The algorithm then assigns all robots to a certain region by distance calculation, making a difference between acessible and inacessible regions.
+	The algorithm then assigns all robots to a certain region by distance calculation, making a difference between accessible and inaccessible regions.
 	After that each robot gets assigned to a frontier cell in its region.
-	Robots with acessible regions will be assigned to frontier cells by the distance between the robot and the frontier cell and a penalty when the cell is close to another frontier cell assigned to a different robot.
-	Robots with inacessible regions get another penalty for the distance from the frontier cell and the centroid of their own region.
+	Robots with accessible regions will be assigned to frontier cells by the distance between the robot and the frontier cell and a penalty when the cell is close to another frontier cell assigned to a different robot.
+	Robots with inaccessible regions get another penalty for the distance from the frontier cell and the centroid of their own region.
 	When this formula gets maximized, all robots will tend to choose frontiers in their own region or close to their own region.
 	If a robot reaches its destination, the target assignment will be repeated. \cite{solanas2004coordinated}
 
