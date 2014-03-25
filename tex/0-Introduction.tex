@@ -1,30 +1,48 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
-The robotic swarm field is growing as robots become smaller and easier to produce.
-The usage of robotic swarms compared to single robots has numerous advantages. 
-These advantages include a higher efficiency, shared knowledge which decreases mutual dependencies and thus improves realiability.
-Many new applications for robotic swarms exist creating a strong growth in the field.
-This is indicated by a growing amount of papers written about robotics at for instance the AAMAS \footnote{International Conference on Autonomous Agents and Multi-Agent Systems}.\cite{Amigoni2014}\\
 
-To avoid confusion we will start off by defining some terminology, because the terms are quite ambiguous and can be interpreted in many different ways.
-In Section \ref{sec:Formation} until Section \ref{sec:Path-planning} we will define the problems in robotic swarms, where we mention the applications and their underlying solutions.
-Finally we in will give a brief discussion on our observations in Section \ref{sec:Discussion}.\\
+- Define scalability and performance?
 
-In this survey, we will only consider something a swarm when the amount of robots is greater than two and the amount of robots is scalable and uses some form of distributed communication.
-Furthermore, we will only consider robotic swarms in which each robot is not controlled individually.
-They should have some form of distributed intelligence.
+
+
+% As robots become smaller and easier to produce, swarm robotics has become a prominent research area in recent years. 
+
+% Large networks of robots are commonly referred to as swarms.
+
+Swarm robotics has become a prominent and promising research area in the recent years. 
+It has great potential use for a large variety of applications. 
+In order to not forget the big picture, we believe that a survey of a few basic problems in this field should be given. 
+This survey presents a concise overview of a few problems that the robotic swarms research area has faced. For each problem we provide a small discussion as to which approaches were chosen. 
+Finally we mention the remaining issues for each problem. 
+Each of the algorithms can be categorized by their usage of range information and location information. 
+We show the problems which come with each of these categories and rate the scalability and performance of each approach. 
+Addressing these problems and their approaches gives a better overview and offers inspiration to solve other problems.
+Finally we give a general conclusion regarding the recent advancements in robotic swarms.  
+
+
+We start by defining some terminology, since some of the terms are ambiguous and can be interpreted in different ways.
+We define a swarm as a scalable network of robots which consists out of more than two robots.
+Furthermore, we only consider robotic swarms in which every robot has some form of distributed intelligence.
 An exception is of course when a swarm of multiple robots is controlled by one control station.
 This swarm will still have some form of distributed intelligence to function and thus is considered a swarm.  \\
 
-Robotic swarm applications can roughly be characterised by two attributes. They are either \emph{location-based} or \emph{location-free}, or they are either \emph{range-based} and  \emph{range-free}.
-A location-free approach does not exclude a range-free approach and vice-versa. 
-The definitions are:
+Robotic swarm applications can roughly be characterized by two attributes. They are either \emph{location-based} or \emph{location-free}, or they are either \emph{range-based} and  \emph{range-free}. A location-free approach does not exclude a range-free approach and vice-versa.
+\begin{description}
+	\item[Location-free] Robots have no knowledge and do not keep track of their absolute or relative location.
+	%A robotic swarm is \emph{location-free} if the swarm has no knowledge of the boundaries of the location it is in, whether it is provided at the beginning or is actively searched for during the execution of the algorithm. 
+	\item[Location-based] Robots have perfect knowledge of their absolute or relative location.
+	%A robotic swarm is \emph{location-based} if each individual robot in the swarm has the knowledge of its absolute or relative location.
+	\item[Range-free] Robots do not communicate or communicate via some kind of central base or assume global communication.
+	%A robotic swarm is \emph{range-free} if each robot can detect the presence of other nearby robots or obstacles, but does not store or measure the distance towards the other object.
+	\item[Range-based] Robots communicate within predetermined range.
+	%A robotic swarm is \emph{range-based} if each robot in the swarm keeps track of the exact distance between itself and the other robots in the swarm or obstacles. 
+\end{description}
 
-  \begin{itemize}
-    \item A robotic swarm is \emph{location-free} if the swarm has no knowledge of the boundaries of the location it is in, whether it is provided at the beginning or is actively searched for during the execution of the algorithm. 
-    \item A robotic swarm is \emph{location-based} if each indivdual robot in the swarm has the knowledge of its absolute or relative location.
-    \item A robotic swarm is \emph{range-free} if each robot can detect the presence of other nearby robots or obstactles, but does not store or measure the distance towards the other object.
-    \item A robotic swarm is \emph{range-based} if each robot in the swarm keeps track of the exact distance between itself and the other robots in the swarm or obstacles. 
-  \end{itemize}
-  %\input{./fig/ProblemsOverview.tex}
+The paper is structured as follows. 
+In Section \ref{sec:Formation} until Section \ref{sec:Path-planning} we define the problems in robotic swarms, where we mention the applications and their underlying solutions.
+Finally we give a brief discussion of our observations in Section \ref{sec:Discussion}.\\  
+
+
 For more information on the operation of the mentioned algorithms, please consult the references. \todo{should be mentioned somewhere}
+
+% \input{./fig/ProblemsOverview.tex}
 
