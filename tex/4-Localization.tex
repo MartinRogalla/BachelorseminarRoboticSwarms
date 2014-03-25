@@ -45,9 +45,9 @@ When comparing the \emph{performance} of the algorithms we mean the distance to 
 		In nature swarms of organisms also have the need to look for targets (for example for hunting). Inspired by this nature several algorithms have emerged. Some are extensions of the hill climbing algorithms, but in this chapter we mainly focus on swarming algorithms and random walk algorithms.\\
 		\\
 		A swarming algorithm for localizing multiple sources is Particle Swarm Optimization (PSO), which is originally inspired by flocks of birds.
-		In PSO a number of particles is randomly distributed over an unkown space of a problem or function. 
+		In PSO a number of particles is randomly distributed over an unknown space of a problem or function. 
 		Each particle - in our case a robot - evaluates its current location according to a certain fitness function.
-		Then it calculates the best position to go to according to its own historical best position and the historical best positions of the particle(s) in its neighbourhood within a certain range.
+		Then it calculates the best position to go to according to its own historical best position and the historical best positions of the particle(s) in its neighborhood within a certain range.
 		To prevent the particles from converging at a local maximum or just one of the sources a certain randomness is implemented. 
 		By continuously looking for a better position by sharing information, the swarm of particles eventually positions itself at the position of the source(s). \cite{poli2007particle} 
 		PSO based algorithms in general are more complex than for example gradient-based algorithms and will therefore require more processing power.
@@ -67,20 +67,20 @@ When comparing the \emph{performance} of the algorithms we mean the distance to 
 		%Furthermore it concludes by experiments that the variation in received signal strenghts (RSS) in an indoor environment significantly increases the robot search time in finding the sources.
 		\\ \\
 		In Glowworm Swarm Optimization (GSO), which is obviously inspired by glowworms, the algorithm starts by distributing the glowworms randomly over the area.
-		The glowworms, according to the fitness function, carry a certain lumeniscence quantity called luciferin. 
+		The glowworms, according to the fitness function, carry a certain luminescence quantity called luciferin. 
 		The closer they get to the source the more luciferin they contain and the more they attract other glowworms. 
-		At every movement step each glowworm moves towards a neighbour within a certain range that carries more luciferin, so they eventually converge at the source(s). 
+		At every movement step each glowworm moves towards a neighbor within a certain range that carries more luciferin, so they eventually converge at the source(s). 
 		To prevent the robots from converging at local optima or just one source the communication range of each robot varies at each step with a certain randomness.
 		In comparison to PSO based algorithms GSO algorithms are completely \emph{memoryless}.
 		The number of sources found by GSO is proven to be a strong function of the sensor range.
-		The sensor range and with that the robots neighbourhood is therefore made a variable paramater, while in PSO based algorithms the particle neighbourhood exists of a constant amount of robots.
-		In gradient-based algorithms blocking regions cause problems, while in GSO based algorithms the robots are able to select a feasable direction around the blocking region by communicating with each other. \cite{krishnanand2005detection}
+		The sensor range and with that the robots neighborhood is therefore made a variable parameter, while in PSO based algorithms the particle neighborhood exists of a constant amount of robots.
+		In gradient-based algorithms blocking regions cause problems, while in GSO based algorithms the robots are able to select a feasible direction around the blocking region by communicating with each other. \cite{krishnanand2005detection}
 		\\ \\
 		In the Biasing Expansion Swarm Approach (BESA) robots have communication possibilities over limited range and together create an ad-hoc wireless network for global communication capability.
 		The algorithm is therefore \emph{range-based}.
 		Each robot maintains an occupancy grid map to represent the environment which is initiated with all cells unexplored and is therefore \emph{location-based}.
 		After deployment robots share their locations and sensed concentrations with the swarm.
-		The robots then communicate and navigate with three relatively simple rules: seperation, cohesion and alignment.
+		The robots then communicate and navigate with three relatively simple rules: separation, cohesion and alignment.
 		Robots can therefore only move to cells that are unexplored, unoccupied and next to another robot in the swarm: the expansion cells.
 		To make sure the swarm moves to the emission source, each expansion cell is given a certain biasing parameter, based on the number of robots, the distance between the expansion cell and the robot and the concentration sensed at the particular cell.
 		The robot will choose the expansion cell with the highest parameter, so that the swarm will eventually move in the direction of the higher concentrations.
@@ -97,11 +97,11 @@ When comparing the \emph{performance} of the algorithms we mean the distance to 
 		Because of the high amount of randomness in the BSR algorithm, it seems to almost always find all sources. Sources with low emission will of course end up with a smaller fraction of the robots, but there are enough applications in which this would not matter. \cite{dhariwal2004bacterium}.
 
 	\subsection{Discussion}
-  	As already mentioned the main problem in source localization with robotic swarms comes up when trying to find multiple sources. A lot of research has been done to single source localization, but the extension to multiple sources seems to be rather difficult. For example simple hill climbing algorithms are limited to single source localization, because they simply follow the first gradient they find in an ascending way, which makes its performance quite weak. In the other algorithms  attempts have been made to overcome this problem by introducing some kind of randomness. In PSO it is added to the velocity of the robots, in GSO a varying communication range is implemented and in the BSR a random direction is chosen. In BESA however, an ad-hoc network is set up which gives robots the possibility to share their findings. In this way they help each other to find all sources and by the rule of seperation do not enter each others cells so they do not converge at local maxima. \\
+  	As already mentioned the main problem in source localization with robotic swarms comes up when trying to find multiple sources. A lot of research has been done to single source localization, but the extension to multiple sources seems to be rather difficult. For example simple hill climbing algorithms are limited to single source localization, because they simply follow the first gradient they find in an ascending way, which makes its performance quite weak. In the other algorithms  attempts have been made to overcome this problem by introducing some kind of randomness. In PSO it is added to the velocity of the robots, in GSO a varying communication range is implemented and in the BSR a random direction is chosen. In BESA however, an ad-hoc network is set up which gives robots the possibility to share their findings. In this way they help each other to find all sources and by the rule of separation do not enter each others cells so they do not converge at local maxima. \\
 	\\
-	In general we see a trade-off has to be made. If we choose for a location-based algorithm which keeps track of explored sources/parts in a map, the robotic swarm needs global communication. This can be managed by for example using a central base as in hillclimbing algorithms or setting up an ad-hoc network as in BESA algorithms. Choosing for a central base limits the scalability and when creating an ad-hoc network the swarm it is impossible to form partitions. On the other hand, if we choose for a location-free approach, we do not have an overview and thus are not sure if we have covered all sources. This can be managed by implementing some form of randomness as described above. Furthermore these approaches often require a randomly distributed start, which is rather difficult in real-life approaches. Either ways (location-free or location-based) result in medium to high performance.\\
+	In general we see a trade-off has to be made. If we choose for a location-based algorithm which keeps track of explored sources/parts in a map, the robotic swarm needs global communication. This can be managed by for example using a central base as in hill climbing algorithms or setting up an ad-hoc network as in BESA algorithms. Choosing for a central base limits the scalability and when creating an ad-hoc network the swarm it is impossible to form partitions. On the other hand, if we choose for a location-free approach, we do not have an overview and thus are not sure if we have covered all sources. This can be managed by implementing some form of randomness as described above. Furthermore these approaches often require a randomly distributed start, which is rather difficult in real-life approaches. Either ways (location-free or location-based) result in medium to high performance.\\
 	\\
-	The BSR algorithm does not participate in this trade-off, given the fact that is is neither location-based or range-based and does not use any form of communcation. This obviously results in lower complexity, but also in lower performance. \\
+	The BSR algorithm does not participate in this trade-off, given the fact that is is neither location-based or range-based and does not use any form of communication. This obviously results in lower complexity, but also in lower performance. \\
 	\\
 	In the end all algorithms face the same problem of converging and then staying at sources. In many real-life applications however it is not necessary to stay at a source once its found; it only has to be found. The answer to the question what to do when the task is finished, stays slightly unanswered.\\
 	\\
@@ -117,7 +117,7 @@ When comparing the \emph{performance} of the algorithms we mean the distance to 
     \hline
     \bfseries Algorithm & \bfseries Range-type & \bfseries Location-type & \bfseries Performance & \bfseries Scalability\\
     \hline
-    \bfseries Hillclimbing & Range-free & Location-based & Medium & Low\\
+    \bfseries Hill climbing & Range-free & Location-based & Medium & Low\\
     \hline
     \bfseries PSO & Range-based & Location-free & High & High\\
     \hline
