@@ -23,7 +23,7 @@ These respectively correspond to the formation problem and the source localizati
 
 When considering the formation problem, the algorithm is not considered with finding a payload. 
 Then, we can conclude that the swarm in this algorithm is not completely autonomous and that the whole swarm is controlled by a single controller.
-This implies that algorithms used for the formation problem are location-based, because the location is known by the controller. \cite{Michael2011cooperative, Mas2012object}
+This implies that algorithms used for the formation problem are location-based, because the location is known by the controller. \cite{Michael2011cooperative,mas2012object}
 When considering the source localization problem, the algorithm is not concerned with transporting the payload. 
 Then, we can conclude the swarm in this algorithm works autonomously. 
 This implies that the algorithms used for the source localization problem are location-free, because the location is now known by the controller. \cite{Rubenstein2013collecive, sugawara2012object}
@@ -35,7 +35,7 @@ This implies that the algorithms used for the source localization problem are lo
 There are two different properties important for formation transport: performance and scalability. 
 We define \emph{performance} as in how well the robots can stay in formation in dynamic environments. 
 We define \emph{scalability} as in how many robots can be added to the swarm before negatively influencing the performance.\\
-%To ensure safe and stable transport, swarm robots have to be coordinated in such a way that the payload can be manipulated to a desired position and orientation.
+%To ensure safe and stable transport, swarm robots have to be coordinated in such a w ay that the payload can be manipulated to a desired position and orientation.
 
 The first algorithm we discuss is the \emph{Aerial Equilibrium} algorithm. \cite{Michael2011cooperative}
 This algorithm for aerial transport is implemented by attaching cables from quadrocopters to the payload.
@@ -49,7 +49,7 @@ This is because the chance of touching each others rope increases with every rob
 %This paper formulates general conditions for the payload equilibrium but can be scaled to many swarm robots. 
 %The mathematical model that is defined in the paper is tested with three quadrocopters and offers a stable transportation for objects, with a degree of freedom related to the amount of robots used and can thus be implemented in the field.
 
-The second algorithm we discuss is called \emph{Cluster Space Control} algorithm. \cite{Mas2012object}
+The second algorithm we discuss is called \emph{Cluster Space Control} algorithm. \cite{mas2012object}
 It uses a multi-robot formation control framework called cluster space control.
 It is utilized to control a swarm of four four-wheeled robots.
 A user using this type of transportation uses a joystick to input user controls to the whole swarm, after which the centralized control framework specifies the formation and the position and shape of the swarm.
@@ -144,6 +144,7 @@ With the granular convection method, adding local communication and using hetero
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
+    \caption{Overview of Collective Transport Algorithms}
   \label{table_alg_coltrans2}
   \centering
 \scalebox{0.85}{
@@ -159,7 +160,6 @@ With the granular convection method, adding local communication and using hetero
 
     \end{tabular}
     }
-    \caption{Overview of Collective Transport Algorithms}
   \end{table}
 
 
