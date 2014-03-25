@@ -1,53 +1,66 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
 Collective transport of objects is the problem in which a swarm of robots locates a payload and collectively moves the payload to another place, like a homebase. 
-This can be compared to the path-planning problem; although this implies that a path is made to a certain place, which is not the case in the collective transport problem. \cite{hoff2010two}  
-The localization problem is an important part of the collective transport problem and has much overlap.\\
+This problem is a composite problem, composed of the already mentioned problems formation and source localization. 
+Still, we want to expand on this problem because it is an important problem in the research field
+%This can be compared to the path-planning problem; although this implies that a path is made to a certain place, which is not the case in the collective transport problem. \cite{hoff2010two}  
+%The localization problem is an important part of the collective transport problem and has much overlap.\\
 Transporting objects by robotic swarms has many potential applications in many settings, from agriculture to construction to disaster relief. 
 Especially in dangerous settings like warzones or radio-active areas, robotic swarms can be a powerful tool to safely retrieve many objects. 
-For example, recently Amazon, a large online retailer, announced it would make use of unmanned flying robots to deliver parcels at everyone's door. (www.amazon.com/b?node=8037720011)
+For example, recently Amazon, a large online retailer, announced it would make use of unmanned flying robots to deliver parcels at everyone's door. \footnote{www.amazon.com/b?node=8037720011}
 
 \subsection{Algorithms}
 
 Collective transport can be seperated into two subproblems: providing safe and reliable transport and moving a payload to its destination.
-We handle these two different problems separately because they are two entirely different problems that together compose the whole collective transport problem. 
+These respectively correspond to the formation problem and the source localization problem.
 
-In algorithms in which swarms are completely autonomous, the focus is on finding the payload and transporting it to its destination.
-If a homogeneous swarm is controlled by a single ground station, the algorithm is not considered with finding a payload.
-Instead it is focused on safe, accurate and scalable transport. 
-So, we can categorize these subproblems as user-controlled transportation problems and autonomous transportation problems.
-In user-controlled transportation, the location the swarm operates in is known, so the algorithms used are location-based.
-In autonomous transportation, the location is not known and the algorithms are location-free.
+%If a homogeneous swarm is controlled by a single ground station, the algorithm is not considered with finding a payload.
+%In algorithms in which swarms are completely autonomous, the focus is on finding the payload and transporting it to its destination.
+%Instead it is focused on safe, accurate and scalable transport. 
+%So, we can categorize these subproblems as user-controlled transportation problems and autonomous transportation problems.
+%In user-controlled transportation, the location the swarm operates in is known, so the algorithms used are location-based.
+%In autonomous transportation, the location is not known and the algorithms are location-free.
 
-\subsection{User-controlled swarm transportation algorithms}
+When considering the formation problem, the algorithm is not considered with finding a payload. 
+Then, we can conclude that the swarm in this algorithm is not completely autonomous, and that the whole swarm is controlled by a single controller.
+This implies that algorithms used for the formation problem are location-based, because the location is known by the controller.\cite{Michael2011cooperative, Mas2012object}
+When considering the source localization problem, the algorithm is not concerned with transporting the payload. 
+Then, we can conclude the swarm in this algorithm works autonomously. 
+This implies that the algorithms used for the source localization problem are location-free, because the location is now known by the controller. \cite{Rubenstein2013collecive, sugawara2012object}
+
+\subsection{Formation transport}
 %A robot, especially a flying robot, can only carry a certain weight, which poses a problem. 
 %But with a robotic swarm of robots it is possible to transport larger weights in a scalable system, adding swarm robots until you can carry the desired weight. 
 %So, a swarm of robots is useful for transporting large and/or heavy objects. 
-There are two different properties important for user-controlled swarm transportations: safety and scalability. 
-To ensure safe and stable transport, swarm robots have to be coordinated in such a way that the payload can be manipulated to a desired position and orientation.
+There are two different properties important for formation transport: pefrormance and scalability. 
+We define performane as in how well the robots can stay in formation in dynamic environments. 
+We define scalability as in how many robots can be added to the swarm while still having the same effects. 
+%To ensure safe and stable transport, swarm robots have to be coordinated in such a way that the payload can be manipulated to a desired position and orientation.
 
 The first algorithm we discuss is the \emph{Aerial Equilibrium} algorithm. \cite{Michael2011cooperative}
 This algorithm for aerial transport is implemented by attaching cables from quadrocopters to the payload.
 Then, each robot calculate its own movement in the swarm by a mathematical model. 
-Because the swarm robots do not calculate the exact distance between them, this algorithm can be defined as a range-free algorithm. \\
+Because the swarm robots do not calculate the exact distance between them, this algorithm can be defined as a range-free algorithm.
+A change in the position of a robot is quickly communicated through the mathematical model, resulting in a good performance.
+Nevertheless, the scalability is not that good, because adding multiple robots will quickly result in robots getting in each others way.
+This is because they are connected with a rope to the payload, and the chance of touching each others rope increases with every robot added. \\
 
 %An algorithm for such transport is given in the paper Cooperative manipulation and transportation with aerial robots.
 %This paper formulates general conditions for the payload equilibrium but can be scaled to many swarm robots. 
 %The mathematical model that is defined in the paper is tested with three quadrocopters and offers a stable transportation for objects, with a degree of freedom related to the amount of robots used and can thus be implemented in the field.
 
-
-
 The second algorithm we discuss is called \emph{Cluster Space Control} algorithm. \cite{Mas2012object}
-It considers a multi-robot formation control framework called cluster space control.
+It uses a multi-robot formation control framework called cluster space control.
 It is utilized to control a swarm of four four-wheeled robots.
 A user using this type of transportation uses a joystick to input user controls to the whole swarm, after which the control framework specifies the formation and the position and shape of the swarm.
 Because the framework calculates the exact range between each robot in the swarm, this algorithm is range-based. 
-This control framework allows the user to effectively transport large objects with a scalable set of robots. \\
+This control framework allows the user to effectively transport large objects with a scalable set of robots. 
+The performance for this algorithm is very high, because the framework responds well to changes in the environment. 
+The scalability is low, because the framework has to hold connections to every robot. \\
 
 %The algorithm can be used for transporting large objects on the ground, in the water and in the air.
 %necessary to coordinate the motions of the robots in the group. 
 %This is because control approach used is called cluster space control, and is utilized to control swarm of four four-wheeled robots. 
-
 
 These two algorithms solve the same problem, namely the problem of transporting large and/or heavy objects, in two entirely different ways. 
 The properties are summarized in the following table. 
@@ -63,8 +76,8 @@ The properties are summarized in the following table.
     \hline
     \bfseries Algorithm & \bfseries Range &\bfseries Location &  \bfseries Performance & \bfseries Scalability\\
     \hline
-     Aerial Equilibrium & Range-free & Location-free & Medium & Low\\\hline
-     Cluster Space Control & Range-based & Location-based & Medium & Medium\\\hline
+     Aerial Equilibrium & Range-free & Location-free & Medium & Medium\\\hline
+     Cluster Space Control & Range-based & Location-based & High & Low\\\hline
 
     \end{tabular}
     }
@@ -82,10 +95,12 @@ Problems that are not treated in these articles is how these swarms can locate a
 Another problem for which no solution is provided is that when these swarms grow to account for heavier objects, the robots will get in each other's way. 
 Especially considering transportation, a technique in which every robot must latch on to a payload, this can be hard to practically scale. 
 
-\subsection{Autonomous swarm transportation algorithms}
-The second subporoblem that has to be solved is finding the payload and transporting it to its destination.
+\subsection{Source localization transport}
+The source localization problem consists of finding the payload and transporting it to its destination.
 This subproblem can again be divided in four smaller problems: finding the payload, grabbing the payload, finding target location, moving the payload to the location.
-By defining these subproblems, the problem is easier to solve and easier to explain each algorithm. \\
+By defining these subproblems, the problem is easier to solve and easier to explain each algorithm. 
+The performance is defined in how fast the payload is moved to the destination.\
+Scalability is compared as how many robots can be added while still having the same effects. \\
 
 The first algorithm we discuss is the flocking algorithm. \cite{Rubenstein2013collecive}
 Simply put, it locates the payload through a flocking algorithm and let the swarm robots push the payload to the goal location. 
