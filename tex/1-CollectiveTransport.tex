@@ -78,7 +78,6 @@ The properties are summarized in the Table~\ref{table_alg_coltrans1}.
     \hline
      Aerial Equilibrium & Range-free & Location-free & Medium & Medium\\\hline
      Cluster Space Control & Range-based & Location-based & High & Low\\\hline
-
     \end{tabular}
     }
   \end{table}
@@ -141,7 +140,6 @@ A short summarization of these algorithms is given in Table~\ref{table_alg_coltr
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
-  \caption{Overview of Collective Transport Algorithms}
   \label{table_alg_coltrans2}
   \centering
 \scalebox{0.85}{
@@ -149,14 +147,15 @@ A short summarization of these algorithms is given in Table~\ref{table_alg_coltr
     \hline
     \bfseries Algorithm & \bfseries Range & \bfseries Location & \bfseries Performance & \bfseries Scalability\\
     \hline
-    \bfseries Flocking & Range-free & Location-Free & High & High\\\hline
-    %\bfseries Pheromone & Range-based & Location-Free & Medium & Medium\\\hline
-    \bfseries Homogeneous granular convection & Range-free& Location-Free & Low  & High\\\hline
-    \bfseries Heterogeneous granular convection & Range-free& Location-Free & Medium & High\\\hline
-    \bfseries Heterogeneous granular convection with \newline local communication & Range-based& Location-Free & High & High\\\hline
+    Flocking & Range-free & Location-Free & High & High\\\hline
+    %Pheromone & Range-based & Location-Free & Medium & Medium\\\hline
+    Homogeneous granular convection & Range-free& Location-Free & Low  & High\\\hline
+    Heterogeneous granular convection & Range-free& Location-Free & Medium & High\\\hline
+    Heterogeneous granular convection with \newline local communication & Range-based& Location-Free & High & High\\\hline
 
     \end{tabular}
     }
+    \caption{Overview of Collective Transport Algorithms}
   \end{table}
 
 These three algorithms are very different from each other, but they all serve a common goal. 
