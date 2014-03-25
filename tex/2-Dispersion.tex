@@ -1,12 +1,15 @@
-%!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
-We consider dispersion as one of the key problems in robotic swarms.\cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} Dispersion can be compared to the blanket coverage problem, which is defined by in one of the first papers written on the topic of swarm robots: \emph{Command Control for Many-Robot Systems}.\cite{gage1992command} The objective of blanket coverage is defined as ``achieving a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.''\cite{gage1992command} The difference between dispersion and formation is often confused. While formation is trying to maintain explicitly specified spacing relationships, dispersion tries to find the best ``formation'' for the current environment. \\
+%!TEX root = ../Bachelorseminar-RoboticSwarms.tex
+
+We consider dispersion as one of the key problems in robotic swarms.\cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} Dispersion can be compared to the blanket coverage problem, which is defined in one of the first papers written on the topic of swarm robots: \emph{Command Control for Many-Robot Systems}. \cite{gage1992command} The objective of blanket coverage is defined as ``achieving a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.''\cite{gage1992command} The difference between dispersion and formation is often confused. While formation is trying to maintain explicitly specified spacing relationships, dispersion tries to find the best ``formation'' for the current environment. \\
 Dispersion has a great number of applications. Some of these applications include, but are not limited to exploration, surveillance, military response, disaster response and planetary exploration.\cite{ludwig2006robotic,Penders2011,mclurkin2007distributed} 
 
 \subsection{Algorithms}
 In this section we discuss a few categories of approaches which are used to solve the dispersion problem.
-Starting from the simpler algorithms which are based on the approach which includes randomness such as random-walk and wall-following, we show the problems that the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
+First we discuss the simpler algorithms which are based on the approach which includes randomness such as random-walk and wall-following.
+After that we show the problems that the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
 Further we motivate as to why the algorithms are put into a specific category and discuss the scalability and performance for each type of algorithm.
-For more information on the operation of the mentioned algorithms, please consult the references.
+When discussing the \emph{scalability}, we mean [explanation]. When discussing the \emph{performance} we mean [explanation]. \todo{fill in what scalability and performance are}
+
 \subsubsection{Randomness Approach}
 %TODO: Find a few more references talking about random walk and follow-wall concerning usage in Robotic Swarms
 The algorithms in this category solve the dispersion problem with an approach which relies on randomness to perform the dispersion.
