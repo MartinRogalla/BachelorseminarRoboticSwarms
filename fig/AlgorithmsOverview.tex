@@ -1,0 +1,95 @@
+	\begin{figure}[!ht]
+		\caption{Venn Diagram; overview of algorithms}
+		\label{venn_diagram}
+
+		\centering
+
+		\def\loclb{(180:2.0cm) circle (2.0cm)}
+	  	\def\loclf{(0:2.0cm) circle (2.0cm)}
+	  	\def\locrb{(90:2.0cm) circle (2.0cm)}
+	  	\def\locrf{(270:2.0cm) circle (2.0cm)}
+
+	    \begin{tikzpicture}
+			% standard figures
+			\draw \loclb node [text=black] {Location-based};
+			\draw \loclf node [text=black] {Location-free};
+			\draw \locrb node [text=black] {Range-based};
+			\draw \locrf node [text=black] {Range-free};
+
+			% Range-based location-free
+			\draw[dashed,-] (1,1) -- (2,5.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=west] at (2,5.5) {
+				Leader-follower \ref{sec:Formation}\\
+				Virtual structure \ref{sec:Formation}\\
+				Virtual space \ref{sec:Formation}\\
+				Teamwork control \ref{sec:Formation}
+				Particle Swarm Optimization \ref{sec:Localization}\\
+				Glowworm Swarm Optimization \ref{sec:Localization}\\
+				Pheromone \ref{sec:CollectiveTransport}\\
+				Heterogeneous granular convection WLC \ref{sec:CollectiveTransport}\\
+				Random Walk \ref{sec:Dispersion}\\
+				Follow wall \ref{sec:Dispersion}\\
+				Directed Dispersion \ref{sec:Dispersion}\\
+				Seek open \ref{sec:Dispersion}\\
+				Fiducial \ref{sec:Dispersion}\\
+				Clique-intensity \ref{sec:Dispersion}
+			};
+
+			% Range-free, location-free
+			\draw[dashed,-] (1,-1) -- (2,-4.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=west] at (2,-4.5) {
+				Behavior-based \ref{sec:Formation}
+				Fuzzy control \ref{sec:Formation}\\
+				Flocking \ref{sec:CollectiveTransport}\\
+				Homogeneous granular convection \ref{sec:CollectiveTransport}\\
+				Heterogeneous granular convection \ref{sec:CollectiveTransport}\\
+				Aerial Equilibrium \ref{sec:CollectiveTransport}\\
+				Virtual Pheromone \ref{sec:Path-planning}\\
+				Cardinality \ref{sec:Path-planning}
+			};
+
+			% location-free
+			\draw[dashed,-] (3.5,0) -- (5,0) node[anchor=north west] {};
+			\node[draw,align=left,anchor=west] at (5,0) {
+				Biased Random Walk \ref{sec:Localization}
+			};
+
+			% location-based
+			\draw[dashed,-] (-3.5,0) -- (-5,0) node[anchor=north west] {};
+			\node[draw,align=left,anchor=east] at (-5,0) {
+				Frontier-based \ref{sec:Exploration}\\
+				Gradient-based \ref{sec:Localization}
+			};
+
+			% Range-free, location-based
+			\draw[dashed,-] (-1,-1) -- (-1.5,-4.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=east] at (-1.5,-4.5) {
+				Biasing Expansion Swarm Approach \ref{sec:Localization}
+			};
+
+			% Range-based, location-based
+			\draw[dashed,-] (-1,1) -- (-1.5,4.5) node[anchor=north west] {};
+			\node[draw,align=left,anchor=east] at (-1.5,4.5) {
+				Frontier-based \ref{sec:Exploration}\\
+				Market Economy based \ref{sec:Exploration}\\
+				Cluster Space Control \ref{sec:CollectiveTransport}\\
+				DFLF \ref{sec:Dispersion}\\
+				BFLF \ref{sec:Dispersion}\\
+				Artificial Bee Colony \ref{sec:Path-planning}\\
+				Multihop Communication \ref{sec:Path-planning}\\
+				Genetic Programming \ref{sec:Path-planning}
+			};
+
+			% Range-based
+			%\draw[dashed,-] (0,3) -- (0,4.5) node[anchor=north west] {};
+			%\node[draw,align=left,anchor=south] at (0,4.5) {
+
+			%};
+
+			% Range-free
+			%\draw[dashed,-] (0,-3) -- (0,-4.5) node[anchor=north west] {};
+			%\node[draw,align=left,anchor=north] at (0,-4.5) {
+			
+			%};
+		\end{tikzpicture}
+    \end{figure}
