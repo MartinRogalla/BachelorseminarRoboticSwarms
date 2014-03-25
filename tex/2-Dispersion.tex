@@ -13,10 +13,9 @@ In this section we discuss a few categories of approaches which are used to solv
 First we discuss the simpler algorithms which are based on the approach which includes randomness such as random-walk and wall-following.
 After that we show which problems the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
 Further we motivate as to why the algorithms are put into a specific category and discuss the scalability and performance for each type of algorithm.
-When discussing the \emph{scalability}, we mean [explanation]. When discussing the \emph{performance} we mean [explanation]. \todo{fill in what scalability and performance are}
+When discussing the \emph{performance} we mean the time and ability to fully create a uniform dispersion in any given environment, whether it is static or dynamic. When discussing the \emph{scalability}, we mean the ability of maintaining the same performance when the population in the robot swarm is increased.
 
-\subsubsection{Randomness Approach}\todo{Probabilistic approach? Randomly based approach? Something like that.}
-%TODO: Find a few more references talking about random walk and follow-wall concerning usage in Robotic Swarms
+\subsubsection{Random-based Approach}
 The algorithms in this category solve the dispersion problem with an approach which relies on randomness to perform the dispersion.
 All of these algorithms are mainly location-free and primarily do not measure distances making them also range-free.\\
 The most pre-eminent algorithm in this category is the \emph{Random-Walk} algorithm due to its simplistic nature and efficiency. \cite{morlok2007dispersing}
@@ -71,6 +70,7 @@ The seek-open and UDD algorithm use other distance measures mostly using ultraso
 In both cases the algorithm is a range-based algorithm, where every robot is able to get the relative location. 
 It is important to stress that the algorithms should perform periodic checks to detect dynamic changes in the environment, such as other moving robots.
 
+\subsection{Discussion}
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
   \label{table_alg_dispersion}
@@ -80,21 +80,19 @@ It is important to stress that the algorithms should perform periodic checks to 
     \hline
     \bfseries Algorithm & \bfseries Approach & \bfseries Range & \bfseries Location & \bfseries Performance & \bfseries Scalability\\
     \hline
-    \bfseries Random Walk & Brute-Force & Range-Free & Location-Free & Medium & High\\\hline
-    \bfseries Follow Wall & Brute-Force & Range-Free & Location-Free & Low & Low\\\hline
-    \bfseries DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
-    \bfseries BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
-    \bfseries Clique-Intensity & Graph-Theory & Range-Free & Location-Free & Medium & High\\\hline
-    \bfseries APF & Potential-Fields & Range-Based & Location-Free & High & High\\\hline
-    \bfseries Directed Dispersion & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
-    \bfseries Seek Open & Inverse-Vector & Range-Based & Location-Free & Low & Medium\\\hline
-    \bfseries Fiducial & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
+    Random Walk & Random-Based & Range-Free & Location-Free & Medium & High\\\hline
+    Follow Wall & Random-Based & Range-Free & Location-Free & Low & Low\\\hline
+    DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
+    BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
+    Clique-Intensity & Graph-Theory & Range-Free & Location-Free & Medium & High\\\hline
+    APF & Potential-Fields & Range-Based & Location-Free & High & High\\\hline
+    Directed Dispersion & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
+    Seek Open & Inverse-Vector & Range-Based & Location-Free & Low & Medium\\\hline
+    Fiducial & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
     \end{tabular}
     }
   \caption{Overview of Common Dispersion Algorithms}
   \end{table}
-
-\subsection{Discussion}
 There are many problems with the implementation of the dispersion algorithms. 
 Many problems have been solved, but there are also some remaining problems left to be solved. 
 In this section we discuss both topics.
