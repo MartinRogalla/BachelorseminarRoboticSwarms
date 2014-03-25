@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 %Commented in draft to allow for notes.
-\usepackage{fullpage}
+\usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{tabularx}
@@ -9,6 +9,9 @@
 \usepackage{caption}
 \setlength\parindent{0pt}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
 
 \title{A Brief Survey of Problems and Solutions \\ in Robotic Swarms}
 %\title{An Extensive Analysis of Scalability and Performance of Commonly Used Techniques in Robotic Swarms}
@@ -17,11 +20,8 @@
     M.J. Rogalla}
 \date{\today}
 
-\pagestyle{empty}
-
 \begin{document}
 \maketitle
-\thispagestyle{empty}
 
 \begin{abstract}
 % As an emerging field, Robotic Swarms has faced many problems. 

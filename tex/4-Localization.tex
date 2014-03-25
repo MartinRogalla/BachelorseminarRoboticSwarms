@@ -112,6 +112,29 @@ When comparing the \emph{scalability} of the algorithms we mean how many robots 
 		Sources with low emission will of course end up with a smaller fraction of the robots, but there are enough applications in which this would not matter. \cite{dhariwal2004bacterium}.
 
 	\subsection{Discussion}
+	\begin{table}[H]
+  \renewcommand{\arraystretch}{1.3}
+  \label{table_alg_localization}
+  \centering
+\scalebox{0.85}{
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    \bfseries Algorithm & \bfseries Range-type & \bfseries Location-type & \bfseries Performance & \bfseries Scalability\\
+    \hline
+    Hill climbing & Range-free & Location-based & Medium & Low\\
+    \hline
+    PSO & Range-based & Location-free & High & High\\
+    \hline
+    GSO & Range-based & Location-free & High & High\\
+    \hline
+    BESA & Range-based & Location-based & Medium & High\\
+    \hline
+    BRW & Range-free & Location-free & Low & High\\
+    \hline
+    \end{tabular}
+    }
+  \caption{Overview of Common Source Localization Algorithms}
+  \end{table}
   	The biggest subproblem of the source localization problem with robotic swarms is trying to find multiple sources. 
 	A lot of research is done in single source localization, but the extension to multiple sources seems to be rather difficult. 
 	For example simple hill climbing algorithms are limited to single source localization, because they simply follow the first gradient they find in an ascending way.
@@ -136,28 +159,3 @@ When comparing the \emph{scalability} of the algorithms we mean how many robots 
 	\\
 	Finally it is important to acknowledge that it is difficult to fairly compare source localization algorithms. Not only are there a lot of factors that influence the performance of the algorithms, there is also a general lack of base cases and references that form a proper ground truth for comparison.
 
-	\begin{table}[H]
-  \renewcommand{\arraystretch}{1.3}
-  \caption{Overview of Common Localization Algorithms}
-  \label{table_alg_localization}
-  \centering
-\scalebox{0.85}{
-    \begin{tabular}{|l|l|l|l|l|l|}
-    \hline
-    \bfseries Algorithm & \bfseries Range-type & \bfseries Location-type & \bfseries Performance & \bfseries Scalability\\
-    \hline
-    \bfseries Hill climbing & Range-free & Location-based & Medium & Low\\
-    \hline
-    \bfseries PSO & Range-based & Location-free & High & High\\
-    \hline
-    \bfseries GSO & Range-based & Location-free & High & High\\
-    \hline
-    \bfseries BESA & Range-based & Location-based & Medium & High\\
-    \hline
-    \bfseries BRW & Range-free & Location-free & Low & High\\
-    \hline
-    \end{tabular}
-    }
-  \end{table}
-
-	
