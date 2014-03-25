@@ -77,7 +77,34 @@ When comparing the \emph{performance} of the algorithms we mean the explored are
 	The robots continuously share their occupancy grid and the motion they are intending to avoid collisions.
 	This approach assumes global and very intensive communication amongst all robots which is very hard in real-life applications. \cite{singh1993map}
 
+	\subsubsection{Foraging-based Exploration}
+	Foraging algorithms are based on the foraging behavior of ants to find food sources. \cite{hoff2010two}
+	For finding these food sources, they have to explore an area first. 
+	So, foraging algorithms are essentially extensions of exploration algorithms. 
+	The difference between the two is that foraging algorithms also have to plan an optimal path to target locations. \\	
+	Based on the foraging behaviour of ants, two different algorithms can be used: the Virtual Pheromone algorithm and the Cardinality algorithm.
+	Ants can leave marks in the form chemical pheromones behind for other ants, which they use to decide which way they go. 
+	The Virtual Pheromone algorithm uses two different types marks instead of many, to keep the robots low-level. 
+	Some robots in the swarm are used as beacons, others scout the area for food sources. 
+	For the same reason, the marks are made virtual by direct local communication between robots in the swarm.
+	So, the algorithm is range-based. 
+	It is location-free because the robots do not keep track of their absolute location.\\
+	The second foraging algorithm is the Cardinality algorithm. 
+	This works similar to the Virtual Pheromone algorithm, as in that walker robots can become beacons. 
+	But in this algorithm the beacons send out its cardinality: the number of beacons between that beacon and the nest. 
+	This algorithm is range-based and location-free too.
+	Conclusive results are produced in the article that the Cardinality-algorithm outperforms the Virtual Pheromone algorithm, proving that the ant pheromone algorithm can be improved.\\
 
+	A different foraging-based exploration algorithm is the Multihop Communication algorithm. \cite{jung2010multi}
+	The problem that is defined here is how a swarm of robots can find its way out of a random maze as fast as possible.
+	To do this, every robot in the swarm explores the maze, and generates a map through its sensor input.
+	Then, it communicates this to every other robot using a technique similar multihop communication found in computer networks.
+	Eventually, a map of the whole maze is generated out of which the shortest path to the exit can be collectively calculated.
+	This algorithm is range-based, because the robots communicate locally when close in proximity.
+	It is also location-based, because they try to map their absolute location in the maze. 
+
+
+	
 \subsection{Discussion}
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
@@ -97,6 +124,13 @@ When comparing the \emph{performance} of the algorithms we mean the explored are
 	    Market Economy & Range-based & Location-based & High & Medium\\
 	    \hline
 	    Heterogeneous Exploration & Range-free & Location-based & Medium & High\\
+	    \hline
+	    Virtual Pheromone & Range-based & Location-free & Medium & High\\
+	    \hline
+	    Cardinality & Range-based & Location-free & High & High\\
+	    \hline
+	    Multihop Communication & Range-based & Location-based & Medium & Medium\\		
+		
 	    \hline
     \end{tabular}
   }
