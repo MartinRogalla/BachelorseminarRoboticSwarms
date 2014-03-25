@@ -1,4 +1,4 @@
-%!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
+%!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
 Path-planning is the problem of a robotic swarm for each robot to find the optimal collistion-free path from the start location to the target location. \cite{qin2004path}.
 Another term for path-planning is path-finding. 
@@ -6,13 +6,12 @@ Path-planning is a problem found in many robotic swarms applications.
 An example is trying to find the optimal path to food sources and bringing food back to the base, which is often called foraging \cite{hoff2010two}.
 Another application is finding an optimal path to survivors from a disaster, for search-and-rescue operations.
 Of course, this can also be extended to path-planning for oil spills, crime victims or other targets.\cite{pugh2007inspiring} 
-Path-planning algorithms are often combined with some form of particle swarm optimization. \cite{poli2007particle}. \\
+Path-planning algorithms are often combined with some form of particle swarm optimization. \cite{poli2007particle}.
 
 \subsection{Algorithms}
-
 There are many algorithms that can be used to solve the path-planning problem. 
 We point out a few of the most important and recent algorithms. \cite{hoff2010two} \cite{bhattacharjee2011multi} \cite{jung2010multi} \cite{kala2012multi}
-We discuss these algorithms, pointing out how they work and what problems are solved. \\
+We discuss these algorithms, pointing out how they work and what problems are solved.
 
 %The first algorithm is the foraging algorithm. \cite{hoff2010two}
 %Foraging algorithms are based on the foraging behavior of ants to find food sources. 
@@ -30,14 +29,14 @@ We discuss these algorithms, pointing out how they work and what problems are so
 %These two algorithms both use only local communication and every robot does not detect exact range between other robots.
 %So, the two algorithms are bot location-free and range-free. \\
 
-\subsection{Artificial Bee Colony}
+\subsubsection{Artificial Bee Colony}
 The first algorithm we will discuss is the Artificial Bee Colony algorithm. \cite{bhattacharjee2011multi}
 This algorithm is inspired by nature: it is based on the stochatic behavior of foraging in bees.
 In this algorithm, the robots (from this point on referenced as bees), can be divided in three groups: onlooker, employed and scout.
 Onlooker bees oversee the other bees in the swarm and determine the best gathering spots from given information. 
 Emplyed bes gather food from sources, and scouts explore the environment searching for food sources.
 This algorithm does make use of a given environment and the path-planning is done with local sensors. 
-So, this algorithm is location-based and range-based.\\
+So, this algorithm is location-based and range-based.
 
 %\begin{itemize}
 %	\item A bee waiting on a dance area for making decision to choose a food source is called an onlooker.
@@ -66,7 +65,7 @@ So, this algorithm is location-based and range-based.\\
 %This algorithm lets robots keep track of its own location, and needs the exact range of all the swarm robots to determine the robot furthest away.
 %So, this algorithm is location-based and range-based. \\
 
-\subsection{Genetic Programming}
+\subsubsection{Genetic Programming}
 The last algorithm we will discuss here is Genetic Programming. \cite{kala2012multi}
 The paper presents a co-evolutionary genetic programming based planning of multiple robots. 
 Like the previous algorithm, the goal of this swarm is to find the optimal path in a random given maze.
@@ -77,7 +76,7 @@ These collisions are then induced by co-operation of the robots.
 After computing these individual paths, a master genetic algorithm runs to slect the best paths of the robots out of all the computed individual paths. 
 A major problem is the speed of the communication.
 Every robot does calculate its own position in the maze through other robots, and calculates the range between robots for collisions.
-So, this algorithm is location-based and range-based. \\
+So, this algorithm is location-based and range-based.
 
 
 \subsection{Discussion}
@@ -95,7 +94,8 @@ We summarize these algorithms in the following table:
   \caption{Path-planning algorithms}
   \label{table_alg_path_planning}
   \centering
-  \begin{tabular}{|p{3cm}|l|l|l|l|}
+\scalebox{0.85}{
+  \begin{tabular}{|l|l|l|l|l|}
     \hline
     \bfseries Algorithm & \bfseries Range &\bfseries Location &  \bfseries Performance & \bfseries Scalability\\
     \hline
@@ -105,6 +105,7 @@ We summarize these algorithms in the following table:
      %Multihop Communication & Range-based & Location-based & High & Low\\\hline
      Genetic Programming & Range-based & Location-based & High & Low\\\hline
     \end{tabular}
+    }
   \end{table}
 
   

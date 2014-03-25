@@ -1,4 +1,4 @@
-%!TEX root = ../../Bachelorseminar-RoboticSwarms.tex
+%!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
 Formation is the problem of controlling the relative position and orientation of the robots in a group while allowing the group to move as a whole. \cite{consolini2008leader}
 The formation problem is an important part in robotic swarm applications, as it is a primitive in virtually every other problem. 
@@ -16,7 +16,7 @@ Specifically, how to dampen the effects of disturbance propagation.
 This means that when one robot in the formation encounters a disturbance and moves out of formation, how is this situation handled in the swarm. 
 Also, the effect of such a disturbance should be reduced. 
 We call this the source disturbance dampening subproblem. 
-For each algorithm, we review how these problems are solved. \\
+For each algorithm, we review how these problems are solved.
 
 \subsection{Algorithms}
 Over the years, many different algorithms have been used to solve the formation problem. \cite{chen2005formation} \cite{consolini2008leader}
@@ -36,7 +36,7 @@ In the leader-follower approach a robot of the swarm is designed as the leader.
 The leader moves along a predefined trajectory while the other robots, the followers, are to maintain a desired distance and orientation to the leader. \cite{consolini2008leader}
 This can for instance be implemented by equipping the leader robot with a omni-directional camera and advanced sensors, which instructs the followers through local communication. \cite{das2002vision}
 The main problem with this algorithms is that it depends heavily on the leader and when something happens to the leader, the algorithm fails. 
-Source disturbance dampening is done by the leader; the leader communicates any disturbance to its followers. \\
+Source disturbance dampening is done by the leader; the leader communicates any disturbance to its followers.
 
 \subsubsection{Behavior-based method}
 The second algorithm we discuss is the behavior-based method. 
@@ -47,7 +47,7 @@ The action that is taken is decided by weighing the relative importance of each 
 These behaviors can then be used to maintain certain formations like a line, a column, a diamond and a wedge. \cite{balch1998behavior}
 The dynamics and stability of this algorithm can be calculated with the Lapyunov function, which can be used to account for many stability issues. \cite{lawton2003decentralized}
 Decisions are not made locally, but current data is sent to a system which then decides what each robot should do based on their behaviors.
-Disturbance source dampening is applied by the different behaviors assigned to each swarm robot. \\
+Disturbance source dampening is applied by the different behaviors assigned to each swarm robot.
 
 \subsubsection{Virtual structure approach}
 The last of the more basic algorithms is the virtual structure approach. 
@@ -69,14 +69,14 @@ One of these algorithms is the virtual space configuration algorithm. \cite{wee2
 This algorithm uses a leader-follower strategy, but each robot uses virtual space and virtual robots inside that space.
 These virtual robots are then used by each robot to avoid collisions. 
 The main difference is then that multiple follower robots in formations can maintain formation without crashing (using only virtual collisions), and they can have scalability of formation. 
-This method is range-based and location-free, but produces a lot of overhead in local communication.\\ 
+This method is range-based and location-free, but produces a lot of overhead in local communication.
 
 \subsubsection{Fuzzy formation control}
 Another novel algorithm is fuzzy formation control.\cite{ranjbar2012novel}
 In robotic swarms, optimal control techniques have been found to treat robust stabilization and tracking problems. 
 But in these cases, the exact model of the system has to be known. 
 But this fuzzy formation control technique provides a robust scheme with fuzzy logic approximator to implement effective controls for uncertain dynamic models.
-This way, the exact model does not need to be known, as nonlinearity, external disturbances and model uncertainties are dealt with by fuzzy approximation. \\
+This way, the exact model does not need to be known, as nonlinearity, external disturbances and model uncertainties are dealt with by fuzzy approximation.
 
 \subsubsection{Teamwork software control}
 Lastly, the last formation control we discuss is the teamwork software control. \cite{kaminka2013use}
@@ -85,7 +85,7 @@ It is mostly behavior-based, and each of the robots in the swarm has its own beh
 But instead of carrying out its behavior directly, each robot communicates with each other to set a 'team flag'. 
 When every robot agrees with this flag, only then is this order carried out. 
 This resembles the virtual structure control approach a little, as in that the swarm is considered as a whole. 
-This approach is location-free but range-based, and produces more overhead than the behavior-based approach. \\
+This approach is location-free but range-based, and produces more overhead than the behavior-based approach.
 
 \subsection{Discussion}
 All the algorithms try to solve the formation problem. 
@@ -105,7 +105,8 @@ We give a summarization of these algorithms in the form of a table:
   \label{table_alg_formation}
   \caption{Overview of Collective Transport Algorithms}
   \centering
-  \begin{tabular}{|p{5cm}|l|l|l|l|}
+\scalebox{0.85}{
+  \begin{tabular}{|l|l|l|l|l|}
     \hline
     \bfseries Algorithm & \bfseries Range & Location & \bfseries Stability & \bfseries Scalability\\
     \hline
@@ -117,6 +118,7 @@ We give a summarization of these algorithms in the form of a table:
     \bfseries Teamwork control& Range-based& Location-Free & High  & Low\\\hline
 
     \end{tabular}
+    }
   \end{table}
 
 Concluding this chapter we discuss the future problems of these algorithms. 
