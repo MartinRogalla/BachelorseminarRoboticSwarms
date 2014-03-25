@@ -1,61 +1,76 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
-We consider dispersion as one of the key problems in robotic swarms.\cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} Dispersion can be compared to the blanket coverage problem, which is defined in one of the first papers written on the topic of swarm robots: \emph{Command Control for Many-Robot Systems}. \cite{gage1992command} The objective of blanket coverage is defined as ``achieving a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.''\cite{gage1992command} The difference between dispersion and formation is often confused. While formation is trying to maintain explicitly specified spacing relationships, dispersion tries to find the best ``formation'' for the current environment. \\
-Dispersion has a great number of applications. Some of these applications include, but are not limited to exploration, surveillance, military response, disaster response and planetary exploration.\cite{ludwig2006robotic,Penders2011,mclurkin2007distributed} 
+We consider dispersion as one of the key problems in robotic swarms. \cite{ugur2007dispersion,mclurkin2007distributed,ludwig2006robotic} 
+Dispersion can be compared to the blanket coverage problem, which is defined in one of the first papers written on the topic of swarm robots: \emph{Command Control for Many-Robot Systems}. \cite{gage1992command} 
+The objective of blanket coverage is defined as ``achieving a static arrangement of elements that maximizes the detection rate of targets appearing within the coverage area.'' \cite{gage1992command} 
+The difference between dispersion and formation is often confused. 
+While formation is trying to maintain explicitly specified spacing relationships, dispersion tries to find the best ``formation'' for the current environment. \\
+Dispersion has a great number of applications. 
+Some of these applications include, but are not limited to exploration, surveillance, military response, disaster response and planetary exploration. \cite{ludwig2006robotic,Penders2011,mclurkin2007distributed} 
 
 \subsection{Algorithms}
 In this section we discuss a few categories of approaches which are used to solve the dispersion problem.
 First we discuss the simpler algorithms which are based on the approach which includes randomness such as random-walk and wall-following.
-After that we show the problems that the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
+After that we show which problems the dispersion problem has faced in the past and how the newer algorithms have solved these problems.
 Further we motivate as to why the algorithms are put into a specific category and discuss the scalability and performance for each type of algorithm.
-When discussing the \emph{scalability}, we mean [explanation]. When discussing the \emph{performance} we mean [explanation]. \todo{fill in what scalability and performance are}
+When discussing the \emph{performance} we mean the time and ability to fully create a uniform dispersion in any given environment, whether it is static or dynamic. When discussing the \emph{scalability}, we mean the ability of maintaining the same performance when the population in the robot swarm is increased.
 
-\subsubsection{Randomness Approach}
-%TODO: Find a few more references talking about random walk and follow-wall concerning usage in Robotic Swarms
+\subsubsection{Random-based Approach}
 The algorithms in this category solve the dispersion problem with an approach which relies on randomness to perform the dispersion.
 All of these algorithms are mainly location-free and primarily do not measure distances making them also range-free.\\
-The most pre-eminent algorithm in this category is the \emph{Random-Walk} algorithm due to its simplistic nature and efficiency.\cite{morlok2007dispersing}
-The \emph{Random-Walk} algorithm changes the robot's orientation randomly and moves it forward until an obstacle is detected. The algorithm then repeats the steps indefinitely.
+The most pre-eminent algorithm in this category is the \emph{Random-Walk} algorithm due to its simplistic nature and efficiency. \cite{morlok2007dispersing}
+The \emph{Random-Walk} algorithm changes the robot's orientation randomly and moves it forward until an obstacle is detected. 
+The algorithm then repeats the steps indefinitely.
 The algorithm is very scalable, due to the simple set of steps that have to be performed and due to its non-interdependence of other robots in the swarm.
 A minor drawback with the \emph{Random-Walk} algorithm is that it does not guarantee uniform dispersion.
-Due to the reliance on randomness, the algorithm is not optimal. If low-energy consumption has a high priority in the system, we do not recommend the usage of this algorithm.
+Due to the reliance on randomness, the algorithm is not optimal. 
+If low-energy consumption has a high priority in the system, we do not recommend the usage of this algorithm.
 In all other situations which allow the usage of the \emph{Random-Walk} algorithm, the algorithm is greatly recommended due to its satisfying performance and highly rated scalability.\\
-Another algorithm which is also used for dispersion purposes is the \emph{Follow-Wall} algorithm.\cite{morlok2007dispersing}
+Another algorithm which is also used for dispersion purposes is the \emph{Follow-Wall} algorithm. \cite{morlok2007dispersing}
 Originally the algorithm is not random, but follows an exact set of rules depending on the environment. 
 The algorithm is created for a non-dynamic environment and not for usage in robotic swarms.
-The robot is unable to see the difference between robots and other obstacles. This creates the possibility for robots to constantly follow each other, while thinking that they're actually moving around a wall or other static obstacles.
-The performance rating is low due to the meager amount of randomness and its inability to guarantee the uniformity of the dispersion. The scalability is also rated low, due to the performance deterioration when increasing the scale.
+The robot is unable to see the difference between robots and other obstacles. This creates the possibility for robots to constantly follow each other, while thinking that they are actually moving around a wall or other static obstacles.
+The performance rating is low due to the meager amount of randomness and its inability to guarantee the uniformity of the dispersion. 
+The scalability is also rated low, due to the performance deterioration when increasing the scale.
+
 \subsubsection{Graph Theory Approach}
 The most-common dispersion algorithms which use a graph theory approach can be divided into two categories: tree-search algorithms and graph-connectivity algorithms.\\
-The tree-search inspired algorithms have two strategies: the \emph{Depth-First Leader-Follower(DFLF)} Strategy and the \emph{Breadth-First Leader-Follower} Strategy.\cite{hsiang2004algorithms} These strategies rely on building a tree of all the possible moves that each robot can can make. 
-This tree can only be created, if and only if it is possible to have a total overview of the environment in which the bots are located. Therefore the implementation of these algorithms are mainly considered as \emph{location-based} algorithms.
-The \emph{BFLF} algorithm, requires the robots to travel less and has reduced complexity level compared to the \emph{DFLF} algorithm while maintaining the same quality of the solution and thus has our preference.
+The tree-search inspired algorithms have two strategies: the \emph{Depth-First Leader-Follower(DFLF)} Strategy and the \emph{Breadth-First Leader-Follower} Strategy. \cite{hsiang2004algorithms} 
+These strategies rely on building a tree of all the possible moves that each robot can can make. 
+This tree can be created if and only if it is possible to have a total overview of the environment in which the bots are located. 
+Therefore the implementation of these algorithms are mainly considered as \emph{location-based} algorithms.
+The \emph{BFLF} algorithm requires the robots to travel less and has reduced complexity level compared to the \emph{DFLF} algorithm.
+Still it maintains the same quality of the solution and thus has our preference.
 The performance of these algorithms is great in terms of quality of the solution.
 However, due to the high complexity of these types of algorithms, the scalability of this type of algorithms is rather low.
 Another downside is that the centralized control method brings is a much greater risk of failure in hostile environments.\\
-One of the algorithms regarding connectivity in graphs is the clique-intensity algorithm.\cite{ugur2007dispersion}
-The clique-intensity algorithm is range-free since it simply tries to detect other surrounding swarm-bots within the limited connection range and does not have the need to measure distances. The performance and scalability of the algorithm is very high, due to decentralized control.
+One of the algorithms regarding connectivity in graphs is the clique-intensity algorithm. \cite{ugur2007dispersion}
+The clique-intensity algorithm is range-free since it simply tries to detect other surrounding swarm-bots within the limited connection range and does not have the need to measure distances. 
+The performance and scalability of the algorithm is very high, due to decentralized control.
 The clique-intensity algorithm faces problems due to the fact that there are high amounts of noise in the wireless intensity signals when used in real-world applications. 
 
 \subsubsection{Artificial Potential Fields Approach}
-Artificial Potential Fields(APF) algorithms use fields to repel robots away from each other and attract them to their goal.\cite{khatib1986real}
-There are many differences between implementations of these algorithms, but all implementations use relative locations, both measuring and bearing. Therefore the algorithms which use this approach are location-free.\cite{pakanati2010swarm}
+Artificial Potential Fields (APF) algorithms use fields to repel robots away from each other and attract them to their goal. \cite{khatib1986real}
+There are many differences between implementations of these algorithms, but all implementations use relative locations, both measuring and bearing. 
+Therefore the algorithms which use this approach are location-free. \cite{pakanati2010swarm}
 The algorithms are well-scalable due to their relatively low complexity.
 The performance of the algorithms is rated high, as the robots are uniformly dispersed.
 Some minor problems with this type of algorithm exist.
 Minor changes in sensing positions from other robots can cause ripple effects throughout the network.
 This can however be solved by incorporating \emph{dead-zones}.
-These dead-zones allow very minor changes in location, without the immediate reaction of the network and thus the ripple effects are reduced.\cite{pakanati2010swarm}
-
+These dead-zones allow very minor changes in location, without the immediate reaction of the network and thus the ripple effects are reduced. \cite{pakanati2010swarm}
 
 \subsubsection{Inverse-Vector Approach}
-Some examples of the Inverse-Vector approach are the seek-open algorithm\cite{morlok2007dispersing}, the Fiducial algorithm\cite{morlok2007dispersing} and the Uniform Directed Dispersion(UDD) algorithm\cite{mclurkin2007distributed}.
-Each of the algorithms sense where obstacles and other robots are relatively positioned and calculate a vector of that data. Afterwards they calculate the inverse of that vector and moves into that direction.
-The \emph{Fiducial} algorithm has a advantage over the \emph{Seek-Open} algorithm: it uses a beacon like system, which prevents robots from running into each other and encourages uniformity of the distribution.
-The seek-open and UDD algorithm use other distance measures mostly using ultrasonic sensors. In both cases the algorithm is a range-based algorithm, where every robot is able to get the relative location. 
-
+Some examples of the Inverse-Vector approach are the seek-open algorithm \cite{morlok2007dispersing}, the Fiducial algorithm \cite{morlok2007dispersing} and the Uniform Directed Dispersion (UDD) algorithm \cite{mclurkin2007distributed}.
+Each of the algorithms sense where obstacles and other robots are relatively positioned and calculate a vector of that data. 
+Afterwards they calculate the inverse of that vector and move into that direction.
+The \emph{Fiducial} algorithm has an advantage over the \emph{Seek-Open} algorithm in that it uses a beacon like system. 
+This prevents robots from running into each other and encourages uniformity of the distribution.
+The seek-open and UDD algorithm use other distance measures mostly using ultrasonic sensors. 
+In both cases the algorithm is a range-based algorithm, where every robot is able to get the relative location. 
 It is important to stress that the algorithms should perform periodic checks to detect dynamic changes in the environment, such as other moving robots.
 
+\subsection{Discussion}
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
   \label{table_alg_dispersion}
@@ -65,22 +80,25 @@ It is important to stress that the algorithms should perform periodic checks to 
     \hline
     \bfseries Algorithm & \bfseries Approach & \bfseries Range & \bfseries Location & \bfseries Performance & \bfseries Scalability\\
     \hline
-    \bfseries Random Walk & Brute-Force & Range-Free & Location-Free & Medium & High\\\hline
-    \bfseries Follow Wall & Brute-Force & Range-Free & Location-Free & Low & Low\\\hline
-    \bfseries DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
-    \bfseries BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
-    \bfseries Clique-Intensity & Graph-Theory & Range-Free & Location-Free & Medium & High\\\hline
-    \bfseries APF & Potential-Fields & Range-Based & Location-Free & High & High\\\hline
-    \bfseries Directed Dispersion & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
-    \bfseries Seek Open & Inverse-Vector & Range-Based & Location-Free & Low & Medium\\\hline
-    \bfseries Fiducial & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
+    Random Walk & Random-Based & Range-Free & Location-Free & Medium & High\\\hline
+    Follow Wall & Random-Based & Range-Free & Location-Free & Low & Low\\\hline
+    DFLF & Graph-Theory & Range-Based & Location-Based & Medium-High & Low\\\hline
+    BFLF & Graph-Theory & Range-Based & Location-Based & High & Low\\\hline
+    Clique-Intensity & Graph-Theory & Range-Free & Location-Free & Medium & High\\\hline
+    APF & Potential-Fields & Range-Based & Location-Free & High & High\\\hline
+    Directed Dispersion & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
+    Seek Open & Inverse-Vector & Range-Based & Location-Free & Low & Medium\\\hline
+    Fiducial & Inverse-Vector & Range-Based & Location-Free & Medium & High\\\hline
     \end{tabular}
     }
   \caption{Overview of Common Dispersion Algorithms}
   \end{table}
-
-\subsection{Discussion}
-There are many problems with the implementation of the dispersion algorithms. Many problems have been solved, but there are also some remaining problems left to be solved. In this section we discuss both topics.
-Some problems concerning small fluctuations in relative position data can have a major effect in range-based approaches such as the Artificial Potential-Field approach and the Inverse-Vector approach. This has been solved in \emph{Swarm Dispersion via Potential Fields, Leader Election, and Counting Hops} with the introduction of \emph{dead-zones}. These dead-zones are limited error ranges, which allow for small location changes, without affecting the whole robotic swarm.
-
-In location-based algorithms, there are problems with the building of the exact overview of the environment. Very often applications do not allow for this, due to for example dynamic changes in the environment or a lack of observability. Research in this area should be focussed on high-accuracy real-time observation tools in combination with range-based algorithms which prevent obstacle-collision. 
+There are many problems with the implementation of the dispersion algorithms. 
+Many problems have been solved, but there are also some remaining problems left to be solved. 
+In this section we discuss both topics.
+Some problems concerning small fluctuations in relative position data can have a major effect in range-based approaches such as the Artificial Potential-Field approach and the Inverse-Vector approach. 
+This has been solved in \emph{Swarm Dispersion via Potential Fields, Leader Election, and Counting Hops} with the introduction of \emph{dead-zones}. 
+These dead-zones are limited error ranges, which allow for small location changes, without affecting the whole robotic swarm.
+In location-based algorithms, there are problems with the building of the exact overview of the environment. 
+Very often applications do not allow for this, due to for example dynamic changes in the environment or a lack of observability. 
+Research in this area should be focussed on high-accuracy real-time observation tools in combination with range-based algorithms which prevent obstacle-collision. 
