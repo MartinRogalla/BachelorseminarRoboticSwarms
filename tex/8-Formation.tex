@@ -1,16 +1,20 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
 Formation is the problem of controlling the relative position and orientation of the robots in a group while allowing the group to move as a whole. \cite{consolini2008leader}
-Formation is one of the key problems in robotics swarms, as it is a primitive in many other problems and composite-problems.\todo[inline]{Find references and add 2-3 applications.}
+Formation is one of the key problems in robotics swarms, as it is a primitive in many other problems and composite-problems.
 In particular it is used in the collective transport problem, where a swarm has to hold a formation to move an object. 
-An application in which formation is also extensively used is in area surveillance, where formation is used to increase coverage. \cite{burkle2011towards}\\
+An example of such an application is moving an object with robotic cars. \cite{mas2012object}
+An application in which formation is also extensively used is in area surveillance, where formation is used to increase coverage. \cite{burkle2011towards}
+A more specific example is indoor surveillance, where ground robots are already being used. \cite{di2010autonomous, rybski2000team}
+\\
 
 Two main subproblems arise from the original formation problem: the \emph{communication problem} and the \emph{formation stability} problem.\\
-In the \emph{communication subproblem} the algorithm needs to come with a communication method for usage within the robotic swarm. 
+In the \emph{communication subproblem} the algorithm needs to come with a communication algorithm for usage within the robotic swarm. 
 Each of these algorithms differ in these inter-robot communication strategies. 
-Some algorithms only rely on local communication while other algorithms do this communication centrallized.
-\todo[inline]{Volgende zin heeft niks te maken met het het communication probleem.}
-Some algorithms keep track of each robot's location and are thus location-based, while others are location-free. \\
+Some algorithms only rely on local communication while other algorithms communicate via a centralized system.
+This affects if an algorithm is range-free or range-based. 
+Some algorithms keep track of each robot's location and are thus location-based, while others are location-free.
+These locations can be be communicated through different ways of communication. \\
 
 The \emph{formation stability problem} is another subproblem, which each of these algorithms have to deal with.
 Specifically, the algorithm should be able to dampen the effects of disturbance propagation. 
@@ -19,29 +23,32 @@ The effect of such a disturbance should be reduced.
 We call this the \emph{source disturbance dampening} subproblem. 
 For each algorithm, we review how these problems are solved.
 
-\todo[inline]{In the \textbf{algorithm} section, you basically use three different words for the same thing: strategy, method and approach. Decide on the use of one of them and use it thoughout the subsection.}
 \subsection{Algorithms}
 Many different algorithms have been used to solve the formation problem. \cite{chen2005formation,consolini2008leader}
-These algorithms can categorized as: leader-follower strategy \cite{consolini2008leader,das2002vision}, 
-behavior-based method \cite{balch1998behavior,lawton2003decentralized}, 
-and virtual structure approach \cite{ren2004decentralized,do2007nonlinear}. \\
+These algorithms can categorized as: leader-follower algorithm \cite{consolini2008leader,das2002vision}, 
+behavior-based algorithm \cite{balch1998behavior,lawton2003decentralized}, 
+and virtual structure algorithm \cite{ren2004decentralized,do2007nonlinear}. \\
 The algorithms are build upon in later algorithms to create more novel algorithms. A few of these algorithms are: 
 virtual space configuration \cite{wee2013formation}, 
 fuzzy formation control \cite{ranjbar2012novel},
-and team-work software control \cite{kaminka2013use}. We discuss each of these algorithms separately in the next section and make a comparison at the end of the chapter.
+and team-work software control. \cite{kaminka2013use} 
+We compare these algorithms primarily by their stability and their scalability. 
+We define \emph{stability} in how quickly the formation can be formed again after the formation is lost (disturbance dampening). 
+We define \emph{scalability} as in how many robots can be added to the swarm before negatively influencing the performance.
+We discuss each of these algorithms separately in the next section and make a comparison at the end of the chapter.
 
-\subsubsection{Leader-follower strategy}
-First, we discuss the leader-follower strategy. 
-In the leader-follower approach a robot of the swarm is designed as the leader.
+\subsubsection{Leader-follower algorithm}
+First, we discuss the leader-follower algorithm. 
+In the leader-follower algorithm a robot of the swarm is designed as the leader.
 The leader moves along a predefined path while the other robots, the followers, are maintaining a desired distance and orientation to the leader. \cite{consolini2008leader}
-\todo[inline]{Elaborate ``advanced sensors'' in the following sentence:}
-This can be implemented by equipping the leader robot with a omni-directional camera and advanced sensors, which instructs the followers through local communication. \cite{das2002vision}
+This can be implemented by equipping the leader robot with a omni-directional camera and logical sensors, like an obstacle detector and a collision detector.
+The leader then instructs the followers through local communication. \cite{das2002vision}
 The main problem with this algorithms is that it depends heavily on the leader and when something happens to the leader, the algorithm fails. 
 Source disturbance dampening is done by the leader; the leader communicates any disturbances to its followers.
 
-\subsubsection{Behavior-based method}
-The second algorithm we discuss is the behavior-based method. 
-In the behavior-based method, every robot in the swarm is programmed with a certain behavior. 
+\subsubsection{Behavior-based algorithm}
+The second algorithm we discuss is the behavior-based algorithm. 
+In the behavior-based algorithm, every robot in the swarm is programmed with a certain behavior. 
 These behaviors may differ between robots.
 Some examples of these behaviors are the collision-avoidance behavior and the target-seeking behavior. 
 The action that is taken is decided by weighing the relative importance of each behavior. \cite{consolini2008leader}
@@ -50,9 +57,9 @@ The dynamics and stability of this algorithm are calculated with the Lapyunov fu
 In this algorithm, the decisions are not made locally, but real-time data is sent to a system which then decides what each robot should do based on their behaviors.
 Disturbance source dampening is applied by the different behaviors assigned to each swarm robot.
 
-\subsubsection{Virtual structure approach}
-The last of the more basic algorithms is the virtual structure approach. 
-The virtual structure approach considers the formation as a single virtual rigid structure such that the behavior of the robotic system is similar to that of a physical object. 
+\subsubsection{Virtual structure algorithm}
+The last of the more basic algorithms is the virtual structure algorithm. 
+The virtual structure algorithm considers the formation as a single virtual rigid structure such that the behavior of the robotic system is similar to that of a physical object. 
 Desired trajectories are not assigned to each single robot but to the entire formation as a whole. 
 The behavior of the formation in this case is exactly predictable but also generates a  large overhead. \cite{consolini2008leader}
 Such a virtual structure is thus decentralized and appropriate distributed control strategies can be made. \cite{ren2004decentralized}
@@ -67,10 +74,10 @@ The control system can be derived in four sequential stages: \cite{do2007nonline
 \subsubsection{Virtual space configuration}
 Aside from these three algorithms which have become a standard way for implementing formation control, more novel algorithms have been developed. 
 One of these algorithms is the virtual space configuration algorithm. \cite{wee2013formation}
-This algorithm uses a leader-follower strategy, but each robot uses virtual space and virtual robots inside that space.
+This algorithm uses a leader-follower algorithm, but each robot uses virtual space and virtual robots inside that space.
 These virtual robots are then used by each robot to avoid collisions. 
 The main difference is then that multiple follower robots in formations can maintain formation without crashing (using only virtual collisions), and they can have scalability of formation. 
-This method is range-based and location-free, but produces a lot of overhead in local communication.
+This algorithm is range-based and location-free, but produces a lot of overhead in local communication.
 
 \subsubsection{Fuzzy formation control}
 Another novel algorithm is fuzzy formation control.\cite{ranjbar2012novel}
@@ -81,13 +88,25 @@ This way, the exact model does not need to be known, as nonlinearity, external d
 
 \subsubsection{Teamwork software control}
 Lastly, the last formation control we discuss is the teamwork software control. \cite{kaminka2013use}
-This algorithm combines different control methods and tries to integrate this in one formation control approach.
+This algorithm combines different control algorithms and tries to integrate this in one formation control algorithm.
 It is mostly behavior-based, and each of the robots in the swarm has its own behavioral process. 
 But instead of carrying out its behavior directly, each robot communicates with each other to set a 'team flag'. 
 When every robot agrees with this flag, only then is this order carried out. 
-This resembles the virtual structure control approach a little, as in that the swarm is considered as a whole. 
-This approach is location-free but range-based, and produces more overhead than the behavior-based approach.
+This resembles the virtual structure control algorithm a little, as in that the swarm is considered as a whole. 
+This algorithm is location-free but range-based, and produces more overhead than the behavior-based algorithm.
 
+All the algorithms try to solve the formation problem. 
+%The algorithms are all location-free, due to the fact that they have to work with relative location and not absolute locations. If there is
+These algorithms are all location-free, which makes sense.  
+Because when an algorithm is location-based, all robots know their exact locations and can adjust their position, and the problem is already solved. \\
+The most important attribute for each algorithm is how stable the formation is, as in how good the formation can be kept. 
+This stability increases in the later algorithms, which expand upon the more basic algorithms. 
+But, as the stability increases, the scalability lower for algorithms which communicate via a central framework. 
+Take for example the teamwork software control algorithm. 
+This algorithm provides high stability, but also creates lots of overhead activity due to its central communication.
+This decreases the scalability of this algorithm significantly.\\
+
+\subsection{Discussion}
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
   \label{table_alg_formation}
@@ -108,24 +127,11 @@ This approach is location-free but range-based, and produces more overhead than 
   \caption{Overview of Formation Algorithms}
   \end{table}
 
-\subsection{Discussion}
-All the algorithms try to solve the formation problem. 
-%The algorithms are all location-free, due to the fact that they have to work with relative location and not absolute locations. If there is
-These algorithms are all location-free, which makes sense.  
-Because when an algorithm is location-based, all robots know their exact locations and can adjust their position, and the problem is already solved. \\
-The most important attribute for each algorithm is how stable the formation is, as in how good the formation can be kept. 
-This stability increases in the later algorithms, which expand upon the more basic algorithms. 
-But, as the stability increases, the scalability lower for some algorithms. 
-Take for example the virtual space configuration algorithm. 
-This algorithm provides high stability, but also creates lots of overhead activity due to communication, which decreases the scalability of this algorithm significantly.\\
-
-  \todo[inline]{See the comments written by Andrei. Too specific for me to edit myself.}
 Concluding this chapter we discuss the future problems of these algorithms. 
-As the algorithms become more advanced, the robots have to become more advanced too.
-This is not beneficial for the scalability of a swarm, because there would exist more communication between the robots. 
-One example of this is the stability of the formation. 
-To more effectively stabilize the formation, more communication exists between robots. 
-But communication on such a large scale is detrimental for the speed of the algorithm. 
-Another problem faced by these algorithms is reliability, especially for the leader-follower strategy. 
-If the leader is lost (for example destroyed), the algorithm   not work anymore. 
+As can be seen from the algorithms, centralized communication reduces scalability. 
+Although centralized communication does provide high stability, the lower scalability is a downside. 
+Decentralized algorithms are more likely to be scalable, and is an interesting topic for future solutions to the formation problem.
+Another problem faced by these algorithms is reliability, especially for the leader-follower algorithm. 
+If the leader is lost (for example destroyed), the algorithm does not work anymore. 
+A new leader could be chosen among the followers, but this is not taken into account in all the leader-follower algorithms. 
 This is a problem that most of these algorithms do not take in account.  

@@ -1,13 +1,13 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
 Collective transport of objects is the problem in which a swarm of robots locates a payload and collectively moves the payload to another place, like a home base. 
-This problem is a composite problem, composed\todo{SB: consisting?} of the already mentioned problems formation and source localization. 
+This problem is a composite problem, consisting of the already mentioned problems formation and source localization. 
 Still, we want to discuss this problem because it is an important problem in the research field of robotic swarms.
 %This can be compared to the path-planning problem; although this implies that a path is made to a certain place, which is not the case in the collective transport problem. \cite{hoff2010two}  
 %The localization problem is an important part of the collective transport problem and has much overlap.\\
 Transporting objects by robotic swarms has many potential applications in many settings, from agriculture to construction to disaster relief. 
 Especially in dangerous settings like war zones or radio-active areas, robotic swarms can be a powerful tool to safely retrieve many objects. 
-For example, recently Amazon, a large online retailer, announced it would make use of unmanned flying robots to deliver parcels at everyone's door. \footnote{www.amazon.com/b?node=8037720011}
+For example, recently Amazon, a large online retailer, announced it would make use of unmanned flying robots to deliver parcels at everyone's door. \footnote{Amazon's PrimeAir service, to be released sometime in 2015. www.amazon.com/b?node=8037720011}
 
 \subsection{Algorithms}
 
@@ -40,7 +40,7 @@ We define \emph{scalability} as in how many robots can be added to the swarm bef
 The first algorithm we discuss is the \emph{Aerial Equilibrium} algorithm. \cite{Michael2011cooperative}
 This algorithm for aerial transport is implemented by attaching cables from quadrocopters to the payload.
 Then, each robot calculates its own movement in the swarm by a mathematical model. 
-Because the swarm robots do not calculate the exact distance between them, this algorithm can be defined as a range-free algorithm.\todo{SB: is it? they do communicate over limited range?}
+Because the swarm robots do not use local communication but get instructions from a user, this algorithm can be defined as a range-free algorithm. 
 A change in the position of a robot is quickly communicated through the mathematical model, resulting in a good performance.
 Nevertheless, the scalability is not that good, because adding multiple robots will quickly result in robots getting in each others way.
 This is because the chance of touching each others rope increases with every robot added. \\
@@ -52,8 +52,8 @@ This is because the chance of touching each others rope increases with every rob
 The second algorithm we discuss is called \emph{Cluster Space Control} algorithm. \cite{Mas2012object}
 It uses a multi-robot formation control framework called cluster space control.
 It is utilized to control a swarm of four four-wheeled robots.
-A user using this type of transportation uses a joystick to input user controls to the whole swarm, after which the control framework specifies the formation and the position and shape of the swarm.
-Because the framework calculates the exact range between each robot in the swarm, this algorithm is range-based.\todo{SB: what do you mean by framework? and isn't it range-free / centralized, because it is controlled by a user?}
+A user using this type of transportation uses a joystick to input user controls to the whole swarm, after which the centralized control framework specifies the formation and the position and shape of the swarm.
+Because of the centralized communication there is no local ranged communication, so this algorithm is range-free. 
 This control framework allows the user to effectively transport large objects with a scalable set of robots. 
 The performance for this algorithm is very high, because the framework responds well to changes in the environment. 
 The scalability is low, because the framework has to hold connections to every robot. \\
@@ -63,8 +63,9 @@ The scalability is low, because the framework has to hold connections to every r
 %This is because control approach used is called cluster space control, and is utilized to control swarm of four four-wheeled robots. 
 
 These two algorithms solve the same problem, namely the problem of transporting large and/or heavy objects, in two entirely different ways. 
-The properties are summarized in the Table~\ref{table_alg_coltrans1}.
-
+They are both range-free and location-based, but differ mostly in scalability. 
+As both algorithms have centralized communication, scalability is low for both.
+We summarize the properties in the Table~\ref{table_alg_coltrans1}.
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
@@ -76,9 +77,8 @@ The properties are summarized in the Table~\ref{table_alg_coltrans1}.
     \hline
     \bfseries Algorithm & \bfseries Range &\bfseries Location &  \bfseries Performance & \bfseries Scalability\\
     \hline
-     Aerial Equilibrium & Range-free & Location-free & Medium & Medium\\\hline
-     Cluster Space Control & Range-based & Location-based & High & Low\\\hline
-
+     Aerial Equilibrium & Range-free & Location-based & Medium & Low\\\hline
+     Cluster Space Control & Range-free & Location-based & High & Low\\\hline
     \end{tabular}
     }
   \end{table}
@@ -122,26 +122,29 @@ And because the robots latch onto an arbitrary side, scaling of the swarm is ext
 %In this paper, this algorithm is tested with swarm-bots which can release and detect spots of ethanol left on the ground, indicating a spot they have to follow. Although the pheromone algorithm implies that pheromones should be used, different varieties of markings can be used, including wireless sensor beacons, drops of paint and even objects. This algorithm is particularly useful for guiding many robots to a payload, if for example the payload is very heavy or if many robots are needed for accurate and/or stable transportation. This algorithm is range-based; it calculates the exact distance to a trail. This algorithm is difficult to implement in dynamic environments, as made marks can dissapear. \\
 
 The following algorithm uses very simple robots, which is desirable. \cite{sugawara2012object}
-An algorithm that only uses very simple robots is an algorithm that is based on granular convection, also known as the Brazil Nut Effect. 
-The algorithms can be implemented in three different ways: (1) A swarm with homogeneous robots with no explicit communication, 
+It is based on granular convection, also known as the Brazil Nut Effect. 
+The algorithm can be implemented in three different ways: (1) A swarm with homogeneous robots with no explicit communication, 
 (2) a swarm of heterogeneous robots composed of robots that change their direction with two different probabilities, 
 and (3) a swarm of heterogeneous robots that uses local communication to adjust the fraction of robots that change their direction with higher probability. 
 
-Each implementation is faster than the last one, but keep in mind that the robots used to implement this are harder to produce than for the first. \\ 
+Each implementation has a higher performance than the last one, but also increase in communication. \\ 
 The way this algorithm works is as follows. 
 The goal of the swarm robots is to transport the object to the goal location. 
 Each swarm robot vibrates with a random force. The goal location outputs a repulsive force. 
-As the robots are randomly placed around the payload and the goal location, the payload gets kicked around by the vibrating swarm robots, until the payload is kicked to the target location.
+As the robots are randomly placed around the payload and the goal location, the payload gets kicked around by the vibrating swarm robots.
+This continues until the payload is kicked to the target location.
 When the swarm increases, the amount of time it costs to transport the payload significantly decreases. 
-With heterogeneous robots, there is more communication between robots to lower the density of the robots around the payload, because slows the process of moving the payload.\todo{SB: I don't get this.}
+With heterogeneous robots, there is more communication between robots to organize the vibrations of the robots. \\
+%With heterogeneous robots, there is more communication between robots to lower the density of the robots around the payload, because slows the process of moving the payload.\todo{SB: I don't get this.}
 
-This algorithm has different implementations, but is mostly location-free and range-free. 
-
-A short summarization of these algorithms is given in Table~\ref{table_alg_coltrans2}.
+The algorithms we describe are all location-free, as mentioned earlier. 
+They are also range-free, working only with local communication.
+They also have a high scalability, because robots can easily be added to such an extent that negative side-effects are not reached quickly.
+With the granular convection method, adding local communication and using heterogeneous robots increases the performance a lot. 
+We give a short summarization of these algorithms in Table~\ref{table_alg_coltrans2}.
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
-  \caption{Overview of Collective Transport Algorithms}
   \label{table_alg_coltrans2}
   \centering
 \scalebox{0.85}{
@@ -149,23 +152,25 @@ A short summarization of these algorithms is given in Table~\ref{table_alg_coltr
     \hline
     \bfseries Algorithm & \bfseries Range & \bfseries Location & \bfseries Performance & \bfseries Scalability\\
     \hline
-    \bfseries Flocking & Range-free & Location-Free & High & High\\\hline
-    %\bfseries Pheromone & Range-based & Location-Free & Medium & Medium\\\hline
-    \bfseries Homogeneous granular convection & Range-free& Location-Free & Low  & High\\\hline
-    \bfseries Heterogeneous granular convection & Range-free& Location-Free & Medium & High\\\hline
-    \bfseries Heterogeneous granular convection with \newline local communication & Range-based& Location-Free & High & High\\\hline
+    Flocking & Range-free & Location-Free & High & High\\\hline
+    %Pheromone & Range-based & Location-Free & Medium & Medium\\\hline
+    Homogeneous granular convection & Range-free& Location-Free & Low  & High\\\hline
+    Heterogeneous granular convection & Range-free& Location-Free & Medium & High\\\hline
+    Heterogeneous granular convection with \newline local communication & Range-free& Location-Free & High & High\\\hline
 
     \end{tabular}
     }
+    \caption{Overview of Collective Transport Algorithms}
   \end{table}
 
-These three algorithms are very different from each other, but they all serve a common goal. 
-A problem these algorithms ran into was how to locate the payload, how to move the payload and how to find and reach the goal location. 
-The main problem is locating the payload, something which the granular convection algorithm actually never does.  
-What these three algorithms have in common is that the transportation process speeds up significantly when adding more swarm robots, but reaches a cap when it becomes ineffective due to maximal density. 
-For this reason, small, easy and cheap to produce swarm robots are required. 
-The granular convection algorithm has the cheapest robots, but is not necessarily the best.
-This is because when the robots become slightly larger and more complicated, more sophisticated and faster algorithms could work.\todo{SB: Whole alinea is formulated a bit vague and is repetitive compared to previous section, take a look at it.} \\
+
+%A problem these algorithms ran into was how to locate the payload, how to move the payload and how to find and reach the goal location. 
+%The main problem is locating the payload, something which the granular convection algorithm actually never does.  
+%What these three algorithms have in common is that the transportation process speeds up significantly when adding more swarm robots, but reaches a cap when it becomes ineffective due to maximal density. 
+%For this reason, small, easy and cheap to produce swarm robots are required. 
+%The granular convection algorithm has the cheapest robots, but is not necessarily the best.
+%This is because when the robots become slightly larger and more complicated, more sophisticated and faster algorithms could work.\todo{SB: Whole alinea is formulated a bit vague and is repetitive compared to previous section, take a look at it.} \\
+%These three algorithms are very different from each other, but they all serve a common goal. 
 
 In the mentioned algorithms, moving the payload is mostly done by pushing. 
 In real-life applications this would not always be a good option and a more sophisticated method of attaching should be used. 

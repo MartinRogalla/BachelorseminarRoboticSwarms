@@ -1,8 +1,7 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
-- Define scalability and performance?
-
-
+\todo{Define scalability and performance?}
+\todo{More information on the operation of the mentioned algorithms in the references should be mentioned somewhere.}
 
 % As robots become smaller and easier to produce, swarm robotics has become a prominent research area in recent years. 
 
@@ -16,33 +15,32 @@ Finally we mention the remaining issues for each problem.
 Each of the algorithms can be categorized by their usage of range information and location information. 
 We show the problems which come with each of these categories and rate the scalability and performance of each approach. 
 Addressing these problems and their approaches gives a better overview and offers inspiration to solve other problems.
-Finally we give a general conclusion regarding the recent advancements in robotic swarms.  
-
-
+Finally we give a general conclusion regarding the recent advancements in robotic swarms.  \\
+\\
 We start by defining some terminology, since some of the terms are ambiguous and can be interpreted in different ways.
 We define a swarm as a scalable network of robots which consists out of more than two robots.
 Furthermore, we only consider robotic swarms in which every robot has some form of distributed intelligence.
 An exception is of course when a swarm of multiple robots is controlled by one control station.
 This swarm will still have some form of distributed intelligence to function and thus is considered a swarm.  \\
-
-Robotic swarm applications can roughly be characterized by two attributes. They are either \emph{location-based} or \emph{location-free}, or they are either \emph{range-based} and  \emph{range-free}. A location-free approach does not exclude a range-free approach and vice-versa.
+\\
+Robotic swarm applications can roughly be characterized by two attributes. Algorithms can either be \emph{location-based} or \emph{location-free} and either \emph{range-based} or \emph{range-free}:
 \begin{description}
 	\item[Location-free] Robots have no knowledge and do not keep track of their absolute or relative location.
 	%A robotic swarm is \emph{location-free} if the swarm has no knowledge of the boundaries of the location it is in, whether it is provided at the beginning or is actively searched for during the execution of the algorithm. 
-	\item[Location-based] Robots have perfect knowledge of their absolute or relative location.
+	\item[Location-based] Robots have perfect knowledge or keep track of their absolute or relative location.
 	%A robotic swarm is \emph{location-based} if each individual robot in the swarm has the knowledge of its absolute or relative location.
-	\item[Range-free] Robots do not communicate or communicate via some kind of central base or assume global communication.
+	\item[Range-free] Robots do not communicate or communicate via some kind of central base.
 	%A robotic swarm is \emph{range-free} if each robot can detect the presence of other nearby robots or obstacles, but does not store or measure the distance towards the other object.
 	\item[Range-based] Robots communicate within predetermined range.
 	%A robotic swarm is \emph{range-based} if each robot in the swarm keeps track of the exact distance between itself and the other robots in the swarm or obstacles. 
 \end{description}
-
-The paper is structured as follows. 
-In Section \ref{sec:Formation} until Section \ref{sec:Path-planning} we define the problems in robotic swarms, where we mention the applications and their underlying solutions.
-Finally we give a brief discussion of our observations in Section \ref{sec:Discussion}.\\  
-
-
-For more information on the operation of the mentioned algorithms, please consult the references. \todo{should be mentioned somewhere}
+Besides we compare the algorithms by two characteristics. The first is \emph{scalability}, by which we mean the ability of maintaining performance when the population in the robot swarm is increased. The second is \emph{performance}, by which in general the efficiency is meant. However, before comparing the algorithms of a specific problem, the definition of performance for that problem will be defined.\\
+\\
+Furthermore the paper is structured as follows. 
+In Section \ref{sec:Formation} until Section \ref{sec:CollectiveTransport} we define the main problems in robotic swarms. 
+For each problem we mention the possible real-life applications, their subproblems and underlying solutions.
+After that we discuss the characteristics of each solution, the corresponding (dis)advantages and where possible some remaining problems.
+In the last section, Section \ref{sec:Discussion}, we briefly discuss our observations.
 
 % \input{./fig/ProblemsOverview.tex}
 
