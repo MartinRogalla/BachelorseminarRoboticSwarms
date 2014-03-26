@@ -71,6 +71,16 @@ In both cases the algorithm is a range-based algorithm, where every robot is abl
 It is important to stress that the algorithms should perform periodic checks to detect dynamic changes in the environment, such as other moving robots.
 
 \subsection{Discussion}
+There are many problems with the implementation of the dispersion algorithms. 
+Many problems have been solved, but there are also some remaining problems left to be solved. 
+In this section we discuss both topics.
+Some problems concerning small fluctuations in relative position data can have a major effect in range-based approaches such as the Artificial Potential-Field approach and the Inverse-Vector approach. 
+This has been solved in \emph{Swarm Dispersion via Potential Fields, Leader Election, and Counting Hops} with the introduction of \emph{dead-zones}. 
+These dead-zones are limited error ranges, which allow for small location changes, without affecting the whole robotic swarm.
+In location-based algorithms, there are problems with the building of the exact overview of the environment. 
+Very often applications do not allow for this, due to for example dynamic changes in the environment or a lack of observability. 
+Research in this area should be focussed on high-accuracy real-time observation tools in combination with range-based algorithms which prevent obstacle-collision. 
+
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
   \label{table_alg_dispersion}
@@ -93,12 +103,3 @@ It is important to stress that the algorithms should perform periodic checks to 
     }
   \caption{Overview of Common Dispersion Algorithms}
   \end{table}
-There are many problems with the implementation of the dispersion algorithms. 
-Many problems have been solved, but there are also some remaining problems left to be solved. 
-In this section we discuss both topics.
-Some problems concerning small fluctuations in relative position data can have a major effect in range-based approaches such as the Artificial Potential-Field approach and the Inverse-Vector approach. 
-This has been solved in \emph{Swarm Dispersion via Potential Fields, Leader Election, and Counting Hops} with the introduction of \emph{dead-zones}. 
-These dead-zones are limited error ranges, which allow for small location changes, without affecting the whole robotic swarm.
-In location-based algorithms, there are problems with the building of the exact overview of the environment. 
-Very often applications do not allow for this, due to for example dynamic changes in the environment or a lack of observability. 
-Research in this area should be focussed on high-accuracy real-time observation tools in combination with range-based algorithms which prevent obstacle-collision. 
