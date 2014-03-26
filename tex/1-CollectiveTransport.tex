@@ -136,9 +136,11 @@ With heterogeneous robots, there is more communication between robots to organiz
 %With heterogeneous robots, there is more communication between robots to lower the density of the robots around the payload, because slows the process of moving the payload.\todo{SB: I don't get this.}
 
 The algorithms we describe are all location-free, as mentioned earlier. 
-They are also range-free, working only with local communication.
-They also have a high scalability, because robots can easily be added to such an extent that negative side-effects are not reached quickly.
-With the granular convection method, adding local communication and using heterogeneous robots increases the performance a lot. 
+Flocking is a range-based algorithm, because the robots communicate the headings locally. 
+Of course, granular convection with local communication is also range-based by definition. 
+Although granular convection is mostly range-free, its scalability overall is high, because there is no central communication. 
+With the granular convection method, adding local communication and using heterogeneous robots increases the performance.
+This is also not detrimental to the scalability of the approach. 
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
@@ -148,11 +150,11 @@ With the granular convection method, adding local communication and using hetero
     \hline
     \bfseries Algorithm & \bfseries Range & \bfseries Location & \bfseries Performance & \bfseries Scalability\\
     \hline
-    Flocking & Range-free & Location-Free & High & High\\\hline
+    Flocking & Range-based & Location-Free & High & High\\\hline
     %Pheromone & Range-based & Location-Free & Medium & Medium\\\hline
     Homogeneous granular convection & Range-free& Location-Free & Low  & High\\\hline
     Heterogeneous granular convection & Range-free& Location-Free & Medium & High\\\hline
-    Heterogeneous granular convection with \newline local communication & Range-free& Location-Free & High & High\\\hline
+    Heterogeneous granular convection with \newline local communication & Range-based& Location-Free & High & High\\\hline
 
     \end{tabular}
     }

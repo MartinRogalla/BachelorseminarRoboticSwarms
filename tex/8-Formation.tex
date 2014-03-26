@@ -63,13 +63,10 @@ The virtual structure algorithm considers the formation as a single virtual rigi
 Desired trajectories are not assigned to each single robot but to the entire formation as a whole. 
 The behavior of the formation in this case is exactly predictable but also generates a  large overhead. \cite{consolini2008leader}
 Such a virtual structure is thus decentralized and appropriate distributed control strategies can be made. \cite{ren2004decentralized}
-The control system can be derived in four sequential stages: \cite{do2007nonlinear}
-\begin{enumerate}
-	\item Define the dynamics of the virtual structure 
-	\item Translate the motion of the virtual structure into the desired motion for each robot
-	\item Derive output feedback for each robot
-	\item Introduce formation feedback from each robot to the virtual structure
-\end{enumerate} 
+The control system can be structured in four sequential stages: defining the dynamics of the virtual structure, 
+translating the motion of the virtual structure into the desired motion for each robot, 
+deriving output feedback for each robot,
+and introducing formation feedback from each robot to the virtual structure. \cite{do2007nonlinear} 
 
 \subsubsection{Virtual space configuration}
 Aside from these three algorithms which have become a standard way for implementing formation control, more novel algorithms have been developed. 
