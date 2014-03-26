@@ -8,23 +8,21 @@
 % Large networks of robots are commonly referred to as swarms.
 
 Swarm robotics has become a prominent and promising research area in the recent years. 
-It has great potential use for a large variety of applications. 
-In order to not forget the big picture, we believe that a survey of a few basic problems in this field should be given. 
-This survey presents a concise overview of a few problems that the robotic swarms research area has faced. For each problem we provide a small discussion as to which approaches were chosen. 
-Finally we mention the remaining issues for each problem. 
-Each of the algorithms can be categorized by their usage of range information and location information. 
-We show the problems which come with each of these categories and rate the scalability and performance of each approach. 
-Addressing these problems and their approaches gives a better overview and offers inspiration to solve other problems.
-Finally we give a general conclusion regarding the recent advancements in robotic swarms.
+It has great potential use for a large variety of applications, some of which have already been succesfully implemented. 
+We want to provide a global overview of the main problems found in the research area of robotic swarms. 
+Many articles already exist which give an overview of applications and used practies in this area, but often do not explain the problems underlying these practices. 
+Therefore, we focus on providing a problem-oriented overview of the robotic swarms, while also providing a general overview of best practices and solutions of these problems. 
+
 \\
 \todo[inline]{Alinea above needs update = abstract}
-We start by defining some terminology, since some of the terms are ambiguous and can be interpreted in different ways.
+We start by defining some terminology, since some of the terms used in robotic swarms are ambiguous and can be interpreted in different ways.
 We define a swarm as a scalable network of robots which consists out of more than two robots.
 Furthermore, we only consider robotic swarms in which every robot has some form of distributed intelligence.
 An exception is of course when a swarm of multiple robots is controlled by one control station.
-This swarm will still have some form of distributed intelligence to function and thus is considered a swarm.  \\
+Because the swarm robots have to communicate either directly or indirectly with each other, the swarm will still have some form of distributed intelligence to function.
+Thus, according to our original definition, we still regard it as a swarm. \\
 \\
-Robotic swarm applications can roughly be characterized by two attributes. Algorithms can either be \emph{location-based} or \emph{location-free} and either \emph{range-based} or \emph{range-free}:
+Robotic swarm applications can roughly be characterized by their location type and their information type. Algorithms can then respectively be either \emph{location-based} or \emph{location-free} and either \emph{range-based} or \emph{range-free}:
 \begin{description}
 	\item[Location-free] Robots have no knowledge and do not keep track of their absolute or relative location.
 	%A robotic swarm is \emph{location-free} if the swarm has no knowledge of the boundaries of the location it is in, whether it is provided at the beginning or is actively searched for during the execution of the algorithm. 
@@ -35,13 +33,27 @@ Robotic swarm applications can roughly be characterized by two attributes. Algor
 	\item[Range-based] Robots communicate within predetermined range.
 	%A robotic swarm is \emph{range-based} if each robot in the swarm keeps track of the exact distance between itself and the other robots in the swarm or obstacles. 
 \end{description}
-Besides we compare the algorithms by two characteristics. The first is \emph{scalability}, by which we mean the ability of maintaining performance when the population in the robot swarm is increased. The second is \emph{performance}, by which in general the efficiency is meant. However, before comparing the algorithms of a specific problem, the definition of performance for that problem will be defined.\\
-\\
-Furthermore the paper is structured as follows. 
-In Section \ref{sec:Formation} until Section \ref{sec:CollectiveTransport} we define the main problems in robotic swarms. 
-For each problem we mention the possible real-life applications, their subproblems and underlying solutions.
-After that we discuss the characteristics of each solution, the corresponding (dis)advantages and where possible some remaining problems.
+
+In the following sections, we compare the algorithms by two characteristics. 
+The first characteristic is \emph{scalability}, by which we mean the ability of maintaining performance when the population in the robot swarm is increased. 
+The second is \emph{performance}, by which we mean the geneneral efficiency. 
+We define efficiency seperately for each problem before comparing the algorithms of that problem. 
+We do this because the solutions have different ways of expressing efficiency for each problem.\\
+
+A composite problem is a problem composed of multiple main problems in such a way that these main problems influence the working of the solutions. 
+Although such a composite problem can be singled out, a lot of the main problems have some form of overlap too, although not with significant impact. 
+The main problems Disperson and Source Localization both include the Formation problem, and the Collective Transport is composed of the Formation problem among others.
+The Exploration problem is more of an extension to the Dispersion problem. 
+This relationship is shown in the Problem Composition Overview figure. \ref{fig:ProblemsOverview} \\
+\input{./fig/ProblemsOverview.tex}
+
+The remainder of this paper is then structured as follows. 
+In Section \ref{sec:Formation} until Section \ref{sec:Localization} we define the main problems in robotic swarms. 
+Then, in Section \ref{sec:CollectiveTransport}, we discuss the composite problem Collective Transport. 
+For each problem we mention the possible real-life applications, their subproblems and the underlying algorithms of the solutions.
+After that we discuss the characteristics of each algorithm, the corresponding (dis)advantages and where possible some remaining problems.
+For more information on the operation of the mentioned algorithms, you can check the references provided. 
 In the last section, Section \ref{sec:Discussion}, we briefly discuss our observations.
 
-% \input{./fig/ProblemsOverview.tex}
+
 
