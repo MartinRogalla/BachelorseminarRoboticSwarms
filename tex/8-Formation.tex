@@ -32,9 +32,9 @@ The algorithms are build upon in later algorithms to create more novel algorithm
 virtual space configuration \cite{wee2013formation}, 
 fuzzy formation control \cite{ranjbar2012novel},
 and team-work software control. \cite{kaminka2013use} 
-We compare these algorithms primarily by their stability and their scalability. 
-We define \emph{stability} in how quickly the formation can be formed again after the formation is lost (disturbance dampening). 
-We define \emph{scalability} as in how many robots can be added to the swarm before negatively influencing the performance.
+We compare these algorithms primarily by their performance and their scalability. 
+We define \emph{performance} in how quickly the formation can be formed again after the formation is lost (disturbance dampening). 
+This can also be referred to as the stability of the formation.
 We discuss each of these algorithms separately in the next section and make a comparison at the end of the chapter.
 
 \subsubsection{Leader-follower algorithm}
@@ -99,11 +99,11 @@ All the algorithms try to solve the formation problem.
 %The algorithms are all location-free, due to the fact that they have to work with relative location and not absolute locations. If there is
 These algorithms are all location-free, which makes sense.  
 Because when an algorithm is location-based, all robots know their exact locations and can adjust their position, and the problem is already solved. \\
-The most important attribute for each algorithm is how stable the formation is, as in how good the formation can be kept. 
-This stability increases in the later algorithms, which expand upon the more basic algorithms. 
-But, as the stability increases, the scalability lower for algorithms which communicate via a central framework. 
+The most important attribute for each algorithm is the performance, so how stable the formation is, as in how good the formation can be kept. 
+This performance increases in the later algorithms, which expand upon the more basic algorithms. 
+But, as the performance increases, the scalability lower for algorithms which communicate via a central framework. 
 Take for example the teamwork software control algorithm. 
-This algorithm provides high stability, but also creates lots of overhead activity due to its central communication.
+This algorithm provides high performance, but also creates lots of overhead activity due to its central communication.
 This decreases the scalability of this algorithm significantly.\\
 
 \subsection{Discussion}
@@ -114,7 +114,7 @@ This decreases the scalability of this algorithm significantly.\\
 \scalebox{0.85}{
   \begin{tabular}{|l|l|l|l|l|}
     \hline
-    \bfseries Algorithm & \bfseries Range & \bfseries Location & \bfseries Stability & \bfseries Scalability\\
+    \bfseries Algorithm & \bfseries Range & \bfseries Location & \bfseries Performance & \bfseries Scalability\\
     \hline
     Leader-follower & Range-based & Location-Free & Medium & Low\\\hline
     Behavior-based & Range-free & Location-Free & Medium & High\\\hline
@@ -129,7 +129,7 @@ This decreases the scalability of this algorithm significantly.\\
 
 Concluding this chapter we discuss the future problems of these algorithms. 
 As can be seen from the algorithms, centralized communication reduces scalability. 
-Although centralized communication does provide high stability, the lower scalability is a downside. 
+Although centralized communication does provide high performance, the lower scalability is a downside. 
 Decentralized algorithms are more likely to be scalable, and is an interesting topic for future solutions to the formation problem.
 Another problem faced by these algorithms is reliability, especially for the leader-follower algorithm. 
 If the leader is lost (for example destroyed), the algorithm does not work anymore. 
