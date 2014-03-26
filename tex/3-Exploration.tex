@@ -87,57 +87,46 @@ When comparing we define the \emph{performance} of the exploration algorithms as
 	The robots continuously share their occupancy grid and the motion they are intending to avoid collisions.
 	This approach assumes global and intensive communication amongst all robots which is very hard in real-life applications. \cite{singh1993map}
 
-	\subsubsection{Foraging-based Exploration}
-	Foraging algorithms are based on the foraging behavior of ants to find food sources. \cite{hoff2010two}
-	For finding these food sources, they have to explore an area first. 
-	So, foraging algorithms are essentially extensions of exploration algorithms. 
-	The difference between the two is that foraging algorithms also have to plan an optimal path to target locations. \\	
-	Based on the foraging behavior of ants, two different algorithms can be used: the Virtual Pheromone algorithm and the Cardinality algorithm.
-	Ants can leave marks in the form chemical pheromones behind for other ants, which they use to decide which way they go. 
-	The Virtual Pheromone algorithm uses two different types marks instead of many, to keep the robots low-level. 
-	Some robots in the swarm are used as beacons, others scout the area for food sources. 
-	For the same reason, the marks are made virtual by direct local communication between robots in the swarm.
-	So, the algorithm is range-based. 
-	It is location-free because the robots do not keep track of their absolute location.\\
-	The second foraging algorithm is the Cardinality algorithm. 
-	This works similar to the Virtual Pheromone algorithm, as in that walker robots can become beacons. 
-	But in this algorithm the beacons send out its cardinality: the number of beacons between that beacon and the nest. 
-	This algorithm is range-based and location-free too.
-	Conclusive results are produced in the article that the Cardinality-algorithm outperforms the Virtual Pheromone algorithm, proving that the ant pheromone algorithm can be improved.\\
+	% \subsubsection{Foraging-based Exploration}
+	% Foraging algorithms are based on the foraging behavior of ants to find food sources. \cite{hoff2010two}
+	% For finding these food sources, they have to explore an area first. 
+	% So, foraging algorithms are essentially extensions of exploration algorithms. 
+	% The difference between the two is that foraging algorithms also have to plan an optimal path to target locations. \\	
+	% Based on the foraging behavior of ants, two different algorithms can be used: the Virtual Pheromone algorithm and the Cardinality algorithm.
+	% Ants can leave marks in the form chemical pheromones behind for other ants, which they use to decide which way they go. 
+	% The Virtual Pheromone algorithm uses two different types marks instead of many, to keep the robots low-level. 
+	% Some robots in the swarm are used as beacons, others scout the area for food sources. 
+	% For the same reason, the marks are made virtual by direct local communication between robots in the swarm.
+	% So, the algorithm is range-based. 
+	% It is location-free because the robots do not keep track of their absolute location.\\
+	% The second foraging algorithm is the Cardinality algorithm. 
+	% This works similar to the Virtual Pheromone algorithm, as in that walker robots can become beacons. 
+	% But in this algorithm the beacons send out its cardinality: the number of beacons between that beacon and the nest. 
+	% This algorithm is range-based and location-free too.
+	% Conclusive results are produced in the article that the Cardinality-algorithm outperforms the Virtual Pheromone algorithm, proving that the ant pheromone algorithm can be improved.\\
 
-	A different foraging-based exploration algorithm is the multihop communication algorithm. \cite{jung2010multi}
-	The problem that is defined here is how a swarm of robots can find its way out of a random maze as fast as possible.
-	To do this, every robot in the swarm explores the maze, and generates a map through its sensor input.
-	Then, it communicates this to every other robot using a technique similar to multihop communication found in computer networks.
-	Eventually, a map of the whole maze is generated out of which the shortest path to the exit can be collectively calculated.
-	This algorithm is range-based, because the robots communicate locally when close in proximity.
-	It is also location-based, because they try to map their absolute location in the maze. 
+	% A different foraging-based exploration algorithm is the multihop communication algorithm. \cite{jung2010multi}
+	% The problem that is defined here is how a swarm of robots can find its way out of a random maze as fast as possible.
+	% To do this, every robot in the swarm explores the maze, and generates a map through its sensor input.
+	% Then, it communicates this to every other robot using a technique similar to multihop communication found in computer networks.
+	% Eventually, a map of the whole maze is generated out of which the shortest path to the exit can be collectively calculated.
+	% This algorithm is range-based, because the robots communicate locally when close in proximity.
+	% It is also location-based, because they try to map their absolute location in the maze. 
 
 
 	
 \subsection{Discussion}
+	In the normal frontier-based algorithm we see an approach in which global communication is assumed, which means low scalability. Furthermore no coordination is implemented, which influences the performance negatively. This coordination is available in the next algorithm in the form of the bidding principle and therefore has higher performance. Because this approach does not assume global communication it is also highly scalable. The K-means clustering principle does not perform better than the bidding principle, but does explore the area equally distributed, which can be preferable in search and rescue missions. This approach again is range-free and based on a central base, which causes low scalability.\\
+	\\
+	In the market economy based algorithm the exploration problem is addressed by optimizing the utility of and the distance traveled towards each cell which makes it very effective. However, this implementation is still centralized and therefore less scalable. In the frontier based algorithm with bidding principle not only the utility and the distance to be traveled towards it are taken into account, but also a certain nearness measure, which makes the robots tend to stay together, so communication stays possible. Therefore this algorithm is not only effective, but also highly scalable.\\
+	\\
 	In general we see that most of the robotic swarm exploration algorithms keep track of some kind of map and are therefore location-based.
 	This seems sensible, because it is the only way to know if a robot has been to a certain location already and thus not has to explore it again.
 	On the other hand, to use the advantages of swarm robotics, this map has to be shared with other robots.
 	Because of that nearly all robotic swarm exploration algorithms assume global communication and are therefore range-free.
 	However, in real-life applications robots have limited communication range, so either a central base (which dramatically decreases scalability) or some kind ad-hoc network (which would decrease the exploration efficiency) needs to be created.
-	% Some attempts have been made to solve this problem as can be seen in for example the implementation of the bidding algorithm we discussed, which is range-based.
-	This creates a situation where we want the swarm robots to stay together to share information efficiently. 
-	But, in contrast, we also want the robots to spread widely to gain as much new information as possible to gain as much new information as possible. 
-	The problem is combining these two goals and create a balanced solution. \\
-	In the market economy based algorithm this problem is addressed by optimizing the utility of and the distance traveled towards each cell. 
-	However, this implementation is centralized and therefore less scalable. 
-	In the bidding and frontier based algorithm not only the utility and the distance to be traveled towards it are taken into account, but also a certain nearness measure.
-	This nearness measure is also used in the foraging algorithms, using virtual pheromones and multi-hop communication to take this into account.
-	This measure makes the robots tend to stay together, much like what has been discussed in the formation problem.  
-	Every distributed robotic swarms exploration algorithm should thus incorporate a solution to the formation problem in some way. 
-	If this technique gets fully optimized, the robots use each others knowledge as much as possible and at the same explore in an efficient way.\\
-
-	
-	This brings us to the paradox in which we on the one hand need the robots to share information for efficiency and thus stay together and on the other hand want the robots to spread widely to gain as much new information as possible.\\
-	\\
-	\\
-	.... to be finished.
+	This brings us to a contradiction in which on the one hand we want the robots to share information for efficiency and thus stay together, and on the other hand want the robots to spread widely to gain as much new information as possible.
+	The investigated algorithms have tried to optimize this contradiction. We think that the frontier-based algorithm with bidding coordination is a good way to go and should be further optimized in the future to come nearer to an optimal solution.
 
 
 \begin{table}[H]
@@ -151,20 +140,20 @@ When comparing we define the \emph{performance} of the exploration algorithms as
 	    \hline
 	    Frontier-based & Range-free & Location-based & Medium & Low\\
 	    \hline
-	    Frontier-based with bidding & Range-based & Location-based & Medium-high & High\\
+	    Frontier-based with bidding & Range-based & Location-based & High & High\\
 	    \hline
 	    Frontier-based with K-means clustering & Range-free & Location-based & High & Low\\
 	    \hline
-	    Market Economy & Range-based & Location-based & High & Medium\\
+	    Market Economy & Range-based & Location-based & Medium-high & Medium\\
 	    \hline
 	    Heterogeneous Exploration & Range-free & Location-based & Medium & Low\\
 	    \hline
-	    Virtual Pheromone & Range-based & Location-free & Medium & High\\
-	    \hline
-	    Cardinality & Range-based & Location-free & High & High\\
-	    \hline
-	    Multihop Communication & Range-based & Location-based & Medium & Medium\\		
-	    \hline
+	    % Virtual Pheromone & Range-based & Location-free & Medium & High\\
+	    % \hline
+	    % Cardinality & Range-based & Location-free & High & High\\
+	    % \hline
+	    % Multihop Communication & Range-based & Location-based & Medium & Medium\\		
+	    % \hline
     \end{tabular}
   	}
 	\caption{Overview of Common Exploration Algorithms}
