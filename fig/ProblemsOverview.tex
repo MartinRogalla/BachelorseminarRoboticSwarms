@@ -2,15 +2,15 @@
   \centering
   \begin{tikzpicture}[->,>=stealth,shorten >=2pt,auto,node distance=3.5cm,
     thick,main node/.style={fill=white,draw,font=\sffamily}]
-    \node at (7.7,0.7) {main problems};
-    \node at (7,-4.3) {composite problems};
+    \node at (7.7,0.75) {main problems};
+    \node at (7,-3.45) {composite problems};
     \draw[fill=white,dashed] (-1.2,-2) rectangle (8.8,0.5);
-    \draw[fill=white,dashed] (8.8,-4) rectangle (5.2,-3);
+    \draw[fill=white,dashed] (8.8,-3.2) rectangle (5.2,-2.3);
     \node[main node] (1) {Exploration};
     \node[main node] (2) [below= 0.9cm of 1] {Dispersion};
     \node[main node] (3) [right of=1] {Formation};
     \node[main node] (4) [right of=3] {Source Localization};
-    \node[main node] (5) [below of=4] {Collective Transport};
+    \node[main node] (5) [below= 2.2cm of 4] {Collective Transport};
 
     \path[every node/.style={font=\sffamily\small}]
       (1) edge [right] node[left] {} (2)

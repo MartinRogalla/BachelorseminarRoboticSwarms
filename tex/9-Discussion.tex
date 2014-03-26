@@ -7,24 +7,41 @@
 %- scalability, global communication, 
 %- lots of overlap
 
-In the past sections, we reviewed the most common problems found in the field of robotic swarms. 
-These problems however, do overlap, because the problems found in this field often consist of multiple different problems. 
+In the previous sections, we reviewed the main problems found in the field of robotic swarms. 
+However, these problems often overlap.
+This is because the problems found in this field often consist of multiple different problems. 
 We focused on each problem, highlighting the communication methods of every solution and properties of these communication methods. 
-These properties are summarized in a Venn Diagram below, allowing for a compact overview of these solutions. 
+We summarize these properties in a Venn-diagram \ref{fig:AlgorithmsOverview}, allowing for a compact overview of these solutions. 
 
 \input{./fig/AlgorithmsOverview.tex}
-% \begin{tikzpicture}
-%     \pie{18/Range-based \& location-free, 
-%     35/Range-based \& location-based,
-%     29/Range-free \& location-free, 
-%     18/Range-free \& location-based}
-% \end{tikzpicture}
-We see that most solutions are range-based and location-based. 
-In practice, these solutions are not the most desirable solutions, because of two reasons. 
-The first reason is scalability. 
-When an algorithm is location-based and range-based, the robots used in the swarm have to be more advanced to correctly handle complex information. 
-This also introduces a lot of overhead, decreasing communication speed when robotic swarms increase in size. 
-The second reason is that algorithms that are location-based can often not be used in dynamic locations, especially in algorithms where the operating environment has to be defined beforehand.\\
 
-This survey, only highlighted a few problems that the robotic swarms technology has faced. Thus, more research on this topic needs to be undertaken on additional problems, such as mapping, foraging, target localization and robot localization, in order to create a fully comprehensive overview.
+- voornamelijk location-free
+	- want maps moeten gemerged, bijgehouden worden gedeeld...
+	-
+
+- location-based voornamelijk exploration algoritmes
+	range-free location-free -> goed omdat gebruik bijv van wireless intensity signals erg onnauwkeurig is, non-optimal use of full robotic swarm
+	range-based location-free -> want maps moeten gemerged, bijgehouden worden gedeeld... en dynamische omgeving kan in de gaten gehouden worden
+	range-based -> belangrijkste gedeelte van een swarm, omdat daar de distributed intelligence ligt en dat daar het meeste onderzoek naar gedaan moet worden
+	location-based -> kan ook handig zijn in statische locaties, als er rekening gehouden wordt met de scalability van de swarm  
+	range-free -> matig scalable, maakt niet gebruik van efficiente samenwerking
+- range-based én range-free
+	
+
+
+
+Most algorithms are location-free.
+This makes sense, as location-based solutions are not the most desirable, although they do provide high performance.
+This is mainly because of three reasons. 
+The first reason is cost. 
+When an algorithm is location-based and range-based, the robots used in the swarm generally have to be equipped with advanced sensors. 
+The robots are then more costly in terms of energy consumption and device price, which is not desirable.
+The second reason is scalability. 
+When an algorithm is location-based, most often centralized communication is needed. 
+This introduces a lot of overhead, decreasing communication speed when robotic swarms increase in size. 
+The third reason is that algorithms that are location-based can often not be used in dynamic locations, like underwater, space and underground environment.
+This is especially true for algorithms where the operating environment has to be defined beforehand.\\
+
+This survey, only highlighted a few problems that the robotic swarms technology has faced. 
+Thus, more research on this topic needs to be undertaken on additional problems, such as mapping, foraging, target localization and robot localization, in order to create a fully comprehensive overview.
 

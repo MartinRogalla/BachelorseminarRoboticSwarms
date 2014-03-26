@@ -33,8 +33,7 @@ This implies that the algorithms used for the source localization problem are lo
 %But with a robotic swarm of robots it is possible to transport larger weights in a scalable system, adding swarm robots until you can carry the desired weight. 
 %So, a swarm of robots is useful for transporting large and/or heavy objects. 
 There are two different properties important for formation transport: performance and scalability. 
-We define \emph{performance} as in how well the robots can stay in formation in dynamic environments. 
-We define \emph{scalability} as in how many robots can be added to the swarm before negatively influencing the performance.\\
+We define \emph{performance} as in how well the robots can stay in formation in dynamic environments. \\
 %To ensure safe and stable transport, swarm robots have to be coordinated in such a w ay that the payload can be manipulated to a desired position and orientation.
 
 The first algorithm we discuss is the \emph{Aerial Equilibrium} algorithm. \cite{Michael2011cooperative}
@@ -69,8 +68,6 @@ We summarize the properties in the Table~\ref{table_alg_coltrans1}.
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
-  \caption{User-controlled swarm transportation algorithms}
-  \label{table_alg_coltrans1}
   \centering
 \scalebox{0.85}{
   \begin{tabular}{|l|l|l|l|l|}
@@ -81,6 +78,8 @@ We summarize the properties in the Table~\ref{table_alg_coltrans1}.
      Cluster Space Control & Range-free & Location-based & High & Low\\\hline
     \end{tabular}
     }
+  \caption{User-controlled swarm transportation algorithms}
+  \label{table_alg_coltrans1}
   \end{table}
 
 In the first algorithm, each swarm robot individually calculates its position to the other robots and the payload and the resulting tension on the payload. 
@@ -99,8 +98,7 @@ Especially considering transportation, a technique in which every robot must lat
 The source localization problem consists of finding the payload and transporting it to its destination.
 This subproblem can again be divided in four smaller problems: finding the payload, grabbing the payload, finding target location, moving the payload to the location.
 By defining these subproblems, the problem is easier to solve and easier to explain each algorithm. 
-The \emph{performance} is defined in how fast the payload is moved to the destination. 
-\emph{Scalability} is compared as how many robots can be added to the swarm before negatively influencing the performance. \\
+The \emph{performance} is defined in how fast the payload is moved to the destination. \\
 
 The first algorithm we discuss is the flocking algorithm. \cite{Rubenstein2013collecive}
 Simply put, it locates the payload through a flocking algorithm and let the swarm robots push the payload to the goal location. 
@@ -144,8 +142,6 @@ With the granular convection method, adding local communication and using hetero
 
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
-    \caption{Overview of Collective Transport Algorithms}
-  \label{table_alg_coltrans2}
   \centering
 \scalebox{0.85}{
   \begin{tabular}{|p{7cm}|l|l|l|l|}
@@ -160,6 +156,8 @@ With the granular convection method, adding local communication and using hetero
 
     \end{tabular}
     }
+    \caption{Overview of Collective Transport Algorithms}
+  \label{table_alg_coltrans2}
   \end{table}
 
 
