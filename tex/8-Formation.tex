@@ -104,6 +104,14 @@ This algorithm provides high performance, but also creates lots of overhead acti
 This decreases the scalability of this algorithm significantly.\\
 
 \subsection{Discussion}
+Concluding this chapter we discuss the future problems of these algorithms. 
+As can be seen from the algorithms, centralized communication reduces scalability. 
+Although centralized communication does provide high performance, the lower scalability is a downside. 
+Decentralized algorithms are more likely to be scalable, and is an interesting topic for future solutions to the formation problem.
+Another problem faced by these algorithms is reliability, especially for the leader-follower algorithm. 
+If the leader is lost (for example destroyed), the algorithm does not work anymore. 
+A new leader could be chosen among the followers, but this is not taken into account in all the leader-follower algorithms. 
+This is a problem that most of these algorithms do not take in account.
   \begin{table}[H]
   \renewcommand{\arraystretch}{1.3}
   \label{table_alg_formation}
@@ -123,12 +131,3 @@ This decreases the scalability of this algorithm significantly.\\
     }
   \caption{Overview of Formation Algorithms}
   \end{table}
-
-Concluding this chapter we discuss the future problems of these algorithms. 
-As can be seen from the algorithms, centralized communication reduces scalability. 
-Although centralized communication does provide high performance, the lower scalability is a downside. 
-Decentralized algorithms are more likely to be scalable, and is an interesting topic for future solutions to the formation problem.
-Another problem faced by these algorithms is reliability, especially for the leader-follower algorithm. 
-If the leader is lost (for example destroyed), the algorithm does not work anymore. 
-A new leader could be chosen among the followers, but this is not taken into account in all the leader-follower algorithms. 
-This is a problem that most of these algorithms do not take in account.  
