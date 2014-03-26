@@ -15,9 +15,10 @@ We summarize these properties in a Venn-diagram \ref{fig:AlgorithmsOverview}, al
 
 \input{./fig/AlgorithmsOverview.tex}
 
+Throughout the suvery we have made the following observation about range usage and location usage. When using a location-free approach, the algorithm is overall really adaptable to dynamic environments. Some downsides is that this approach can require lots of central communication, which can make the scalability relatively low. When using a location-based approach, we observe very optimal solutions, however these solution only remain to be optimal if the algorithm is used in a static environment. Otherwise some basic algorithms such as collision-detection algorithms have to kick in, which can increase the overall runtime of the algorithm. Range-based algorithms allow for very dynamic environments and is one of the most important approaches due to its extreme usage of distributed intelligence. Range-free algorithms on the other side are not very scalable and do not make use of efficient cooperation.
+
 - voornamelijk location-free
 	- want maps moeten gemerged, bijgehouden worden gedeeld...
-	-
 
 - location-based voornamelijk exploration algoritmes
 	range-free location-free -> goed omdat gebruik bijv van wireless intensity signals erg onnauwkeurig is, non-optimal use of full robotic swarm
