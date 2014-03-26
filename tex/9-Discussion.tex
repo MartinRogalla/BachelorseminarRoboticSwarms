@@ -2,15 +2,15 @@
 
 
 %-------------------
-NOTES
-
-- scalability, global communication, 
-- lots of overlap
+%NOTES
+%
+%- scalability, global communication, 
+%- lots of overlap
 
 In the past sections, we reviewed the most common problems found in the field of robotic swarms. 
 These problems however, do overlap, because the problems found in this field often consist of multiple different problems. 
 We focused on each problem, highlighting the communication methods of every solution and properties of these communication methods. 
-These properties can be summarized in a Venn diagram, allowing for a compact overview of these solutions. 
+These properties are summarized in a Venn Diagram below, allowing for a compact overview of these solutions. 
 
 \input{./fig/AlgorithmsOverview.tex}
 
@@ -19,15 +19,7 @@ In practice, these solutions are not the most desirable solutions, because of tw
 The first reason is scalability. 
 When an algorithm is location-based and range-based, the robots used in the swarm have to be more advanced to correctly handle complex information. 
 This also introduces a lot of overhead, decreasing communication speed when robotic swarms increase in size. 
-The second reason is that algorithms that are location-based can often not be used in dynamic locations, especially in algorithms where the operating environment has to be defined beforehand. 
+The second reason is that algorithms that are location-based can often not be used in dynamic locations, especially in algorithms where the operating environment has to be defined beforehand.\\
 
-%-------------------
-WHAT WE MISS
-- mapping
-- foraging
-- target localization?
-- robot localization
-%-------------------
-\subsection{Future Work}
 This survey, only highlighted a few problems that the robotic swarms technology has faced. Thus, more research on this topic needs to be undertaken on additional problems, such as mapping, foraging, target localization and robot localization, in order to create a fully comprehensive overview.
 
