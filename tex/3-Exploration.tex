@@ -117,14 +117,25 @@ When comparing we define the \emph{performance} of the exploration algorithms as
 	
 \subsection{Discussion}
 	In general we see that most of the robotic swarm exploration algorithms keep track of some kind of map and are therefore location-based.
-	This seems logical, because it is the only way to know if a robot has been to a certain location already and thus not has to explore it again.
+	This seems sensible, because it is the only way to know if a robot has been to a certain location already and thus not has to explore it again.
 	On the other hand, to use the advantages of swarm robotics, this map has to be shared with other robots.
-	Because of that nearly all robotic swarm exploration algorithms assume global communication and are therefore location-free.
+	Because of that nearly all robotic swarm exploration algorithms assume global communication and are therefore range-free.
 	However, in real-life applications robots have limited communication range, so either a central base (which dramatically decreases scalability) or some kind ad-hoc network (which would decrease the exploration efficiency) needs to be created.
 	% Some attempts have been made to solve this problem as can be seen in for example the implementation of the bidding algorithm we discussed, which is range-based.
+	This creates a situation where we want the swarm robots to stay together to share information efficiently. 
+	But, in contrast, we also want the robots to spread widely to gain as much new information as possible to gain as much new information as possible. 
+	The problem is combining these two goals and create a balanced solution. \\
+	In the market economy based algorithm this problem is addressed by optimizing the utility of and the distance traveled towards each cell. 
+	However, this implementation is centralized and therefore less scalable. 
+	In the bidding and frontier based algorithm not only the utility and the distance to be traveled towards it are taken into account, but also a certain nearness measure.
+	This nearness measure is also used in the foraging algorithms, using virtual pheromones and multi-hop communication to take this into account.
+	This measure makes the robots tend to stay together, much like what has been discussed in the formation problem.  
+	Every distributed robotic swarms exploration algorithm should thus incorporate a solution to the formation problem in some way. 
+	If this technique gets fully optimized, the robots use each others knowledge as much as possible and at the same explore in an efficient way.\\
+
+	
 	This brings us to the paradox in which we on the one hand need the robots to share information for efficiency and thus stay together and on the other hand want the robots to spread widely to gain as much new information as possible.\\
 	\\
-	In the market economy based algorithm this problem is addressed by optimizing the utility of and the distance traveled towards each cell. However, this implementation is centralized and therefore less scalable. In the bidding and frontier based algorithm not only the utility and the distance to be traveled towards it are taken into account, but also a certain nearness measure, which makes the robots tend to stay together. This basically is what we think every distributed robotic swarms exploration algorithm should do in some way. If this technique gets fully optimized, the robots use each others knowledge as much as possible and at the same explore in an efficient way.\\
 	\\
 	.... to be finished.
 
