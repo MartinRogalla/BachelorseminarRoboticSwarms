@@ -1,6 +1,6 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
-Exploration is a technique in which a swarm of robots tries to fully explore an environment, which is one of the fundamental problems faced in mobile robotics.
+Another fundamental problem in swarm robotics is the task to fully explore an unknown environment.
 The main goal is to minimize the overall exploration time while still exploring the whole environment. 
 The main problem faced when trying to achieve this goal is finding appropriate target points for each individual robot so that they simultaneously explore different regions of the environment. \cite{burgard2005coordinated} \\
 Exploration is found in many robotic swarms problems, for example in \emph{path-finding}, \emph{collective transport} and \emph{surveillance}.
@@ -19,7 +19,13 @@ Exploration is used in many more different robotic swarm applications and is a b
 %!TEX root = ../../main.tex
 
 \subsection{Algorithms}
-When comparing the \emph{performance} of the algorithms we mean the explored area per distance traveled. When comparing the \emph{scalability} of the algorithms we mean the scalability of the number of robots.
+The exploration problem has been studied in detail for single robots \cite{lee1997quantitative,albers1999exploring} as well as for robotic swarms.
+The first real approach towards robotic swarm exploration is based on finding frontiers, cells that are reachable and adjacent to unexplored cells. \cite{yamauchi1998frontier} This approach is extended in multiple ways of which we will mention two. \cite{solanas2004coordinated,sheng2006distributed}
+After that, we will discuss some other solutions to the exploration problem. \cite{singh1993map,zlot2002multi}
+We will also discuss three solutions to an extension of the exploration problem which is called foraging. \cite{jung2010multi,hoff2010two}
+Foraging basically comes down to exploring an unknown area, finding the optimal path to a certain target and bringing that target back to the base.
+Since in this paper we will only handle source localization and foraging has a lot overlap with exploration, we will discuss it in this section.
+When comparing we define the \emph{performance} of the exploration algorithms as the explored area per distance traveled.
 
 	\subsubsection{Frontier-based Algorithms}
 	A first approach is frontier-based exploration, which is inspired by the question ``Given what you know about the world, where should you move to gain as much new information as possible?''.
@@ -82,7 +88,7 @@ When comparing the \emph{performance} of the algorithms we mean the explored are
 	For finding these food sources, they have to explore an area first. 
 	So, foraging algorithms are essentially extensions of exploration algorithms. 
 	The difference between the two is that foraging algorithms also have to plan an optimal path to target locations. \\	
-	Based on the foraging behaviour of ants, two different algorithms can be used: the Virtual Pheromone algorithm and the Cardinality algorithm.
+	Based on the foraging behavior of ants, two different algorithms can be used: the Virtual Pheromone algorithm and the Cardinality algorithm.
 	Ants can leave marks in the form chemical pheromones behind for other ants, which they use to decide which way they go. 
 	The Virtual Pheromone algorithm uses two different types marks instead of many, to keep the robots low-level. 
 	Some robots in the swarm are used as beacons, others scout the area for food sources. 
@@ -106,6 +112,16 @@ When comparing the \emph{performance} of the algorithms we mean the explored are
 
 	
 \subsection{Discussion}
+
+
+	- coordinated vs collaborative
+	- global communication, real-life applications
+	- some work has been done
+
+	- trade-off between cost and revenue
+	- how long to travel to get new information
+
+
 \begin{table}[H]
 	\renewcommand{\arraystretch}{1.3}
 	\label{table_alg_exploration}
@@ -130,18 +146,11 @@ When comparing the \emph{performance} of the algorithms we mean the explored are
 	    Cardinality & Range-based & Location-free & High & High\\
 	    \hline
 	    Multihop Communication & Range-based & Location-based & Medium & Medium\\		
-		
 	    \hline
     \end{tabular}
   	}
 	\caption{Overview of Common Exploration Algorithms}
 \end{table}
-	- coordinated vs collaborative
-	- global communication, real-life applications
-	- some work has been done
-
-	- trade-off between cost and revenue
-	- how long to travel to get new information
 
 	% 
 
