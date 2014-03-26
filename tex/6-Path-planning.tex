@@ -1,6 +1,6 @@
 %!TEX root = ../Bachelorseminar-RoboticSwarms.tex
 
-Path-planning is the problem of a robotic swarm for each robot to find the optimal collistion-free path from the start location to the target location. \cite{qin2004path}.
+Path-planning is the problem of a robotic swarm for each robot to find the optimal collision-free path from the start location to the target location. \cite{qin2004path}.
 Another term for path-planning is path-finding. 
 Path-planning is a problem found in many robotic swarms applications.
 An example is trying to find the optimal path to food sources and bringing food back to the base, which is often called foraging \cite{hoff2010two}.
@@ -31,7 +31,7 @@ We discuss these algorithms, pointing out how they work and what problems are so
 
 \subsubsection{Artificial Bee Colony}
 The first algorithm we will discuss is the Artificial Bee Colony algorithm. \cite{bhattacharjee2011multi}
-This algorithm is inspired by nature: it is based on the stochatic behavior of foraging in bees.
+This algorithm is inspired by nature: it is based on the stochastic behavior of foraging in bees.
 In this algorithm, the robots (from this point on referenced as bees), can be divided in three groups: onlooker, employed and scout.
 Onlooker bees oversee the other bees in the swarm and determine the best gathering spots from given information. 
 Emplyed bes gather food from sources, and scouts explore the environment searching for food sources.
@@ -73,7 +73,7 @@ Each robot has its own optimization process that is based on the principles of g
 All the robots try to optimize the path of the individual robots. 
 But, inter-robot collisions get in the way of this optimization. 
 These collisions are then induced by co-operation of the robots. 
-After computing these individual paths, a master genetic algorithm runs to slect the best paths of the robots out of all the computed individual paths. 
+After computing these individual paths, a master genetic algorithm runs to sect the best paths of the robots out of all the computed individual paths. 
 A major problem is the speed of the communication.
 Every robot does calculate its own position in the maze through other robots, and calculates the range between robots for collisions.
 So, this algorithm is location-based and range-based.
@@ -83,7 +83,7 @@ So, this algorithm is location-based and range-based.
 The Genetic Programming has a lot of overhead, because the whole map of the environment needs to be documented. 
 This results in a higher accuracy for finding the optimal path, even in very complex environments. 
 The downside for this is a lower scalability, because more overhead means slower communication.
-So we can see that the Artifical Bee Colony is more scalable than Genetic Programming.
+So we can see that the Artificial Bee Colony is more scalable than Genetic Programming.
 This makes sense, as the algorithm used by bees is used in settings where hundreds of bees work together. 
 Future discussion is how this scalability for these algorithms can be improved, while still keeping the accuracy and performance. \\
     
