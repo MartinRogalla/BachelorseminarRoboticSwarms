@@ -4,24 +4,47 @@ In the previous sections, we reviewed the main problems found in the field of ro
 However, these problems often overlap.
 This is because the problems found in this field often consist of multiple different problems. 
 We focused on each problem, highlighting the communication methods of every solution and properties of these communication methods. 
-We summarize these properties in a Venn-diagram \ref{fig:AlgorithmsOverview}, allowing for a compact overview of these solutions. 
+We summarize these properties in a Venn-diagram \ref{fig:AlgorithmsOverview}, allowing for a compact overview of these solutions. \\
+The algorithms we discussed in previous sections provide useful insight, from which we can derive several conclusions.
+Together with the Venn-diagram, we explain how we came to these conclusions. \\
 
 \input{./fig/AlgorithmsOverview.tex}
 
-Most algorithms are location-free.
-This makes sense, as location-based solutions are not the most desirable, although they do provide high performance.
+As can be concluded from the diagram, most algorithms are location-free.
+This makes sense, as location-based are not the most desirable, because it always, although they do provide high performance.
 This is mainly because of three reasons. 
 The first reason is cost. 
 When an algorithm is location-based and range-based, the robots used in the swarm generally have to be equipped with advanced sensors. 
 The robots are then more costly in terms of energy consumption and device price, which is not desirable.
 The second reason is scalability. 
-When an algorithm is location-based, most often centralized communication is needed. 
+When an algorithm is location-based, in most cases centralized communication is needed. 
 This introduces a lot of overhead, decreasing communication speed when robotic swarms increase in size. 
 The third reason is that algorithms that are location-based can often not be used in dynamic locations, like underwater, space and underground environment.
 This is especially true for algorithms where the operating environment has to be defined beforehand.\\
+\\
+% Furthermore we have made the following observation about range usage and location usage. 
+When using a location-free approach, the algorithm easily adapts to dynamic environments.
+A downside to this approach is that the robots in this swarm can not know exactly what absolute location they have.
+This is why some algorithms chooose for a location-based approach. \\
+% Some downside is that this approach can require central communication, which makes the scalability relatively low.
+In contrast when using a location-based approach, the robots can very accurately construct solutions out of their absolute location. 
+But, this can often not be implemented in a dynamic environment. 
+When using a location-based approach, we observe very optimal solutions, however these solution only remain to be optimal if the algorithm is used in a static environment. 
+Otherwise some basic algorithms such as collision-detection algorithms have to kick in, which can increase the overall runtime of the algorithm. Range-based algorithms allow for very dynamic environments and is one of the most important approaches due to its extreme usage of distributed intelligence. 
 
-Throughout the suvery we have made the following observation about range usage and location usage. When using a location-free approach, the algorithm is overall really adaptable to dynamic environments. Some downsides is that this approach can require lots of central communication, which can make the scalability relatively low. When using a location-based approach, we observe very optimal solutions, however these solution only remain to be optimal if the algorithm is used in a static environment. Otherwise some basic algorithms such as collision-detection algorithms have to kick in, which can increase the overall runtime of the algorithm. Range-based algorithms allow for very dynamic environments and is one of the most important approaches due to its extreme usage of distributed intelligence. Range-free algorithms on the other side are not very scalable and do not make use of efficient cooperation.
+Range-free algorithms on the other side are not very scalable and do not make use of efficient cooperation.
 
 This survey only highlighted a few problems that the robotic swarms technology has faced. 
+
 Thus, more research on this topic needs to be undertaken on additional problems, such as mapping, foraging, target localization and robot localization, in order to create a fully comprehensive overview.
 
+- voornamelijk location-free
+    - want maps moeten gemerged, bijgehouden worden gedeeld...
+
+- location-based voornamelijk exploration algoritmes
+    range-free location-free -> goed omdat gebruik bijv van wireless intensity signals erg onnauwkeurig is, non-optimal use of full robotic swarm
+    range-based location-free -> want maps moeten gemerged, bijgehouden worden gedeeld... en dynamische omgeving kan in de gaten gehouden worden
+    range-based -> belangrijkste gedeelte van een swarm, omdat daar de distributed intelligence ligt en dat daar het meeste onderzoek naar gedaan moet worden
+    location-based -> kan ook handig zijn in statische locaties, als er rekening gehouden wordt met de scalability van de swarm  
+    range-free -> matig scalable, maakt niet gebruik van efficiente samenwerking
+- range-based �n range-free
