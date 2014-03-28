@@ -11,6 +11,12 @@
 \setbeamersize{sidebar width left=0.5cm}
 %\usepackage[english]{babel}
 \usepackage{tikz}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{todonotes}
+\usepackage{caption}
 \usepackage[utf8]{inputenc}
 \newcommand{\field}[1]{\mathbb{#1}}
 \newcommand{\Zset}{\field{Z}}
@@ -31,9 +37,9 @@
 
 %>>> You may change the text in this part {Between brackets}:
 %>>> This is for the Title page:
-\newcommand*\titel{The Open Society}
-\newcommand*\subkop{A Concise Synopsis}
-\newcommand*\naam{Martin Jorn Rogalla}
+\newcommand*\titel{Robotic Swarms}
+\newcommand*\subkop{Distributed Coordination Without Location}
+\newcommand*\naam{S.J.A. Bekhoven, S.P. Metman, M.J. Rogalla}
 \newcommand*\afdeling{EEMCS}
 %>>> This is for the frame-title on the "Table of Contents" page:
 \newcommand*\titelTOC{Outline}
@@ -111,76 +117,89 @@
 \end{frame}
 %--------------------------------------------
 
-\section{Fallibilism}
-
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Fallibilism - Karl Popper}}}}
-  \begin{figure}
-    \includegraphics[height=3cm]{images/Karl_Popper.jpg}
-  \end{figure}
+\section{Introduction}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Introduction}}}}
   \begin{itemize}
-    \item Seen as one of the founders of the Open Society.
-    \item Emphasized the importance of formulating uncertainty in scientific theories(Fallisism).
-    \item Wrote the book "The Open Society and its Enemies"
+    \item What are Robotic Swarms?
+    \item Why did we write this paper?
+    \item How did we achieve this?
   \end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Fallibilism - Definition}}}}
-The philosophical principle that human beings could be wrong about their beliefs, expectations, or their understanding of the world. 
+\section{Terminology}
+\subsection{Swarm Definition}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Swarm Definition}}}}
+  \begin{itemize}
+    \item Scalable Network of Robots
+    \item More than 2 Robots
+    \item Distributed Intelligence
+  \end{itemize}
+\end{frame}
+\subsection{Location \& Range}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Location \& Range}}}}
+\begin{description}
+  \item[Location-free]  \hfill \\ Robots have no knowledge of their absolute location but may keep track of their relative location.
+  \item[Location-based]  \hfill \\Robots have perfect knowledge of their absolute location.
+  \item[Range-free]  \hfill \\Robots do not communicate or communicate via some kind of central base.
+  \item[Range-based]  \hfill \\Robots communicate within predetermined range.
+\end{description}
+\end{frame}
+\subsection{Performance\& Scalability}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Performance\& Scalability}}}}
+\begin{description}
+  \item[Performance] \hfill \\ The general efficiency, which is defined differently per problem.
+  \item[Scalability] \hfill \\ The ability of maintaining performance when the population in the robot swarm is increased.
+\end{description}
+\end{frame}
+\subsection{Problem Composition Overview}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Main Problems vs. Composite Problem}}}}
+%\begin{description}
+  %\item[Composite Problem] \hfill \\ A composite problem is a problem composed of multiple main problems.
+  %\item[Main Problem] \hfill \\ A main problem have overlap as well, but without significant impact.
+%\end{description}
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[width=0.5\textwidth,->,>=stealth,shorten >=2pt,auto,node distance=3.5cm,
+    thick,main node/.style={fill=white,draw,font=\sffamily}]
+    \node at (7.7,0.75) {main problems};
+    \node at (7,-3.45) {composite problems};
+    \draw[fill=white,dashed] (-1.2,-2) rectangle (8.8,0.5);
+    \draw[fill=white,dashed] (8.8,-3.2) rectangle (5.2,-2.3);
+    \node[main node] (1) {Exploration};
+    \node[main node] (2) [below= 0.9cm of 1] {Dispersion};
+    \node[main node] (3) [right of=1] {Formation};
+    \node[main node] (4) [right of=3] {Source Localization};
+    \node[main node] (5) [below= 2.2cm of 4] {Collective Transport};
+
+    \path[every node/.style={font=\sffamily\small}]
+      (1) edge [right] node[left] {} (2)
+      (4) edge [right] node[left] {} (3)
+      (5) edge [right] node[left] {} (4)
+      (5) edge [right] node[left] {} (3)
+      (1) edge [right] node[left] {} (3);
+  \end{tikzpicture}
+  \caption{Problem Composition Overview} \label{fig:ProblemsOverview}
+\end{figure}
+\end{frame}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Formation}}}}
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Fallibilism - Concrete Sense}}}}
-In the most commonly used sense of the term, this consists in being open to new evidence that would 
-disprove some previously held position or belief, and in the recognition that ``\emph{any claim justfied today 
-may need to be revised or withdrawn in light of new evidence, new arguments, and new experiences.}''\cite{kompridis2006critique}
+\section{Problems}
+\subsection{Main Problems}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Formation}}}}
+\end{frame}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Dispersion}}}}
+\end{frame}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Exploration}}}}
+\end{frame}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Source-localization}}}}
+\end{frame}
+\subsection{Composite Problems}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Collective-transport}}}}
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Fallibilism vs. Skepticism}}}}
-Fallibilism is the \emph{epistemological} stance that what we think of as knowledge is subject to refutation. 
-Skepticism is the position that attaining knowledge is not possible.
-\end{frame}
-
-\section{Open Society}
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Open Society - Definition}}}}
-Popper defined the open society as one ``in which individuals are confronted with personal decisions'' as opposed to a ``magical or tribal or collectivist society.''\cite{popper2011open}
-\end{frame}
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Open Society - Definition Extended}}}}
-A society characterized by a flexible structure, freedom of belief, and wide dissemination of information.
-\end{frame}
-
-\section{Open-Source Governance}
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Open-Source Governance - Definition}}}}
- A political philosophy which advocates the application of the philosophies of the open source and open content movements to democratic principles in order to enable any interested citizen to add to the creation of policy, as with a wiki document.
-\end{frame}
-
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Open-Source Governance - Results}}}}
-Legislation is democratically opened to the general citizenry, employing their collective wisdom to benefit the decision-making process and improve democracy.
-\end{frame}
-
-\section{Finalization}
+\section{Discussion}
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{Discussion}}}}
-\begin{enumerate}
-  \item Direct democracy is the best solution to governing our society.
-  \item For the sake of National Security, legislation on the capabilities of the National Security Agency is not be made public.
-  \item Voting should be made compulsory.
-  \item Prisoners should not be allowed to vote.
-  \item If I disagree with the way the voting system is set, I should not vote to show my discontent.
-\end{enumerate}
-\end{frame}
-
-\begin{frame}[allowframebreaks]
-  \frametitle<presentation>{Bibliography}    
-  \begin{thebibliography}{10}    
-  \beamertemplatebookbibitems
-  \bibitem{kompridis2006critique}
-    Kompridis,~Nikolas
-    \newblock {\em Critique and disclosure: Critical theory between past and future}.
-    \newblock MIT Press Cambridge, 2006.
-  \beamertemplatebookbibitems
-  \bibitem{popper2011open}
-    K.~Popper.
-    \newblock {\em The open society and its enemies}.
-    \newblock Routledge
-  \end{thebibliography}
 \end{frame}
 
 \end{document} 
