@@ -1,0 +1,23 @@
+Introduction: what, why how
+what: what are swarm robotics, we want to provide a survey of problems and solutions faced in this research area
+why: Addressing these problems and their approaches gives a better overview and offers inspiration to solve other problems.
+how: Mention for each problem some real-life application, then provide some solutions in the form of different algorithms and compare these solutions
+Many articles already exist which give an overview of applications and used practices in this area, but
+often do not explain the problems underlying these practices. Therefore, we focus on providing a problemoriented
+overview of the robotic swarms, while also providing a general overview of best practices and
+solutions of these problems.
+
+Terminology
+Swarm definition, an exception is of course when a swarm of multiple robots is
+controlled by one control station.
+Problem definition: composite or main problem
+Location type and information type
+Scalability and performance
+Problem composition overview: explain the order of problems
+
+Formation
+Discuss it first because of many subproblem of other problems
+Applications: Transport, area surveillance
+subproblems: communication and formation stability
+Algorithm: leader-follower, behavior-based, virtual structure and some advanced algorithms
+
