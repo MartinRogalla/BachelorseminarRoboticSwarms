@@ -34,8 +34,12 @@ Applications: Rescue missions, assist navigation firefighters
 Problems: Keeping track of map and sharing it, making use ad-hoc networks
 
 Source localization:
-The main solution is to design an algorithm that effectively allows a swarm of
-robots to explore an unknown area and end (multiple) source(s).
+Problem in which a swarm of robots have to explore an unknown area and end (multiple) source(s).
+Applications: radiaton leaks finding (Fukushima nuclear power plant)
+Similar trade-off as before: ad-hoc global network or local communication
 
-
+Collective transport
+Composite problem of both: finding payload and destination (exploration, source localization), and safe and stable transport (formation)
+Applications: Rescue missions, warzones, used by quadcopters transporting with ropes attached to payload
+Many mathematical models are used for calculating tensions, mcontroller-based algorithms
 
