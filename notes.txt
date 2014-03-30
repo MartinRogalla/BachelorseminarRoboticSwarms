@@ -1,0 +1,45 @@
+Introduction: what, why how
+what: what are swarm robotics, we want to provide a survey of problems and solutions faced in this research area
+why: Addressing these problems and their approaches gives a better overview and offers inspiration to solve other problems.
+how: Mention for each problem some real-life application, then provide some solutions in the form of different algorithms and compare these solutions
+Many articles already exist which give an overview of applications and used practices in this area, but
+often do not explain the problems underlying these practices. Therefore, we focus on providing a problemoriented
+overview of the robotic swarms, while also providing a general overview of best practices and
+solutions of these problems.
+
+Terminology
+Swarm definition, an exception is of course when a swarm of multiple robots is
+controlled by one control station.
+Problem definition: composite or main problem
+Location type and information type
+Scalability and performance
+Problem composition overview: explain the order of problems
+
+Formation
+Formation is the problem of controlling the relative position and orientation of the robots in a group
+while allowing the group to move as a whole.
+Discuss it first because of many subproblem of other problems
+Applications: Transport, area surveillance
+subproblems: communication and formation stability
+Centralized communication more stability, but less scalable
+
+Dispersion:
+Dispersion can be compared to the blanket coverage problem, how to cover as much space as possible
+Applications disaster response, fast communication network initialization
+Problems are fluctuation in relative position data, and deadzones in ranges
+
+Exploration
+Another fundamental problem in swarm robotics is the task to fully explore an unknown environment.
+Applications: Rescue missions, assist navigation firefighters
+Problems: Keeping track of map and sharing it, making use ad-hoc networks
+
+Source localization:
+Problem in which a swarm of robots have to explore an unknown area and end (multiple) source(s).
+Applications: radiaton leaks finding (Fukushima nuclear power plant)
+Similar trade-off as before: ad-hoc global network or local communication
+
+Collective transport
+Composite problem of both: finding payload and destination (exploration, source localization), and safe and stable transport (formation)
+Applications: Rescue missions, warzones, used by quadcopters transporting with ropes attached to payload
+Many mathematical models are used for calculating tensions, mcontroller-based algorithms
+
