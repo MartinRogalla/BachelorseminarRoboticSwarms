@@ -17,199 +17,95 @@ The first real approach towards robotic swarm exploration is based on finding fr
 After that, we will discuss some other solutions to the exploration problem. \cite{singh1993map,zlot2002multi}
 When comparing we define the \emph{performance} of the exploration algorithms as the explored area per distance traveled.
 
-	\subsubsection{Frontier-based Algorithms}
-	A first approach is frontier-based exploration, which is inspired by the question ``Given what you know about the world, where should you move to gain as much new information as possible?''.
-	Its goal is to gain as much information as possible when traveling towards a new location.
-	An evidence grid is used in which the occupancy probability is stored for each cell, so the algorithm is \emph{location-based}.
-	The cells have, dependent to their occupancy probability, a certain state which is either open, unknown or occupied.
-	Each open cell that is adjacent to an unknown cell is labeled as a frontier cell.
-	Every group of frontier cells above a certain size is considered a frontier.
-	Once the frontiers have been detected, the robot navigates towards the nearest unvisited frontier.
-	If the robot is unable to make progress to its destination, it will add the frontier to the list of inaccessible frontiers.
-	Each time a robot does or does not reach a frontier it performs a sensor sweep and adds the new information to a local grid, which is communicated and then merged with every robots global map. \cite{yamauchi1998frontier}\\
-	\\
-	A limitation of the general frontier-based approach is that since navigation is independent, robots may waste time navigating to the same frontier.
-	This will either cause an avoidance maneuver or the robots will block each other.
-	In the last case the robots will mark their destination frontiers as inaccessible which of course is not preferable.
-	Furthermore global communication is assumed, which in real-world applications is nearly impossible since robots have limited communication range.
-	Several attempts have been made to solve these problems by extending the general frontier-based algorithm.
-	An example is the implementation of a bidding algorithm.
-	The robots first select a certain target according to the frontier-based algorithm.
-	It then broadcasts a bid according to: the target of the robots in the sensor range, the distance to the targeted cell and a nearness measure.
-	This nearness measure is a factor which is dependent of the number of robots in the neighborhood to keep the robots together and thus sustain communication.
-	After waiting for constant time, if the robot bids the highest value, it travels towards its target.
-	If this approach would have assumed global communication it would have made sure two robots never travel towards the same frontier.
-	Since limited communication range is assumed a nearness measure is implemented to make the robots tend to stay together to sustain communication.
-	This causes partitioning and therefore the robots sometimes still choose the same frontier to travel to.
-	All together this approach results in less repeated coverage and therefore less exploration time. \cite{sheng2006distributed}\\
-	\\
-	Another limitation of the general frontier-based approach is that it is possible that the robots concentrate in certain parts of the area and therefore reach other parts much later.
-	In case of for example search and rescue missions, it is important that the area is explored more equally distributed. 
-	An approach that solves this problem is the algorithm based on K-means clustering.
-	First the algorithm divides the unknown space in as many regions as robots by the K-means clustering algorithm with $K$ the number of robots.
-	The algorithm then assigns all robots to a certain region by distance calculation, making a difference between accessible and inaccessible regions.
-	After that each robot gets assigned to a frontier cell in its region.
-	Robots with accessible regions will be assigned to frontier cells by the distance between the robot and the frontier and receive a penalty for choosing one close to another already chosen by another robot.
-	Robots with inaccessible regions receive another penalty for the distance from the frontier cell and the centroid of their own region.
-	When this formula gets maximized, all robots will tend to choose frontiers in their own region or close to their own region.
-	If a robot reaches its destination, the target assignment will be repeated.
-	This approach does not result in lower exploration time, but does achieve good results in equally distributed exploring of the area. \cite{solanas2004coordinated}
+  \subsubsection{Frontier-based Algorithms}
+  A first approach is frontier-based exploration, which is inspired by the question ``Given what you know about the world, where should you move to gain as much new information as possible?''.
+  Its goal is to gain as much information as possible when traveling towards a new location.
+  An evidence grid is used in which the occupancy probability is stored for each cell, so the algorithm is \emph{location-based}.
+  The cells have, dependent to their occupancy probability, a certain state which is either open, unknown or occupied.
+  Each open cell that is adjacent to an unknown cell is labeled as a frontier cell.
+  Every group of frontier cells above a certain size is considered a frontier.
+  Once the frontiers have been detected, the robot navigates towards the nearest unvisited frontier.
+  If the robot is unable to make progress to its destination, it will add the frontier to the list of inaccessible frontiers.
+  Each time a robot does or does not reach a frontier it performs a sensor sweep and adds the new information to a local grid, which is communicated and then merged with every robots global map. \cite{yamauchi1998frontier}\\
+  \\
+  A limitation of the general frontier-based approach is that since navigation is independent, robots may waste time navigating to the same frontier.
+  This will either cause an avoidance maneuver or the robots will block each other.
+  In the last case the robots will mark their destination frontiers as inaccessible which of course is not preferable.
+  Furthermore global communication is assumed, which in real-world applications is nearly impossible since robots have limited communication range.
+  Several attempts have been made to solve these problems by extending the general frontier-based algorithm.
+  An example is the implementation of a bidding algorithm.
+  The robots first select a certain target according to the frontier-based algorithm.
+  It then broadcasts a bid according to: the target of the robots in the sensor range, the distance to the targeted cell and a nearness measure.
+  This nearness measure is a factor which is dependent of the number of robots in the neighborhood to keep the robots together and thus sustain communication.
+  After waiting for constant time, if the robot bids the highest value, it travels towards its target.
+  If this approach would have assumed global communication it would have made sure two robots never travel towards the same frontier.
+  Since limited communication range is assumed a nearness measure is implemented to make the robots tend to stay together to sustain communication.
+  This causes partitioning and therefore the robots sometimes still choose the same frontier to travel to.
+  All together this approach results in less repeated coverage and therefore less exploration time. \cite{sheng2006distributed}\\
+  \\
+  Another limitation of the general frontier-based approach is that it is possible that the robots concentrate in certain parts of the area and therefore reach other parts much later.
+  In case of for example search and rescue missions, it is important that the area is explored more equally distributed. 
+  An approach that solves this problem is the algorithm based on K-means clustering.
+  First the algorithm divides the unknown space in as many regions as robots by the K-means clustering algorithm with $K$ the number of robots.
+  The algorithm then assigns all robots to a certain region by distance calculation, making a difference between accessible and inaccessible regions.
+  After that each robot gets assigned to a frontier cell in its region.
+  Robots with accessible regions will be assigned to frontier cells by the distance between the robot and the frontier and receive a penalty for choosing one close to another already chosen by another robot.
+  Robots with inaccessible regions receive another penalty for the distance from the frontier cell and the centroid of their own region.
+  When this formula gets maximized, all robots will tend to choose frontiers in their own region or close to their own region.
+  If a robot reaches its destination, the target assignment will be repeated.
+  This approach does not result in lower exploration time, but does achieve good results in equally distributed exploring of the area. \cite{solanas2004coordinated}
 
-	\subsubsection{Market Economy Algorithm}
-	A completely different approach is based on a market economy.
-	Robots generate a list of goal points via a simple strategy, for example randomly or greedily.
-	The robot then sets up an auction to sell its goal points and tries to buy better ones from other robots.
-	Each goal point is awarded a certain revenue according to the amount of information it will provide and a certain cost according to the resources it will use to achieve it.
-	When they have tried to sell all of their tasks and have bought the interesting ones, the robot orders its goal point list greedily on distance and sets course for the first one in the list.
-	At regular intervals the robots exchange pieces of their map to each other for a certain cost/revenue depending on the expected utility.
-	The relatively simple algorithms used to generate goal points should be optimized by maximizing benefit (information gained) while minimizing the costs (in terms of travel distance).
-	By allowing the robots to communicate via the market place architecture, the performance increases with a factor of $3.4$ compared to a random walk in a four robot system. \cite{zlot2002multi}
+  \subsubsection{Market Economy Algorithm}
+  A completely different approach is based on a market economy.
+  Robots generate a list of goal points via a simple strategy, for example randomly or greedily.
+  The robot then sets up an auction to sell its goal points and tries to buy better ones from other robots.
+  Each goal point is awarded a certain revenue according to the amount of information it will provide and a certain cost according to the resources it will use to achieve it.
+  When they have tried to sell all of their tasks and have bought the interesting ones, the robot orders its goal point list greedily on distance and sets course for the first one in the list.
+  At regular intervals the robots exchange pieces of their map to each other for a certain cost/revenue depending on the expected utility.
+  The relatively simple algorithms used to generate goal points should be optimized by maximizing benefit (information gained) while minimizing the costs (in terms of travel distance).
+  By allowing the robots to communicate via the market place architecture, the performance increases with a factor of $3.4$ compared to a random walk in a four robot system. \cite{zlot2002multi}
 
-	\subsubsection{Heterogeneous Exploration Algorithm}
-	In this approach robots with different size, speed and sensor range are used.
-	The unknown area is treated as an occupancy grid with a status for each cell: occupied or free.
-	All robots start by filling a space quantum varying in size according to the specification of the robots.
-	If they explore a cell in the occupancy grid, the status is set to occupied and is from then on seen as an obstacle by all robots.
-	When the robot sees a cell it cannot reach, it has found what we call a \emph{tunnel}.
-	The robot than places information about the tunnel at the robot call queue of another smaller robot.
-	If that robot is not able to reach the unexplored cell as well, it will pass it to an even smaller robot and so on.
-	When a robot finishes exploring its space quantum it either travels towards the tunnel placed on its queue or starts exploring the next adjacent space quantum.
-	The robots continuously share their occupancy grid and the motion they are intending to avoid collisions.
-	This approach assumes global and intensive communication amongst all robots which is very hard in real-life applications. \cite{singh1993map}
+  \subsubsection{Heterogeneous Exploration Algorithm}
+  In this approach robots with different size, speed and sensor range are used.
+  The unknown area is treated as an occupancy grid with a status for each cell: occupied or free.
+  All robots start by filling a space quantum varying in size according to the specification of the robots.
+  If they explore a cell in the occupancy grid, the status is set to occupied and is from then on seen as an obstacle by all robots.
+  When the robot sees a cell it cannot reach, it has found what we call a \emph{tunnel}.
+  The robot than places information about the tunnel at the robot call queue of another smaller robot.
+  If that robot is not able to reach the unexplored cell as well, it will pass it to an even smaller robot and so on.
+  When a robot finishes exploring its space quantum it either travels towards the tunnel placed on its queue or starts exploring the next adjacent space quantum.
+  The robots continuously share their occupancy grid and the motion they are intending to avoid collisions.
+  This approach assumes global and intensive communication amongst all robots which is very hard in real-life applications. \cite{singh1993map}
 
-	% \subsubsection{Foraging-based Exploration}
-	% Foraging algorithms are based on the foraging behavior of ants to find food sources. \cite{hoff2010two}
-	% For finding these food sources, they have to explore an area first. 
-	% So, foraging algorithms are essentially extensions of exploration algorithms. 
-	% The difference between the two is that foraging algorithms also have to plan an optimal path to target locations. \\	
-	% Based on the foraging behavior of ants, two different algorithms can be used: the Virtual Pheromone algorithm and the Cardinality algorithm.
-	% Ants can leave marks in the form chemical pheromones behind for other ants, which they use to decide which way they go. 
-	% The Virtual Pheromone algorithm uses two different types marks instead of many, to keep the robots low-level. 
-	% Some robots in the swarm are used as beacons, others scout the area for food sources. 
-	% For the same reason, the marks are made virtual by direct local communication between robots in the swarm.
-	% So, the algorithm is range-based. 
-	% It is location-free because the robots do not keep track of their absolute location.\\
-	% The second foraging algorithm is the Cardinality algorithm. 
-	% This works similar to the Virtual Pheromone algorithm, as in that walker robots can become beacons. 
-	% But in this algorithm the beacons send out its cardinality: the number of beacons between that beacon and the nest. 
-	% This algorithm is range-based and location-free too.
-	% Conclusive results are produced in the article that the Cardinality-algorithm outperforms the Virtual Pheromone algorithm, proving that the ant pheromone algorithm can be improved.\\
-
-	% A different foraging-based exploration algorithm is the multihop communication algorithm. \cite{jung2010multi}
-	% The problem that is defined here is how a swarm of robots can find its way out of a random maze as fast as possible.
-	% To do this, every robot in the swarm explores the maze, and generates a map through its sensor input.
-	% Then, it communicates this to every other robot using a technique similar to multihop communication found in computer networks.
-	% Eventually, a map of the whole maze is generated out of which the shortest path to the exit can be collectively calculated.
-	% This algorithm is range-based, because the robots communicate locally when close in proximity.
-	% It is also location-based, because they try to map their absolute location in the maze. 
-
-
-	
 \subsection{Discussion}
-	In the normal frontier-based algorithm we see an approach in which global communication is assumed, which means low scalability. Furthermore no coordination is implemented, which influences the performance negatively. This coordination is available in the next algorithm in the form of the bidding principle and therefore has higher performance. Because this approach does not assume global communication it is also highly scalable. The K-means clustering principle does not perform better than the bidding principle, but does explore the area equally distributed, which can be preferable in search and rescue missions. This approach again is range-free and based on a central base, which causes low scalability.\\
-	\\
-	In the market economy based algorithm the exploration problem is addressed by optimizing the utility of and the distance traveled towards each cell which makes it very effective. However, this implementation is still centralized and therefore less scalable. In the frontier based algorithm with bidding principle not only the utility and the distance to be traveled towards it are taken into account, but also a certain nearness measure, which makes the robots tend to stay together, so communication stays possible. Therefore this algorithm is not only effective, but also highly scalable.\\
-	\\
-	In general we see that most of the robotic swarm exploration algorithms keep track of some kind of map and are therefore location-based.
-	This seems sensible, because it is the only way to know if a robot has been to a certain location already and thus not has to explore it again.
-	On the other hand, to use the advantages of swarm robotics, this map has to be shared with other robots.
-	Nearly all robotic swarm exploration algorithms assume global communication and are therefore range-free.
-	However, in real-life applications robots have limited communication range, so either a central base (which dramatically decreases scalability) or some kind ad-hoc network (which would decrease the exploration efficiency) needs to be created.
-	This brings us to a contradiction in which on the one hand we want the robots to share information for efficiency and thus stay together, and on the other hand want the robots to spread widely to gain as much new information as possible.
-	The investigated algorithms have tried to optimize this contradiction. We think that the frontier-based algorithm with bidding coordination is a good way to go and should be further optimized in the future to come nearer to an optimal solution.
+  In the normal frontier-based algorithm we see an approach in which global communication is assumed, which means low scalability. Furthermore no coordination is implemented, which influences the performance negatively. This coordination is available in the next algorithm in the form of the bidding principle and therefore has higher performance. Because this approach does not assume global communication it is also highly scalable. The K-means clustering principle does not perform better than the bidding principle, but does explore the area equally distributed, which can be preferable in search and rescue missions. This approach again is range-free and based on a central base, which causes low scalability.\\
+  \\
+  In the market economy based algorithm the exploration problem is addressed by optimizing the utility of and the distance traveled towards each cell which makes it very effective. However, this implementation is still centralized and therefore less scalable. In the frontier based algorithm with bidding principle not only the utility and the distance to be traveled towards it are taken into account, but also a certain nearness measure, which makes the robots tend to stay together, so communication stays possible. Therefore this algorithm is not only effective, but also highly scalable.\\
+  \\
+  In general we see that most of the robotic swarm exploration algorithms keep track of some kind of map and are therefore location-based.
+  This seems sensible, because it is the only way to know if a robot has been to a certain location already and thus not has to explore it again.
+  On the other hand, to use the advantages of swarm robotics, this map has to be shared with other robots.
+  Nearly all robotic swarm exploration algorithms assume global communication and are therefore range-free.
+  However, in real-life applications robots have limited communication range, so either a central base (which dramatically decreases scalability) or some kind ad-hoc network (which would decrease the exploration efficiency) needs to be created.
+  This brings us to a contradiction in which on the one hand we want the robots to share information for efficiency and thus stay together, and on the other hand want the robots to spread widely to gain as much new information as possible.
+  The investigated algorithms have tried to optimize this contradiction. We think that the frontier-based algorithm with bidding coordination is a good way to go and should be further optimized in the future to come nearer to an optimal solution.
 
 
 \begin{table}[H]
-	\renewcommand{\arraystretch}{1.3}
-	\label{table_alg_exploration}
-	\centering
+  \renewcommand{\arraystretch}{1.3}
+  \label{table_alg_exploration}
+  \centering
   \scalebox{0.85}{
-    \begin{tabular}{|l|l|l|l|l|l|}
-	    \hline
-	    \bfseries Algorithm & \bfseries Range-type & \bfseries Location-type & \bfseries Performance & \bfseries Scalability\\
-	    \hline
-	    Frontier-based & Range-free & Location-based & Medium & Low\\
-	    \hline
-	    Frontier-based with bidding & Range-based & Location-based & High & High\\
-	    \hline
-	    Frontier-based with K-means clustering & Range-free & Location-based & High & Low\\
-	    \hline
-	    Market Economy & Range-based & Location-based & Medium-high & Medium\\
-	    \hline
-	    Heterogeneous Exploration & Range-free & Location-based & Medium & Low\\
-	    \hline
-	    % Virtual Pheromone & Range-based & Location-free & Medium & High\\
-	    % \hline
-	    % Cardinality & Range-based & Location-free & High & High\\
-	    % \hline
-	    % Multihop Communication & Range-based & Location-based & Medium & Medium\\		
-	    % \hline
-    \end{tabular}
-  	}
-	\caption{Overview of Common Exploration Algorithms}
+  \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    \bfseries Algorithm                    & \bfseries Range-type & \bfseries Location-type & \bfseries Performance & \bfseries Scalability\\\hline
+    Frontier-based                         & Range-free           & Location-based          & Medium                & Low\\\hline
+    Frontier-based with bidding            & Range-based          & Location-based          & High                  & High\\\hline
+    Frontier-based with K-means clustering & Range-free           & Location-based          & High                  & Low\\\hline
+    Market Economy                         & Range-based          & Location-based          & Medium-high           & Medium\\\hline
+    Heterogeneous Exploration              & Range-free           & Location-based          & Medium                & Low\\\hline
+  \end{tabular}
+  }
+  \caption{Overview of Common Exploration Algorithms}
 \end{table}
 
-	% 
-
-	%\subsubsection{Market-economy based}
-	%Zlot et al. have chosen another approach which also uses some kind of bidding principle called a market architecture. 
-	%The robots have perfect knowledge of their location and keep track of a map.
-	%Furthermore the robots communicate with each other over limited range, so this is an \emph{location-based} and \emph{range-based} approach.
-	%The distributed algorithm starts by generating a list of goal points.
-	%Goal points are generated to navigate to with three different strategies.
-	%The strategies used by the robots may be all the same, vary across robots or even over time.
-	%The three strategies are 1) random, 2) greedy exploration and 3) space division by quadtree.
-	%All strategies are very simplistic, because the intention is that the market architecture removes the inefficiencies.
-	%The goal points generated are greedily ordered (shortest-path).
-	%The robot then tries to sell all of its tasks to robots it can communicate with by auction for a specified amount of time.
-	%Each goal point is awarded a certain revenue according to the amount of %information it will provide and a certain cost according to the resources it will cost to achieve it.
-	%	The robots start bidding and the highest bidder is awarded the task if it is higher than the minimum amount set by the auctioneer.
-	%	After trying to sell all of its tasks by auction the robot travels towards a goal point.
-	%	If it reaches the goal point, it generates a certain amount of new goal points, starts off with its next goal and offers its remaining goals to other robots.
-	%	Finally at regular intervals robots can exchange pieces of their own map with each other for a certain cost/revenue depending on the expected utility.
-	%	When asked, all robots send their maps to a central base, so a global map can be created.\\
-	%\\
-	%Surprisingly simulation shows that when only using the random strategy the algorithm performs just as good as when using the quadtree strategy.
-	%Furthermore the algorithm using the random or quadtree strategy is compared to a communicationless situation.
-	%We can see that allowing the robots to communicate via the market place architecture improves the exploration efficiency with a factor of $3.4$ in a four-robot system.
-	%The system could be improved by for example using a time-based cost scale instead of a distance-based for minimizing while exploring.
-
-
-
-
-%Coordinated multi-robot exploration
-% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1435481
-%\cite{burgard2005coordinated}
-
-%Collaborative multi-robot exploration
-% http://www.cs.cmu.edu/afs/.cs.cmu.edu/Web/People/motionplanning/papers/sbp_papers/integrated2/burgard_multi_robot_explor.pdf
-%\cite{burgard2000collaborative}
-
-%Coordination for Multi-Robot Exploration and Mapping
-% http://isl.ecst.csuchico.edu/DOCS/Papers/simmons2000coordination4MultirobotExploration.pdf
-%\cite{simmons2000coordination}
-
-%Multi-robot exploration Controlled by a Market Economy\\
-%Market-place algorithm, seems good, ++
-% http://repository.cmu.edu/cgi/viewcontent.cgi?article=1174&context=robotics&sei-redir=1&referer=http%3A%2F%2Fscholar.google.nl%2Fscholar%3Fq%3Dmulti-robot%2Bexploration%26btnG%3D%26hl%3Dnl%26as_sdt%3D0%252C5#search=%22multi-robot%20exploration%22
-%\cite{zlot2002multi}
-
-%Multi-robot exploration under the constraints of wireless networking
-%http://ac.els-cdn.com/S0967066106001547/1-s2.0-S0967066106001547-main.pdf?_tid=2dbdf35e-ab00-11e3-b5b9-00000aab0f6c&acdnat=1394750480_8d4547f2c72259f166f10342891ca745
-%\cite{rooker2007multi}
-
-%A practical, decision-theoretic approach to multi-robot mapping and exploration
-% http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1249654
-%\cite{ko2003practical}
-
-%Multi-robot collaboration for robust exploration
-%\cite{rekleitis2001multi}
-% http://download.springer.com/static/pdf/926/art%253A10.1023%252FA%253A1016636024246.pdf?auth66=1394923400_27944ba6f349eb21a47a2c60f843ab9f&ext=.pdf
-
-%Distributed multi-robot coordination in area exploration +++++
-%\cite{sheng2006distributed}
-% http://ac.els-cdn.com/S092188900600114X/1-s2.0-S092188900600114X-main.pdf?_tid=33bf4874-ab01-11e3-a577-00000aacb35f&acdnat=1394750920_0424c8c4f3098477e3985d83f4f339f2
-
-%Coverage for robotics–A survey of recent results
-
-%multi-robot coverage??

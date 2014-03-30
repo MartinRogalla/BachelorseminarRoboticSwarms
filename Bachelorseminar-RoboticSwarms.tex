@@ -1,22 +1,19 @@
 \documentclass[a4paper]{article}
-%Commented in draft to allow for notes.
 \usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{tikz}
-\usepackage{todonotes}
 \usepackage{caption}
-\setlength\parindent{0pt}
-% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \usepackage{fancyhdr}
+\usetikzlibrary{positioning}
+\setlength\parindent{0pt}
 \setlength{\headheight}{15.2pt}
 \setlength{\topmargin}{0pt}
 \setlength{\textheight}{630pt}
 \pagestyle{fancy}
 
 \title{A Brief Survey of Problems and Solutions \\ in Robotic Swarms}
-%\title{An Extensive Analysis of Scalability and Performance of Commonly Used Techniques in Robotic Swarms}
 \author{S.J.A. Bekhoven  \and
     S.P. Metman \and
     M.J. Rogalla}
@@ -36,10 +33,6 @@ We show the problems which come with each of these categories and compare the sc
 This provides insight into the properties of the algorithms which affect the scalability and the performance. 
 Addressing these problems and their approaches gives a better overview and offers inspiration to solve other problems.
 Finally we give a general conclusion regarding the recent advancements in robotic swarms.
-% As an emerging field, Robotic Swarms has faced many problems. 
-% The majority for distributive controlling large networks of robots, commonly referred to as swarms, are either location or range based.
-% In this paper we will give a general survey of common problems faced in robotic swarms and the algorithms that solve these problems.
-% We have identified the key problems that have been and have not been solved. Finally we make a comparison of the solution, based on performance, scalability and the usage of location information.
 \end{abstract}
 
 % Do not compile individual files, compile only this main file.
@@ -58,7 +51,7 @@ Finally we give a general conclusion regarding the recent advancements in roboti
 \section{Exploration}
   \label{sec:Exploration}
   \input{./tex/3-Exploration.tex}
- 
+
 \section{Source Localization}
   \label{sec:Localization}
   \input{./tex/4-Localization.tex}
@@ -66,11 +59,7 @@ Finally we give a general conclusion regarding the recent advancements in roboti
 \section{Collective Transport}
   \label{sec:CollectiveTransport}
   \input{./tex/1-CollectiveTransport.tex}
-  
-% \section{Path-planning}
-%   \label{sec:Path-planning}
-%   \input{./tex/6-Path-planning.tex}
- 
+
 \section{Discussion}
   \label{sec:Discussion}
   \input{./tex/9-Discussion.tex}
@@ -81,9 +70,7 @@ The authors would like to thank A. Loukas and A.S. Pruteanu for their valuable c
 \clearpage
 % Default is plain
 \bibliographystyle{plain}
-
 % Usage of multiple bib input files through seperation by comma.
 \bibliography{./bib/Bibliography}
 
 \end{document}
-

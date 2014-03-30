@@ -6,11 +6,11 @@
     \node at (7,-3.45) {composite problems};
     \draw[fill=white,dashed] (-1.2,-2) rectangle (8.8,0.5);
     \draw[fill=white,dashed] (8.8,-3.2) rectangle (5.2,-2.3);
-    \node[main node] (1) {Exploration};
-    \node[main node] (2) [below= 0.9cm of 1] {Dispersion};
-    \node[main node] (3) [right of=1] {Formation};
-    \node[main node] (4) [right of=3] {Source Localization};
-    \node[main node] (5) [below= 2.2cm of 4] {Collective Transport};
+    \node[main node] (1)                   { Exploration};
+    \node[main node] (2) [below=9 mm of 1]  { Dispersion};
+    \node[main node] (3) [right of=1]      { Formation};
+    \node[main node] (4) [right of=3]      { Source Localization};
+    \node[main node] (5) [below=22 mm of 4] { Collective Transport};
 
     \path[every node/.style={font=\sffamily\small}]
       (1) edge [right] node[left] {} (2)
