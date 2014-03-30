@@ -20,9 +20,9 @@ This research project is looking for distributed algorithms which function well 
 
 ##Supervisors
 
-**MSc. Andreas Loukas** http://www.st.ewi.tudelft.nl/~loukasa/ | A.Loukas@tudelft.nl | HB 09.030
+**MSc. Andreas Loukas** http://www.st.ewi.tudelft.nl/~loukasa/ | HB 09.030
 
-**dr. Andrei Pruteanu** http://www.st.ewi.tudelft.nl/~andrei/ | A.S.Pruteanu@tudelft.nl | HB 09.070
+**dr. Andrei Pruteanu** http://www.st.ewi.tudelft.nl/~andrei/ | HB 09.070
 
 ##Technical Details
 
@@ -32,5 +32,5 @@ Main Tex File:
     
 Bibliography Files:
 
-    Can be found here: ``./bib/Bibliography.bib'' 
+    /bib/Bibliography.bib 
 
