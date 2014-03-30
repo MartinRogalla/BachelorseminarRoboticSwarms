@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=0.75in]{geometry}
+%Commented in draft to allow for notes.
+
+\begin{document}
+
+\section*{Title}
+Hello everyone, I am [name] and this are [other names]. Today we want introduce you to the great world of robotic swarms and tell you about the paper we wrote focusing on the main problems that have been faced recently.
+
+\section*{Definition}
+We defined robotic swarms as scalable networks of two or more robots, which have some sort of distributed intelligence. These swarms have multiple advantages compared to single robots, for example… Curious?
+
+\section*{Action}
+Well, let’s see them in action in this short video I am going to show you.
+
+\section*{Problems}
+All of that really is possible, but while implementing all of those features, a lot of problems have been faced. To efficiently find out how to solve these problems, we have...
+
+\section*{Goal}
+...identified the main problems in robotic swarms and analyzed the possible approaches and solutions. In our paper we have discussed five of these problems: 
+
+\section*{Problems overview}
+exploration, formation, source localization, dispersion and collective transport. Let’s briefly discuss them:
+
+\section*{Exploration}
+Exploration is the problem to fully explore an unknown environment. In real-life this can for example be used in rescue missions to assist navigation firefighters and clean shopping centres. \\
+The main problem lies in map sharing, which asks for global communication.
+
+\section*{Formation}
+Formation is the problem of controlling the relative position and orientation of the robots in a group, which can be used in for example transport or area surveillance. \\
+For formation tasks it is very convenient to have centralized communication for stability, but this makes the swarm less scalable.
+
+\section*{Dispersion}
+Dispersion is the problem of covering as much space possible with the available robots. This can be used in disaster response or fast communication network initializations. \\
+One of the problems of dispersion is the fluctuation in relative position data and the deadzones in ranges.
+
+\section*{Source localization}
+Source localization is the problem of finding multiple sources in an unknown area, which is often used in hazardous areas to for example find radiation or chemical sources. \\
+The same trade-off as before has to be made: do you want global communication or scalability? And what to do if a source has been found?
+
+\section*{Collective transport}
+Collective transport is the one problem which is a composite of problems. Its goal is to find the payload and safely transport it back to the base. This not only uses exploration and source localization, but while transporting also formation. This can be used in rescue missions, war zones or aerial transport.\\
+Problems lie in the difficult mathematical models to calculate tensions between robots.
+
+\section*{Problems}
+For each of these problems we have identified the different approaches used to solve these problems. We classified all algorithms according to their ability to communicate or localize themselves and found out that in almost every problem the same trade-off has to be made:\\
+\\
+If we choose for centralized communication, we can have global communication, which is very convenient. However, this decreases the scalability of the swarm dramatically, since it is fully dependent of th central agent. On the other hand, if we choose for communication over limited range, the robots either have to stay together to uphold communication capabilities or have limited communication and thus a lower performance.\\
+\\
+Furthermore we have seen that in algorithms which use some form of localization some kind of map is used, which causes global communication to be a must have. If this global communication is not possible, the map is often worthless.\\
+\\
+In all algorithms this trade-off is made in a different way, but we think more research should be done in the field of algorithms that are based on limited communication and only use relative location. We mainly think this because this kind of robot can be developed relatively easy and cheap. Furthermore when implementing this kind of algorithm they have proved to be very scalable and do never depend on some kind of central agent, which makes them much more robust.\\
+\\
+If you are interested in the algorithms that provide solutions to the trade-off named above, you should definitely read our paper:\\
+\\
+A Brief Survey of Problems and Solutions in Robotic Swarms\\
+\\
+Thank you very much.
+
+\end{document}
+
