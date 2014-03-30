@@ -20,7 +20,8 @@ All of that really is possible, but while implementing all of those features, a 
 ...identified the main problems in robotic swarms and analyzed the possible approaches and solutions. In our paper we have discussed five of these problems: 
 
 \section*{Problems overview}
-exploration, formation, source localization, dispersion and collective transport. Let’s briefly discuss them:
+exploration, formation, source localization, dispersion and collective transport. 
+Let’s briefly discuss them:
 
 \section*{Exploration}
 Exploration is the problem to fully explore an unknown environment. In real-life this can for example be used in rescue missions to assist navigation firefighters and clean shopping centres. \\
@@ -43,13 +44,27 @@ Collective transport is the one problem which is a composite of problems. Its go
 Problems lie in the difficult mathematical models to calculate tensions between robots.
 
 \section*{Problems}
-For each of these problems we have identified the different approaches used to solve these problems. We classified all algorithms according to their ability to communicate or localize themselves and found out that in almost every problem the same trade-off has to be made:\\
+For each of these problems we have identified the different approaches used to solve these problems. 
+For each problem, we have compared them to each other in their performance and scalability.
+We define performance in general, how much time it takes to solve a given problem.
+Scalability can be defined as how many robots can be added to the swarm without having negative impact to the performance. \\
+Furthermore, we classified all algorithms according to two characteristic.
+The first one is the robots' ability to communicate with each other.
+The second one is ability to for each robot to localize itself.\\
+
+After comparing all these problems and found algorithms, we discovered that in almost every problem the same trade-off has to be made:\\
 \\
-If we choose for centralized communication, we can have global communication, which is very convenient. However, this decreases the scalability of the swarm dramatically, since it is fully dependent of th central agent. On the other hand, if we choose for communication over limited range, the robots either have to stay together to uphold communication capabilities or have limited communication and thus a lower performance.\\
+If we choose for centralized communication, we can have global communication, which is very useful for accurate information sharing. 
+However, this decreases the scalability of the swarm dramatically, since it is fully dependent on the central agent. 
+On the other hand, we can also choose for only local communication.
+But then, the robots either have to stay together to uphold communication capabilities and can result in limited communication and thus a lower performance.\\
 \\
-Furthermore we have seen that in algorithms which use some form of localization some kind of map is used, which causes global communication to be a must have. If this global communication is not possible, the map is often worthless.\\
+Furthermore we have seen that in algorithms which use some form of localization some kind of map is used, which causes global communication to be a must have. 
+If this global communication is not possible, the map is often worthless.\\
 \\
-In all algorithms this trade-off is made in a different way, but we think more research should be done in the field of algorithms that are based on limited communication and only use relative location. We mainly think this because this kind of robot can be developed relatively easy and cheap. Furthermore when implementing this kind of algorithm they have proved to be very scalable and do never depend on some kind of central agent, which makes them much more robust.\\
+In all algorithms this trade-off is made in a different way, but we think more research should be done in the field of algorithms that are based on local communication and only use relative location. 
+We mainly think this because this kind of robot can be developed relatively easy and cheap. 
+Furthermore when implementing this kind of algorithm they have proved to be very scalable and do never depend on some kind of central agent, which makes them much more robust.\\
 \\
 If you are interested in the algorithms that provide solutions to the trade-off named above, you should definitely read our paper:\\
 \\
