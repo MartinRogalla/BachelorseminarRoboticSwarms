@@ -1,0 +1,295 @@
+\begin{thebibliography}{10}
+
+\bibitem{albers1999exploring}
+Susanne Albers, Klaus Kursawe, and Sven Schuierer.
+\newblock Exploring unknown environments with obstacles.
+\newblock In {\em Proceedings of the tenth annual ACM-SIAM symposium on
+  Discrete algorithms}, pages 842--843. Society for Industrial and Applied
+  Mathematics, 1999.
+
+\bibitem{balch1998behavior}
+Tucker Balch and Ronald~C Arkin.
+\newblock Behavior-based formation control for multirobot teams.
+\newblock {\em Robotics and Automation, IEEE Transactions on}, 14(6):926--939,
+  1998.
+
+\bibitem{bashyal2008human}
+Shishir Bashyal and Ganesh~Kumar Venayagamoorthy.
+\newblock Human swarm interaction for radiation source search and localization.
+\newblock In {\em Swarm Intelligence Symposium, 2008. SIS 2008. IEEE}, pages
+  1--8. IEEE, 2008.
+
+\bibitem{burgard2005coordinated}
+Wolfram Burgard, Mark Moors, Cyrill Stachniss, and Frank~E Schneider.
+\newblock Coordinated multi-robot exploration.
+\newblock {\em Robotics, IEEE Transactions on}, 21(3):376--386, 2005.
+
+\bibitem{burkle2011towards}
+Axel B{\"u}rkle, Florian Segor, and Matthias Kollmann.
+\newblock Towards autonomous micro uav swarms.
+\newblock {\em Journal of intelligent \& robotic systems}, 61(1-4):339--353,
+  2011.
+
+\bibitem{chen2005formation}
+Yang~Quan Chen and Zhongmin Wang.
+\newblock Formation control: a review and a new consideration.
+\newblock In {\em Intelligent Robots and Systems, 2005.(IROS 2005). 2005
+  IEEE/RSJ International Conference on}, pages 3181--3186. IEEE, 2005.
+
+\bibitem{consolini2008leader}
+Luca Consolini, Fabio Morbidi, Domenico Prattichizzo, and Mario Tosques.
+\newblock Leader--follower formation control of nonholonomic mobile robots with
+  input constraints.
+\newblock {\em Automatica}, 44(5):1343--1349, 2008.
+
+\bibitem{cui2004swarm}
+Xiaohui Cui, C~Tim Hardin, Rammohan~K Ragade, and Adel~Said Elmaghraby.
+\newblock A swarm approach for emission sources localization.
+\newblock In {\em Tools with Artificial Intelligence, 2004. ICTAI 2004. 16th
+  IEEE International Conference on}, pages 424--430. IEEE, 2004.
+
+\bibitem{das2002vision}
+Aveek~K Das, Rafael Fierro, Vijay Kumar, James~P Ostrowski, John Spletzer, and
+  Camillo~J Taylor.
+\newblock A vision-based formation control framework.
+\newblock {\em Robotics and Automation, IEEE Transactions on}, 18(5):813--825,
+  2002.
+
+\bibitem{dhariwal2004bacterium}
+Amit Dhariwal, Gaurav Sukhatme, and Aristides~AG Requicha.
+\newblock Bacterium-inspired robots for environmental monitoring.
+\newblock In {\em Robotics and Automation, 2004. Proceedings. ICRA'04. 2004
+  IEEE International Conference on}, volume~2, pages 1436--1443. IEEE, 2004.
+
+\bibitem{di2010autonomous}
+Donato Di~Paola, Annalisa Milella, Grazia Cicirelli, and Arcangelo Distante.
+\newblock An autonomous mobile robotic system for surveillance of indoor
+  environments.
+\newblock {\em International Journal of Advanced Robotic Systems}, 7(1):19--26,
+  2010.
+
+\bibitem{do2007nonlinear}
+KD~Do and J~Pan.
+\newblock Nonlinear formation control of unicycle-type mobile robots.
+\newblock {\em Robotics and Autonomous Systems}, 55(3):191--204, 2007.
+
+\bibitem{gage1992command}
+Douglas~W Gage.
+\newblock Command control for many-robot systems.
+\newblock Technical report, DTIC Document, 1992.
+
+\bibitem{hsiang2004algorithms}
+Tien-Ruey Hsiang, Esther~M Arkin, Michael~A Bender, S{\'a}ndor~P Fekete, and
+  Joseph~SB Mitchell.
+\newblock Algorithms for rapidly dispersing robot swarms in unknown
+  environments.
+\newblock In {\em Algorithmic Foundations of Robotics V}, pages 77--94.
+  Springer, 2004.
+
+\bibitem{kaminka2013use}
+Gal~A Kaminka, Meytal Traub, Yehuda Elmaliach, Dan Erusalimchik, and Alex
+  Fridman.
+\newblock On the use of teamwork software for multi-robot formation control.
+\newblock In {\em Proceedings of the 2013 international conference on
+  Autonomous agents and multi-agent systems}, pages 1163--1164. International
+  Foundation for Autonomous Agents and Multiagent Systems, 2013.
+
+\bibitem{khatib1986real}
+Oussama Khatib.
+\newblock Real-time obstacle avoidance for manipulators and mobile robots.
+\newblock {\em The international journal of robotics research}, 5(1):90--98,
+  1986.
+
+\bibitem{krishnanand2005detection}
+KN~Krishnanand and D~Ghose.
+\newblock Detection of multiple source locations using a glowworm metaphor with
+  applications to collective robotics.
+\newblock In {\em Swarm Intelligence Symposium, 2005. SIS 2005. Proceedings
+  2005 IEEE}, pages 84--91. IEEE, 2005.
+
+\bibitem{lawton2003decentralized}
+Jonathan~RT Lawton, Randal~W Beard, and Brett~J Young.
+\newblock A decentralized approach to formation maneuvers.
+\newblock {\em Robotics and Automation, IEEE Transactions on}, 19(6):933--941,
+  2003.
+
+\bibitem{lee1997quantitative}
+David Lee and Michael Recce.
+\newblock Quantitative evaluation of the exploration strategies of a mobile
+  robot.
+\newblock {\em The International Journal of Robotics Research}, 16(4):413--447,
+  1997.
+
+\bibitem{ludwig2006robotic}
+Luke Ludwig and Maria Gini.
+\newblock Robotic swarm dispersion using wireless intensity signals.
+\newblock In {\em Distributed Autonomous Robotic Systems 7}, pages 135--144.
+  Springer, 2006.
+
+\bibitem{marjovi2009multi}
+Ali Marjovi, Jo{\~a}o~Gon{\c{c}}alo Nunes, Lino Marques, and An{\'\i}bal
+  de~Almeida.
+\newblock Multi-robot exploration and fire searching.
+\newblock In {\em Intelligent Robots and Systems, 2009. IROS 2009. IEEE/RSJ
+  International Conference on}, pages 1929--1934. IEEE, 2009.
+
+\bibitem{marques2006particle}
+Lino Marques, Urbano Nunes, and Anibal~T de~Almeida.
+\newblock Particle swarm-based olfactory guided search.
+\newblock {\em Autonomous Robots}, 20(3):277--287, 2006.
+
+\bibitem{mas2012object}
+Ignacio Mas and Christopher Kitts.
+\newblock Object manipulation using cooperative mobile multi-robot systems.
+\newblock In {\em Proceedings of the World Congress on Engineering and Computer
+  Science (WCECS’12)}, 2012.
+
+\bibitem{mclurkin2007distributed}
+James McLurkin and Jennifer Smith.
+\newblock Distributed algorithms for dispersion in indoor environments using a
+  swarm of autonomous mobile robots.
+\newblock In {\em Distributed Autonomous Robotic Systems 6}, pages 399--408.
+  Springer, 2007.
+
+\bibitem{Michael2011cooperative}
+Nathan Michael, Jonathan Fink, and Vijay Kumar.
+\newblock Cooperative manipulation and transportation with aerial robots.
+\newblock {\em Autonomous Robots}, 30(1):73--86, 2011.
+
+\bibitem{morlok2007dispersing}
+Ryan Morlok and Maria Gini.
+\newblock Dispersing robots in an unknown environment.
+\newblock In {\em Distributed Autonomous Robotic Systems 6}, pages 253--262.
+  Springer, 2007.
+
+\bibitem{Naghsh2008}
+Amir~M. Naghsh, Jeremi Gancet, Andry Tanoto, and Chris Roast.
+\newblock {Analysis and design of human-robot swarm interaction in
+  firefighting}.
+\newblock {\em RO-MAN 2008 - The 17th IEEE International Symposium on Robot and
+  Human Interactive Communication}, pages 255--260, August 2008.
+
+\bibitem{pakanati2010swarm}
+Anuraag Pakanati and Maria Gini.
+\newblock Swarm dispersion via potential fields, leader election, and counting
+  hops.
+\newblock In {\em Simulation, Modeling, and Programming for Autonomous Robots},
+  pages 485--496. Springer, 2010.
+
+\bibitem{Penders2011}
+Jacques Penders, L~Alboul, and U~Witkowski.
+\newblock {A robot swarm assisting a human fire-fighter}.
+\newblock {\em Advanced Robotics}, 2011.
+
+\bibitem{poli2007particle}
+Riccardo Poli, James Kennedy, and Tim Blackwell.
+\newblock Particle swarm optimization.
+\newblock {\em Swarm intelligence}, 1(1):33--57, 2007.
+
+\bibitem{ranjbar2012novel}
+Bijan Ranjbar-Sahraei, Faridoon Shabaninia, Alireza Nemati, and S~Stan.
+\newblock A novel robust decentralized adaptive fuzzy control for swarm
+  formation of multiagent systems.
+\newblock {\em Industrial Electronics, IEEE Transactions on}, 59(8):3124--3134,
+  2012.
+
+\bibitem{ren2004decentralized}
+Wei Ren and Randal Beard.
+\newblock Decentralized scheme for spacecraft formation flying via the virtual
+  structure approach.
+\newblock {\em Journal of Guidance, Control, and Dynamics}, 27(1):73--82, 2004.
+
+\bibitem{rozas1991artificial}
+Roberto Rozas, Jorge Morales, and Daniel Vega.
+\newblock Artificial smell detection for robotic navigation.
+\newblock In {\em Advanced Robotics, 1991.'Robots in Unstructured
+  Environments', 91 ICAR., Fifth International Conference on}, pages
+  1730--1733. IEEE, 1991.
+
+\bibitem{Rubenstein2013collecive}
+Michael Rubenstein, Adrian Cabrera, Justin Werfel, and James Mclurkin.
+\newblock {Collective Transport of Complex Objects by Simple Robots : Theory
+  and Experiments}.
+\newblock pages 47--54.
+
+\bibitem{rybski2000team}
+Paul~E Rybski, Sascha~A Stoeter, Michael~D Erickson, Maria Gini, Dean~F Hougen,
+  and Nikolaos Papanikolopoulos.
+\newblock A team of robotic agents for surveillance.
+\newblock In {\em Proceedings of the fourth international conference on
+  autonomous agents}, pages 9--16. ACM, 2000.
+
+\bibitem{sandini1993gradient}
+G~Sandini, G~Lucarini, and M~Varoli.
+\newblock Gradient driven self-organizing systems.
+\newblock In {\em Intelligent Robots and Systems' 93, IROS'93. Proceedings of
+  the 1993 IEEE/RSJ International Conference on}, volume~1, pages 429--432.
+  IEEE, 1993.
+
+\bibitem{sheng2006distributed}
+Weihua Sheng, Qingyan Yang, Jindong Tan, and Ning Xi.
+\newblock Distributed multi-robot coordination in area exploration.
+\newblock {\em Robotics and Autonomous Systems}, 54(12):945--955, 2006.
+
+\bibitem{singh1993map}
+Karansher Singh and Kikuo Fujimura.
+\newblock Map making by cooperating mobile robots.
+\newblock In {\em Robotics and Automation, 1993. Proceedings., 1993 IEEE
+  International Conference on}, pages 254--259. IEEE, 1993.
+
+\bibitem{solanas2004coordinated}
+Agusti Solanas and Miguel~Angel Garcia.
+\newblock Coordinated multi-robot exploration through unsupervised clustering
+  of unknown space.
+\newblock In {\em Intelligent Robots and Systems, 2004.(IROS 2004).
+  Proceedings. 2004 IEEE/RSJ International Conference on}, volume~1, pages
+  717--721. IEEE, 2004.
+
+\bibitem{sugawara2012object}
+Ken Sugawara, Nikolaus Correll, and Dustin Reishus.
+\newblock Object transportation by granular convection using swarm robots.
+\newblock {\em Distributed Algorithmic Robotics}, 2012.
+
+\bibitem{ugur2007dispersion}
+Emre Ugur, Ali~E Turgut, and Erol Sahin.
+\newblock Dispersion of a swarm of robots based on realistic wireless intensity
+  signals.
+\newblock In {\em Computer and information sciences, 2007. iscis 2007. 22nd
+  international symposium on}, pages 1--6. IEEE, 2007.
+
+\bibitem{wagner2008cooperative}
+Israel~A Wagner, Yaniv Altshuler, Vladimir Yanovski, and Alfred~M Bruckstein.
+\newblock Cooperative cleaners: A study in ant robotics.
+\newblock {\em The International Journal of Robotics Research}, 27(1):127--151,
+  2008.
+
+\bibitem{wee2013formation}
+Sung-Gil Wee, Yoon-Gu Kim, Suk-Gyu Lee, and Jinung An.
+\newblock Formation control based on virtual space configuration for
+  multi-robot collective navigation.
+\newblock In {\em Ubiquitous Robots and Ambient Intelligence (URAI), 2013 10th
+  International Conference on}, pages 556--557. IEEE, 2013.
+
+\bibitem{yamauchi1998frontier}
+Brian Yamauchi.
+\newblock Frontier-based exploration using multiple robots.
+\newblock In {\em Proceedings of the second international conference on
+  Autonomous agents}, pages 47--53. ACM, 1998.
+
+\bibitem{zarzhitsky2005distributed}
+Dimitri Zarzhitsky, Diana~F Spears, and William~M Spears.
+\newblock Distributed robotics approach to chemical plume tracing.
+\newblock In {\em Intelligent Robots and Systems, 2005.(IROS 2005). 2005
+  IEEE/RSJ International Conference on}, pages 4034--4039. IEEE, 2005.
+
+\bibitem{zhang2009gradient}
+Qingquan Zhang, Gerald~E Sobelman, and Tian He.
+\newblock Gradient-based target localization in robotic sensor networks.
+\newblock {\em Pervasive and Mobile Computing}, 5(1):37--48, 2009.
+
+\bibitem{zlot2002multi}
+Robert Zlot, Anthony Stentz, M~Bernardine Dias, and Scott Thayer.
+\newblock Multi-robot exploration controlled by a market economy.
+\newblock 2002.
+
+\end{thebibliography}
