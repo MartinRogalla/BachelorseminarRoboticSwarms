@@ -1,6 +1,6 @@
 ##Robotic Swarms: Distributed Coordination Without Location
 
-**Presentation**: http://martinrogalla.github.io/BachelorseminarRoboticSwarms
+**Presentation**: http://martinrogalla.github.io/SurveyRoboticSwarms
 
 ##Authors
 
